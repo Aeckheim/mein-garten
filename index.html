@@ -194,10 +194,11 @@
             <div id="manual-tab-freetext" class="manual-tab-content" style="display: none;">
                 <div class="form-group">
                     <label>Pflanze suchen (beliebiger Name)</label>
-                    <div style="display: flex; gap: 8px;">
-                        <input type="text" id="wiki-search-input" placeholder="z.B. Bärlauch, Mangold, Feige..."
-                               onkeydown="if(event.key==='Enter') searchWikipedia()" style="flex:1;">
-                        <button class="btn-primary btn-small" onclick="searchWikipedia()">🔍</button>
+                    <div class="wiki-search-bar">
+                        <input type="search" id="wiki-search-input" placeholder="z.B. Bärlauch, Mangold, Feige..."
+                               onkeydown="if(event.key==='Enter'){event.preventDefault();searchWikipedia();}"
+                               onchange="searchWikipedia()">
+                        <button class="btn-primary btn-small wiki-search-btn" onclick="searchWikipedia()">🔍 Suchen</button>
                     </div>
                 </div>
                 <div id="wiki-loading" class="analyzing-animation" style="display: none;">

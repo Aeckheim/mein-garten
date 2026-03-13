@@ -1450,6 +1450,22 @@ a {
     }
 }
 
+.wiki-search-bar {
+    display: flex;
+    gap: 8px;
+}
+
+.wiki-search-bar input {
+    flex: 1;
+    min-width: 0;
+}
+
+.wiki-search-btn {
+    flex-shrink: 0;
+    width: auto !important;
+    white-space: nowrap;
+}
+
 @media (max-width: 480px) {
     .brand-text {
         font-size: 18px;
@@ -1468,6 +1484,18 @@ a {
     .btn-secondary {
         width: 100%;
         justify-content: center;
+    }
+
+    .wiki-search-bar {
+        flex-direction: column;
+    }
+
+    .wiki-search-bar input {
+        width: 100%;
+    }
+
+    .wiki-search-btn {
+        width: 100% !important;
     }
 
     .action-bar {
