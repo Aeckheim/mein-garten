@@ -16,9 +16,8 @@ let selectedDbPlant = null;
 // ============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Firebase initialisieren
-    initFirebase();
-    updateFirebaseStatus();
+    // Storage initialisieren (GitHub API + localStorage Fallback)
+    await StorageLayer.init();
 
     // Daten laden
     await Promise.all([
@@ -773,7 +772,8 @@ function closeModal(id) {
 function openSettings() {
     document.getElementById('plantnet-api-key').value = PlantNetAPI.getApiKey();
     document.getElementById('claude-api-key').value = localStorage.getItem('claude_api_key') || '';
-    updateFirebaseStatus();
+    document.getElementById('github-token').value = localStorage.getItem('github_token') || '';
+    updateGitHubStatus();
     openModal('modal-settings');
 }
 
@@ -789,16 +789,27 @@ function saveClaudeKey() {
     showToast('✅ Claude Key gespeichert!', 'success');
 }
 
-function updateFirebaseStatus() {
-    const status = document.getElementById('firebase-status');
+function saveGitHubToken() {
+    const token = document.getElementById('github-token').value.trim();
+    localStorage.setItem('github_token', token);
+    GitHubStorage.token = token;
+    // Daten sofort synchronisieren
+    GitHubStorage.loadData().then(data => {
+        StorageLayer._data = data;
+        loadPlants().then(() => renderPlantsGrid());
+    });
+    updateGitHubStatus();
+    showToast('✅ GitHub Token gespeichert! Daten werden synchronisiert.', 'success');
+}
+
+function updateGitHubStatus() {
+    const status = document.getElementById('github-status');
     if (!status) return;
 
-    if (firebaseReady) {
-        status.innerHTML = '<span class="status-dot connected"></span> Verbunden ✅';
-    } else if (firebaseConfig.apiKey === 'DEIN_API_KEY') {
-        status.innerHTML = '<span class="status-dot"></span> Nicht konfiguriert (nutze localStorage)';
+    if (GitHubStorage.isConfigured()) {
+        status.innerHTML = '<span class="status-dot connected"></span> Verbunden mit GitHub ✅';
     } else {
-        status.innerHTML = '<span class="status-dot error"></span> Verbindungsfehler ❌';
+        status.innerHTML = '<span class="status-dot"></span> Nur lokaler Speicher (Token eintragen für Sync)';
     }
 }
 
@@ -1036,16 +1047,18 @@ function showBioTips() {
 
 let wissenEntries = [];
 
-function loadWissen() {
-    wissenEntries = JSON.parse(localStorage.getItem('garten_wissen') || '[]');
+async function loadWissen() {
+    wissenEntries = await StorageLayer.getWissen();
 }
 
-function saveWissenToStorage() {
-    localStorage.setItem('garten_wissen', JSON.stringify(wissenEntries));
+async function saveWissenToStorage() {
+    // Wird über StorageLayer gespeichert (GitHub + localStorage)
+    StorageLayer._data.wissen = wissenEntries;
+    await StorageLayer._save();
 }
 
-function renderWissen() {
-    loadWissen();
+async function renderWissen() {
+    await loadWissen();
     const container = document.getElementById('wissen-entries');
     const empty = document.getElementById('wissen-empty');
     const countEl = document.getElementById('wissen-count');
@@ -1088,16 +1101,16 @@ function toggleWissenEntry(idx) {
     if (el) el.classList.toggle('open');
 }
 
-function deleteWissenEntry(idx) {
+async function deleteWissenEntry(idx) {
     if (!confirm('Eintrag löschen?')) return;
     wissenEntries.splice(idx, 1);
-    saveWissenToStorage();
-    renderWissen();
+    await saveWissenToStorage();
+    await renderWissen();
     showToast('🗑️ Eintrag gelöscht.', 'success');
 }
 
-function filterWissen(query) {
-    loadWissen();
+async function filterWissen(query) {
+    await loadWissen();
     const q = query.toLowerCase();
     const filtered = wissenEntries.filter(e =>
         e.question.toLowerCase().includes(q) ||
@@ -1132,7 +1145,7 @@ function cancelWissenPaste() {
     document.getElementById('wissen-paste-box').style.display = 'none';
 }
 
-function saveWissenFromPaste() {
+async function saveWissenFromPaste() {
     const question = document.getElementById('wissen-current-question').textContent;
     const answer = document.getElementById('wissen-answer-paste').value.trim();
 
@@ -1141,18 +1154,18 @@ function saveWissenFromPaste() {
         return;
     }
 
-    loadWissen();
+    await loadWissen();
     wissenEntries.unshift({
         question,
         answer,
         date: new Date().toLocaleDateString('de-DE'),
         source: 'claude.ai'
     });
-    saveWissenToStorage();
+    await saveWissenToStorage();
 
     document.getElementById('wissen-paste-box').style.display = 'none';
     document.getElementById('wissen-question').value = '';
-    renderWissen();
+    await renderWissen();
     showToast('📖 Wissen gespeichert!', 'success');
 }
 
@@ -1205,17 +1218,17 @@ async function askClaudeAPI(question, apiKey) {
     }
 }
 
-function saveWissenEntry() {
+async function saveWissenEntry() {
     if (!window._pendingWissenQuestion || !window._pendingWissenAnswer) return;
 
-    loadWissen();
+    await loadWissen();
     wissenEntries.unshift({
         question: window._pendingWissenQuestion,
         answer: window._pendingWissenAnswer,
         date: new Date().toLocaleDateString('de-DE'),
         source: 'claude-api'
     });
-    saveWissenToStorage();
+    await saveWissenToStorage();
 
     document.getElementById('wissen-answer-box').style.display = 'none';
     document.getElementById('wissen-auto-answer').style.display = 'none';

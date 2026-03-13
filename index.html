@@ -8,9 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -258,8 +255,11 @@
                 <button class="btn-secondary btn-small" onclick="saveClaudeKey()">💾 Speichern</button>
             </div>
             <div class="settings-section">
-                <h3>🔥 Firebase</h3>
-                <div id="firebase-status" class="firebase-status"><span class="status-dot"></span><span>Wird geprüft...</span></div>
+                <h3>🐙 GitHub Sync</h3>
+                <p class="settings-info">Synchronisiert Daten zwischen Geräten über dein GitHub Repo.</p>
+                <div class="form-group"><label>GitHub Token</label><input type="password" id="github-token" placeholder="ghp_..."></div>
+                <button class="btn-secondary btn-small" onclick="saveGitHubToken()">💾 Speichern</button>
+                <div id="github-status" class="firebase-status" style="margin-top: 8px;"><span class="status-dot"></span><span>Wird geprüft...</span></div>
             </div>
         </div>
     </div>

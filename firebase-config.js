@@ -1,131 +1,231 @@
 // ============================================
-// 🔥 Firebase Configuration
+// 🐙 GitHub Storage – Daten im Repo speichern (kostenlos!)
 // ============================================
-// HINWEIS: Ersetze die Werte unten mit deiner eigenen Firebase Config!
-// Anleitung: https://console.firebase.google.com → Projekteinstellungen → Web-App
+// Nutzt die GitHub Contents API um data.json im Repo zu lesen/schreiben.
+// Token wird in localStorage gespeichert (nur auf deinem Gerät).
 
-const firebaseConfig = {
-    apiKey: "DEIN_API_KEY",
-    authDomain: "DEIN_PROJEKT.firebaseapp.com",
-    projectId: "DEIN_PROJEKT",
-    storageBucket: "DEIN_PROJEKT.appspot.com",
-    messagingSenderId: "DEINE_ID",
-    appId: "DEINE_APP_ID"
+const GITHUB_OWNER = 'Aeckheim';
+const GITHUB_REPO = 'mein-garten';
+const GITHUB_BRANCH = 'main';
+const DATA_FILE = 'data.json';
+
+const GitHubStorage = {
+    token: null,
+    fileSha: null,      // SHA des aktuellen data.json (nötig für Updates)
+    cache: null,         // Lokaler Cache der Daten
+    saveTimeout: null,   // Debounce für Schreibvorgänge
+
+    init() {
+        this.token = localStorage.getItem('github_token') || '';
+        // Lokalen Cache aus localStorage laden (Offline-Fallback)
+        try {
+            this.cache = JSON.parse(localStorage.getItem('garten_data') || 'null');
+        } catch(e) {
+            this.cache = null;
+        }
+    },
+
+    isConfigured() {
+        return !!this.token;
+    },
+
+    // --- GitHub API Helpers ---
+
+    async apiRequest(path, options = {}) {
+        const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/${path}`;
+        const headers = {
+            'Accept': 'application/vnd.github.v3+json',
+            'Authorization': `token ${this.token}`
+        };
+        if (options.body) headers['Content-Type'] = 'application/json';
+
+        const res = await fetch(url, { ...options, headers });
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.message || `GitHub API Error ${res.status}`);
+        }
+        return res.json();
+    },
+
+    // Alle Daten vom Repo laden
+    async loadData() {
+        if (!this.isConfigured()) {
+            return this.getLocalData();
+        }
+
+        try {
+            const result = await this.apiRequest(`contents/${DATA_FILE}?ref=${GITHUB_BRANCH}`);
+            this.fileSha = result.sha;
+            const content = atob(result.content.replace(/\n/g, ''));
+            // UTF-8 dekodieren
+            const decoded = decodeURIComponent(escape(content));
+            const data = JSON.parse(decoded);
+
+            // Lokalen Cache aktualisieren
+            this.cache = data;
+            localStorage.setItem('garten_data', JSON.stringify(data));
+            console.log('🐙 Daten von GitHub geladen');
+            return data;
+        } catch (err) {
+            if (err.message.includes('Not Found') || err.message.includes('404')) {
+                // data.json existiert noch nicht – leer starten
+                console.log('🐙 Keine data.json im Repo – starte leer');
+                this.fileSha = null;
+                const empty = { plants: [], general_tasks: [], wissen: [] };
+                this.cache = empty;
+                localStorage.setItem('garten_data', JSON.stringify(empty));
+                return empty;
+            }
+            console.warn('🐙 GitHub nicht erreichbar, nutze lokalen Cache:', err.message);
+            return this.getLocalData();
+        }
+    },
+
+    // Daten ins Repo schreiben (debounced – wartet 2 Sek nach letzter Änderung)
+    async saveData(data) {
+        // Immer sofort lokal speichern
+        this.cache = data;
+        localStorage.setItem('garten_data', JSON.stringify(data));
+
+        if (!this.isConfigured()) return;
+
+        // Debounce: mehrere schnelle Änderungen bündeln
+        clearTimeout(this.saveTimeout);
+        this.saveTimeout = setTimeout(() => this._pushToGitHub(data), 2000);
+    },
+
+    async _pushToGitHub(data) {
+        try {
+            // UTF-8 korrekt als Base64 kodieren
+            const jsonStr = JSON.stringify(data, null, 2);
+            const utf8Bytes = unescape(encodeURIComponent(jsonStr));
+            const base64 = btoa(utf8Bytes);
+
+            const body = {
+                message: '🌿 Garten-Daten aktualisiert',
+                content: base64,
+                branch: GITHUB_BRANCH
+            };
+            if (this.fileSha) body.sha = this.fileSha;
+
+            const result = await this.apiRequest(`contents/${DATA_FILE}`, {
+                method: 'PUT',
+                body: JSON.stringify(body)
+            });
+            this.fileSha = result.content.sha;
+            console.log('🐙 Daten auf GitHub gespeichert');
+        } catch (err) {
+            console.error('🐙 GitHub Speichern fehlgeschlagen:', err.message);
+            // Daten sind trotzdem lokal gesichert
+        }
+    },
+
+    getLocalData() {
+        if (this.cache) return this.cache;
+        // Migration: alte localStorage-Daten übernehmen
+        const plants = JSON.parse(localStorage.getItem('garten_plants') || '[]');
+        const tasks = JSON.parse(localStorage.getItem('garten_general_tasks') || '[]');
+        const wissen = JSON.parse(localStorage.getItem('garten_wissen') || '[]');
+        return { plants, general_tasks: tasks, wissen };
+    }
 };
 
-// Firebase initialisieren
-let db = null;
-let storage = null;
-let firebaseReady = false;
-
-function initFirebase() {
-    try {
-        if (firebaseConfig.apiKey === "DEIN_API_KEY") {
-            console.warn('⚠️ Firebase nicht konfiguriert – nutze localStorage als Fallback');
-            firebaseReady = false;
-            return false;
-        }
-        firebase.initializeApp(firebaseConfig);
-        db = firebase.firestore();
-        storage = firebase.storage();
-
-        // Offline-Cache aktivieren
-        db.enablePersistence({ synchronizeTabs: true }).catch(err => {
-            console.warn('Offline-Persistence nicht verfügbar:', err.code);
-        });
-
-        firebaseReady = true;
-        console.log('🔥 Firebase verbunden!');
-        return true;
-    } catch (err) {
-        console.error('Firebase Fehler:', err);
-        firebaseReady = false;
-        return false;
-    }
-}
-
 // ============================================
-// 💾 Storage Layer (Firebase oder localStorage Fallback)
+// 💾 Storage Layer (GitHub API + localStorage Fallback)
 // ============================================
 
 const StorageLayer = {
+    _data: null,
+
+    async init() {
+        GitHubStorage.init();
+        this._data = await GitHubStorage.loadData();
+        if (!this._data.plants) this._data.plants = [];
+        if (!this._data.general_tasks) this._data.general_tasks = [];
+        if (!this._data.wissen) this._data.wissen = [];
+    },
+
+    async _save() {
+        await GitHubStorage.saveData(this._data);
+    },
+
     // --- Plants ---
     async getPlants() {
-        if (firebaseReady) {
-            const snapshot = await db.collection('plants').orderBy('added_date', 'desc').get();
-            return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        }
-        return JSON.parse(localStorage.getItem('garten_plants') || '[]');
+        return this._data.plants;
     },
 
     async savePlant(plant) {
-        if (firebaseReady) {
-            const docRef = await db.collection('plants').add(plant);
-            return { id: docRef.id, ...plant };
-        }
-        const plants = JSON.parse(localStorage.getItem('garten_plants') || '[]');
-        plant.id = 'local_' + Date.now();
-        plants.push(plant);
-        localStorage.setItem('garten_plants', JSON.stringify(plants));
+        plant.id = 'plant_' + Date.now();
+        this._data.plants.push(plant);
+        await this._save();
         return plant;
     },
 
     async updatePlant(id, data) {
-        if (firebaseReady) {
-            await db.collection('plants').doc(id).update(data);
-            return;
-        }
-        const plants = JSON.parse(localStorage.getItem('garten_plants') || '[]');
-        const idx = plants.findIndex(p => p.id === id);
+        const idx = this._data.plants.findIndex(p => p.id === id);
         if (idx !== -1) {
-            Object.assign(plants[idx], data);
-            localStorage.setItem('garten_plants', JSON.stringify(plants));
+            Object.assign(this._data.plants[idx], data);
+            await this._save();
         }
     },
 
     async deletePlant(id) {
-        if (firebaseReady) {
-            await db.collection('plants').doc(id).delete();
-            return;
-        }
-        const plants = JSON.parse(localStorage.getItem('garten_plants') || '[]');
-        const filtered = plants.filter(p => p.id !== id);
-        localStorage.setItem('garten_plants', JSON.stringify(filtered));
+        this._data.plants = this._data.plants.filter(p => p.id !== id);
+        await this._save();
     },
 
     // --- Photos ---
     async uploadPhoto(file, plantId) {
-        if (firebaseReady) {
-            const ref = storage.ref(`plant-photos/${plantId}/${file.name}`);
-            await ref.put(file);
-            return await ref.getDownloadURL();
-        }
-        // Fallback: store as base64 data URL
+        // Foto als Base64 Data-URL speichern (bleibt in data.json)
         return new Promise((resolve) => {
             const reader = new FileReader();
-            reader.onload = () => resolve(reader.result);
+            reader.onload = () => {
+                // Komprimieren via Canvas
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    let w = img.width, h = img.height;
+                    const MAX = 600;
+                    if (w > MAX || h > MAX) {
+                        const scale = MAX / Math.max(w, h);
+                        w = Math.round(w * scale);
+                        h = Math.round(h * scale);
+                    }
+                    canvas.width = w;
+                    canvas.height = h;
+                    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                    resolve(canvas.toDataURL('image/jpeg', 0.7));
+                };
+                img.src = reader.result;
+            };
             reader.readAsDataURL(file);
         });
     },
 
     // --- General Tasks ---
     async getGeneralTasks() {
-        if (firebaseReady) {
-            const snapshot = await db.collection('general_tasks').get();
-            return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        }
-        return JSON.parse(localStorage.getItem('garten_general_tasks') || '[]');
+        return this._data.general_tasks;
     },
 
     async saveGeneralTask(task) {
-        if (firebaseReady) {
-            const docRef = await db.collection('general_tasks').add(task);
-            return { id: docRef.id, ...task };
-        }
-        const tasks = JSON.parse(localStorage.getItem('garten_general_tasks') || '[]');
-        task.id = 'local_' + Date.now();
-        tasks.push(task);
-        localStorage.setItem('garten_general_tasks', JSON.stringify(tasks));
+        task.id = 'task_' + Date.now();
+        this._data.general_tasks.push(task);
+        await this._save();
         return task;
+    },
+
+    // --- Wissen ---
+    async getWissen() {
+        return this._data.wissen;
+    },
+
+    async saveWissen(entry) {
+        this._data.wissen.push(entry);
+        await this._save();
+    },
+
+    async deleteWissen(index) {
+        this._data.wissen.splice(index, 1);
+        await this._save();
     }
 };
