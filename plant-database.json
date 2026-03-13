@@ -1,0 +1,1381 @@
+{
+  "plants": [
+    {
+      "id": "tomate",
+      "name_de": "Tomate",
+      "name_lat": "Solanum lycopersicum",
+      "category": "gemuese",
+      "emoji": "🍅",
+      "care_plan": {
+        "jan": ["Saatgut bestellen und Sorten auswählen"],
+        "feb": ["Ab Mitte Februar auf der Fensterbank vorziehen (20–22 °C)", "Anzuchterde verwenden, Samen 0,5 cm tief setzen"],
+        "mar": ["Pikieren bei 2. Blattpaar in Einzeltöpfe", "Hell und etwas kühler stellen (18 °C)"],
+        "apr": ["Abhärten: tagsüber stundenweise rausstellen", "Flüssigdünger alle 2 Wochen geben"],
+        "mai": ["Nach den Eisheiligen (ab 15. Mai) ins Freiland pflanzen", "Stützstäbe setzen, Mulch ausbringen"],
+        "jun": ["Regelmäßig ausgeizen (Seitentriebe entfernen)", "Gleichmäßig gießen, Staunässe vermeiden"],
+        "jul": ["Weiter ausgeizen", "Tomatendünger alle 2 Wochen", "Auf Braunfäule kontrollieren"],
+        "aug": ["Ernte der reifen Früchte", "Blütenspitzen kappen ab Mitte August", "Weiter regelmäßig gießen und düngen"],
+        "sep": ["Letzte Ernte, grüne Tomaten nachreifen lassen", "Pflanzen bei Kälte mit Vlies schützen"],
+        "okt": ["Restliche grüne Tomaten ernten und drinnen nachreifen lassen", "Pflanzenreste entfernen und kompostieren"],
+        "nov": ["Beet für nächstes Jahr vorbereiten", "Kompost einarbeiten"],
+        "dez": ["Saatgutkatalog studieren für nächste Saison"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, Boden gleichmäßig feucht halten",
+        "boden": "Nährstoffreich, humos, durchlässig",
+        "abstand": "50–60 cm"
+      }
+    },
+    {
+      "id": "gurke",
+      "name_de": "Gurke",
+      "name_lat": "Cucumis sativus",
+      "category": "gemuese",
+      "emoji": "🥒",
+      "care_plan": {
+        "jan": ["Saatgut bestellen"],
+        "feb": [],
+        "mar": [],
+        "apr": ["Ab Mitte April im Haus vorziehen (22–25 °C)", "Samen einzeln in Töpfe setzen, Gurken nicht pikieren"],
+        "mai": ["Nach den Eisheiligen ins Freiland oder Gewächshaus pflanzen", "Rankhilfe aufstellen", "Boden mit Kompost anreichern"],
+        "jun": ["Regelmäßig und gleichmäßig gießen (lauwarmes Wasser)", "Mulchen um Feuchtigkeit zu halten", "Wöchentlich düngen mit Flüssigdünger"],
+        "jul": ["Erste Ernte bei 15–20 cm Länge", "Regelmäßig ernten fördert Neubildung", "Auf Mehltau kontrollieren"],
+        "aug": ["Weiter regelmäßig ernten", "Gießen nicht nachlassen", "Gelbe Blätter entfernen"],
+        "sep": ["Letzte Ernte", "Pflanzen bei kühlen Nächten mit Vlies schützen"],
+        "okt": ["Pflanzenreste entfernen", "Beet lockern und Kompost einarbeiten"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne bis Halbschatten",
+        "wasser": "Hoher Wasserbedarf, gleichmäßig feucht",
+        "boden": "Humusreich, warm, nährstoffreich",
+        "abstand": "40–60 cm"
+      }
+    },
+    {
+      "id": "zucchini",
+      "name_de": "Zucchini",
+      "name_lat": "Cucurbita pepo",
+      "category": "gemuese",
+      "emoji": "🥬",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": [],
+        "apr": ["Ab Mitte April im Haus vorziehen (20–22 °C)", "Samen einzeln in große Töpfe setzen"],
+        "mai": ["Nach Eisheiligen ins Freiland pflanzen", "Viel Platz einplanen (1,5 m²)", "Kompost und Hornspäne ins Pflanzloch geben"],
+        "jun": ["Regelmäßig und reichlich gießen", "Alle 2 Wochen düngen", "Boden mulchen"],
+        "jul": ["Regelmäßig ernten bei 15–20 cm Länge", "Nicht zu groß werden lassen", "Auf Mehltau kontrollieren"],
+        "aug": ["Weiter regelmäßig ernten", "Alte Blätter am Boden entfernen", "Gießen fortsetzen"],
+        "sep": ["Letzte Ernte vor dem ersten Frost", "Große Zucchini für Suppen verwenden"],
+        "okt": ["Pflanzenreste kompostieren", "Beet räumen"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Hoher Wasserbedarf",
+        "boden": "Nährstoffreich, humos, locker",
+        "abstand": "80–100 cm"
+      }
+    },
+    {
+      "id": "paprika",
+      "name_de": "Paprika",
+      "name_lat": "Capsicum annuum",
+      "category": "gemuese",
+      "emoji": "🫑",
+      "care_plan": {
+        "jan": ["Saatgut bestellen"],
+        "feb": ["Ab Anfang Februar vorziehen (25 °C Keimtemperatur)", "Keimung dauert 10–14 Tage, hell stellen"],
+        "mar": ["Pikieren in Einzeltöpfe", "Warm und hell halten (20 °C)", "Erste Königsblüte ausbrechen für bessere Verzweigung"],
+        "apr": ["Regelmäßig düngen mit Flüssigdünger", "Abhärten ab Mitte April"],
+        "mai": ["Nach Eisheiligen auspflanzen, geschützter Standort", "Stützstäbe setzen", "Mulch ausbringen"],
+        "jun": ["Regelmäßig gießen", "Alle 2 Wochen düngen", "Seitentriebe in Blattachseln stehen lassen"],
+        "jul": ["Auf Blattlausbefall kontrollieren", "Weiter düngen und gießen", "Erste grüne Früchte können geerntet werden"],
+        "aug": ["Früchte reifen zu voller Farbe", "Regelmäßig ernten", "Weiter düngen"],
+        "sep": ["Restliche Früchte ernten", "Bei Kälte Pflanze ins Haus holen oder Vlies nutzen"],
+        "okt": ["Letzte Ernte", "Pflanzen entfernen"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne, warm und geschützt",
+        "wasser": "Regelmäßig, keine Staunässe",
+        "boden": "Nährstoffreich, durchlässig, warm",
+        "abstand": "40–50 cm"
+      }
+    },
+    {
+      "id": "kartoffel",
+      "name_de": "Kartoffel",
+      "name_lat": "Solanum tuberosum",
+      "category": "gemuese",
+      "emoji": "🥔",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Saatkartoffeln bestellen"],
+        "mar": ["Saatkartoffeln vorkeimen lassen: hell, 10–15 °C aufstellen", "Triebe sollen 2–3 cm lang werden"],
+        "apr": ["Ab Mitte April pflanzen (Bodentemperatur mind. 8 °C)", "10 cm tief in lockeren Boden setzen", "Reihenabstand 60–70 cm"],
+        "mai": ["Anhäufeln wenn Triebe 15–20 cm hoch sind", "Regelmäßig Unkraut jäten"],
+        "jun": ["Zweites Mal anhäufeln", "Bei Trockenheit gießen", "Auf Kartoffelkäfer kontrollieren"],
+        "jul": ["Frühkartoffeln ernten wenn Kraut welkt", "Bei Bedarf wässern"],
+        "aug": ["Mittelfrühe Sorten ernten", "Kraut abschneiden 2 Wochen vor Ernte"],
+        "sep": ["Späte Sorten ernten bei trockenem Wetter", "Kartoffeln trocknen lassen, dunkel und kühl lagern (4–6 °C)"],
+        "okt": ["Restliche Kartoffeln ernten", "Beet lockern"],
+        "nov": ["Lagerkontrolle: faulige Kartoffeln aussortieren"],
+        "dez": ["Lagerkontrolle fortsetzen"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Mäßig, besonders während der Blüte",
+        "boden": "Locker, sandig-lehmig, nicht frisch gekalkt",
+        "abstand": "30–35 cm in der Reihe"
+      }
+    },
+    {
+      "id": "moehre",
+      "name_de": "Möhre",
+      "name_lat": "Daucus carota",
+      "category": "gemuese",
+      "emoji": "🥕",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Saatgut bestellen"],
+        "mar": ["Ab Mitte März direkt ins Freiland säen", "Boden tiefgründig lockern", "Reihenabstand 25–30 cm"],
+        "apr": ["Nachsaat möglich für gestaffelte Ernte", "Keimung dauert 2–3 Wochen, Markiersaat verwenden"],
+        "mai": ["Vereinzeln auf 3–5 cm Abstand", "Regelmäßig Unkraut jäten", "Möhrenfliege: Kulturschutznetz auflegen"],
+        "jun": ["Bei Trockenheit gleichmäßig gießen", "Nicht hacken direkt an den Pflanzen", "Nachsaat für Herbsternte"],
+        "jul": ["Erste frühe Möhren ernten", "Gießen bei Trockenheit"],
+        "aug": ["Haupternte der Sommermöhren", "Lagermöhren weiterwachsen lassen"],
+        "sep": ["Lagermöhren ernten bei trockenem Wetter", "Laub abdrehen, in Sand einlagern"],
+        "okt": ["Letzte Ernte vor dem Frost", "In feuchtem Sand im Keller lagern"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Gleichmäßig feucht, nicht zu nass",
+        "boden": "Tiefgründig, locker, steinfrei, sandig-lehmig",
+        "abstand": "3–5 cm in der Reihe"
+      }
+    },
+    {
+      "id": "radieschen",
+      "name_de": "Radieschen",
+      "name_lat": "Raphanus sativus var. sativus",
+      "category": "gemuese",
+      "emoji": "🔴",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Ab März direkt ins Freiland oder Frühbeet säen", "Flach säen (1 cm tief), Reihenabstand 15 cm"],
+        "apr": ["Nachsaat alle 2–3 Wochen für laufende Ernte", "Gleichmäßig feucht halten"],
+        "mai": ["Weiter nachsäen", "Ernte der ersten Sätze nach 4–6 Wochen", "Auf Erdflöhe kontrollieren"],
+        "jun": ["Im Hochsommer Pause einlegen (werden pelzig bei Hitze)", "Halbschattigen Standort wählen"],
+        "jul": [],
+        "aug": ["Ab Ende August wieder aussäen", "Herbstsorten verwenden"],
+        "sep": ["Nachsaat möglich", "Ernte der Herbstsätze"],
+        "okt": ["Letzte Ernte", "Unter Vlies noch möglich"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Gleichmäßig feucht",
+        "boden": "Locker, humos, keine frische Düngung",
+        "abstand": "3–5 cm in der Reihe"
+      }
+    },
+    {
+      "id": "salat",
+      "name_de": "Kopfsalat",
+      "name_lat": "Lactuca sativa",
+      "category": "gemuese",
+      "emoji": "🥬",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Frühsorten ab Ende Februar im Haus vorziehen"],
+        "mar": ["Vorziehen auf der Fensterbank (15–18 °C)", "Ab Mitte März ins Frühbeet pflanzen"],
+        "apr": ["Ins Freiland pflanzen", "Nicht zu tief setzen (Herzblätter über der Erde)", "Schneckenschutz anbringen"],
+        "mai": ["Nachpflanzen alle 2–3 Wochen", "Regelmäßig gießen, morgens", "Auf Schnecken kontrollieren"],
+        "jun": ["Ernte der ersten Köpfe", "Sommersorten verwenden (schossfest)", "Weiter nachpflanzen"],
+        "jul": ["Ernte fortsetzen", "Bei großer Hitze schattieren"],
+        "aug": ["Herbstsorten pflanzen", "Weiter regelmäßig ernten"],
+        "sep": ["Letzte Pflanzungen mit Vliesschutz", "Ernte fortsetzen"],
+        "okt": ["Restliche Köpfe ernten vor dem Frost"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Regelmäßig, gleichmäßig feucht",
+        "boden": "Humusreich, locker, nährstoffreich",
+        "abstand": "25–30 cm"
+      }
+    },
+    {
+      "id": "spinat",
+      "name_de": "Spinat",
+      "name_lat": "Spinacia oleracea",
+      "category": "gemuese",
+      "emoji": "🥬",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Ab März direkt ins Freiland säen", "Reihenabstand 20–25 cm, 2 cm tief"],
+        "apr": ["Nachsaat für gestaffelte Ernte", "Gleichmäßig feucht halten", "Unkraut jäten"],
+        "mai": ["Ernte der Frühjahrsaussaat", "Ab Mai keine Aussaat mehr (schießt bei Hitze)"],
+        "jun": [],
+        "jul": [],
+        "aug": ["Ab Mitte August Herbstaussaat beginnen", "Winterharte Sorten wählen"],
+        "sep": ["Nachsaat möglich", "Ernte der Herbstsaat"],
+        "okt": ["Weiter ernten", "Vlies auflegen für späte Ernte"],
+        "nov": ["Winterspinat unter Vlies ernten"],
+        "dez": ["Winterspinat bei mildem Wetter ernten"]
+      },
+      "quick_info": {
+        "sonne": "Halbschatten bis Sonne",
+        "wasser": "Gleichmäßig feucht",
+        "boden": "Nährstoffreich, humos, tiefgründig",
+        "abstand": "10–15 cm in der Reihe"
+      }
+    },
+    {
+      "id": "bohne",
+      "name_de": "Buschbohne",
+      "name_lat": "Phaseolus vulgaris",
+      "category": "gemuese",
+      "emoji": "🫘",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": [],
+        "apr": [],
+        "mai": ["Ab Mitte Mai direkt ins Freiland säen (Bodentemp. mind. 10 °C)", "Horstsaat: 5–6 Samen pro Stelle, 40 cm Abstand", "Boden vorher mit Kompost vorbereiten"],
+        "jun": ["Nachsaat Anfang Juni möglich", "Anhäufeln wenn Pflanzen 10 cm hoch sind", "Regelmäßig gießen ab der Blüte"],
+        "jul": ["Ernte beginnt ca. 8 Wochen nach Aussaat", "Regelmäßig pflücken fördert Neubildung", "Bohnen nie roh essen!"],
+        "aug": ["Haupterntezeit", "Weiter regelmäßig ernten", "Letzte Nachsaat Anfang August"],
+        "sep": ["Letzte Ernte", "Pflanzen stehen lassen (Stickstoffknöllchen im Boden)"],
+        "okt": ["Pflanzenreste oberirdisch abschneiden, Wurzeln im Boden lassen"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, besonders ab der Blüte",
+        "boden": "Locker, humos, nicht frisch gedüngt",
+        "abstand": "40 cm zwischen Horsten"
+      }
+    },
+    {
+      "id": "erbse",
+      "name_de": "Erbse",
+      "name_lat": "Pisum sativum",
+      "category": "gemuese",
+      "emoji": "🟢",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Saatgut bestellen"],
+        "mar": ["Ab Mitte März direkt ins Freiland säen", "3–5 cm tief, Reihenabstand 30–40 cm", "Rankhilfe aus Reisig oder Netz aufstellen"],
+        "apr": ["Nachsaat möglich", "Boden feucht halten", "Unkraut jäten"],
+        "mai": ["Rankhilfe kontrollieren", "Bei Trockenheit gießen", "Auf Blattläuse kontrollieren"],
+        "jun": ["Ernte wenn Hülsen prall gefüllt sind", "Regelmäßig ernten für Nachproduktion", "Nicht bei Nässe ernten"],
+        "jul": ["Letzte Ernte", "Pflanzen abschneiden, Wurzeln im Boden lassen"],
+        "aug": [],
+        "sep": [],
+        "okt": [],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Mäßig, ab Blüte regelmäßig",
+        "boden": "Locker, kalkhaltig, nicht zu nährstoffreich",
+        "abstand": "5 cm in der Reihe"
+      }
+    },
+    {
+      "id": "kuerbis",
+      "name_de": "Kürbis",
+      "name_lat": "Cucurbita maxima",
+      "category": "gemuese",
+      "emoji": "🎃",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": [],
+        "apr": ["Ab Mitte April im Haus vorziehen (20–24 °C)", "Samen einzeln in große Töpfe, 2 cm tief"],
+        "mai": ["Nach Eisheiligen auspflanzen", "Pflanzloch mit Kompost füllen", "Viel Platz einplanen (2–3 m²)"],
+        "jun": ["Reichlich gießen (10–20 Liter pro Woche)", "Mulchen mit Stroh", "Alle 2 Wochen mit organischem Dünger versorgen"],
+        "jul": ["Weiter kräftig gießen und düngen", "Früchte auf Stroh betten gegen Fäulnis", "Pro Pflanze 2–3 Früchte stehen lassen"],
+        "aug": ["Triebspitzen kappen nach gewünschter Fruchtanzahl", "Gießen fortsetzen"],
+        "sep": ["Ernte wenn Stiel verholzt und Schale hart ist", "Klopfprobe: hohl klingt = reif", "Mit Stielansatz ernten"],
+        "okt": ["Vor dem ersten Frost ernten", "Kühl und trocken lagern (12–15 °C)"],
+        "nov": ["Lagerung kontrollieren"],
+        "dez": ["Lagerung kontrollieren"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Sehr hoher Wasserbedarf",
+        "boden": "Sehr nährstoffreich, humos, locker",
+        "abstand": "100–150 cm"
+      }
+    },
+    {
+      "id": "kohlrabi",
+      "name_de": "Kohlrabi",
+      "name_lat": "Brassica oleracea var. gongylodes",
+      "category": "gemuese",
+      "emoji": "💜",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Frühsorten im Haus vorziehen (15–18 °C)"],
+        "mar": ["Vorziehen fortsetzen", "Abhärten der Jungpflanzen", "Ab Ende März ins Frühbeet pflanzen"],
+        "apr": ["Ins Freiland pflanzen", "Nicht zu tief setzen", "Kulturschutznetz gegen Kohlfliege"],
+        "mai": ["Gleichmäßig gießen (platzt sonst auf)", "Nachpflanzen für gestaffelte Ernte", "Unkraut hacken"],
+        "jun": ["Erste Ernte bei Tennisballgröße", "Nicht zu groß werden lassen (wird holzig)", "Nachsatz pflanzen"],
+        "jul": ["Ernte fortsetzen", "Sommersorten vertragen mehr Wärme"],
+        "aug": ["Herbstsorten pflanzen", "Weiter regelmäßig gießen"],
+        "sep": ["Herbsternte", "Lagersorten bis Oktober stehen lassen"],
+        "okt": ["Letzte Ernte vor strengem Frost"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Gleichmäßig feucht",
+        "boden": "Nährstoffreich, humos, kalkhaltig",
+        "abstand": "25–30 cm"
+      }
+    },
+    {
+      "id": "brokkoli",
+      "name_de": "Brokkoli",
+      "name_lat": "Brassica oleracea var. italica",
+      "category": "gemuese",
+      "emoji": "🥦",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Ab Mitte März im Haus vorziehen (15–20 °C)"],
+        "apr": ["Pikieren und abhärten", "Ab Ende April ins Freiland pflanzen", "Kulturschutznetz aufspannen"],
+        "mai": ["Regelmäßig gießen", "Alle 3 Wochen düngen", "Auf Kohlweißling kontrollieren"],
+        "jun": ["Weiter düngen und gießen", "Nachpflanzen für Herbsternte"],
+        "jul": ["Hauptblume ernten bevor Knospen aufgehen", "Seitentriebe wachsen nach für Nachernten"],
+        "aug": ["Seitentriebe laufend ernten", "Herbstsatz ins Freiland setzen"],
+        "sep": ["Weiter Seitentriebe ernten", "Herbstpflanzung pflegen"],
+        "okt": ["Herbstbrokkoli ernten", "Pflanzenreste kompostieren"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, gleichmäßig feucht",
+        "boden": "Nährstoffreich, tiefgründig, kalkhaltig",
+        "abstand": "40–50 cm"
+      }
+    },
+    {
+      "id": "zwiebel",
+      "name_de": "Zwiebel",
+      "name_lat": "Allium cepa",
+      "category": "gemuese",
+      "emoji": "🧅",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Steckzwiebeln ab März in den Boden stecken", "Spitze knapp herausschauen lassen", "Reihenabstand 25 cm, in der Reihe 10 cm"],
+        "apr": ["Nachpflanzen möglich", "Boden locker halten", "Unkraut regelmäßig hacken"],
+        "mai": ["Weiter unkrautfrei halten", "Bei Trockenheit gießen", "Nicht düngen (fördert Fäulnis)"],
+        "jun": ["Boden um die Zwiebeln lockern", "Nicht mehr anhäufeln"],
+        "jul": ["Gießen reduzieren wenn Laub beginnt zu kippen", "Laub umknicken lassen (nicht abschneiden)"],
+        "aug": ["Ernte wenn Laub welk und umgefallen ist", "Bei trockenem Wetter ernten", "2 Wochen auf dem Beet nachtrocknen lassen"],
+        "sep": ["Zwiebeln zu Zöpfen binden oder in Netzen lagern", "Kühl, trocken und luftig aufbewahren"],
+        "okt": ["Wintersteckzwiebeln setzen für Frühjahrsernte"],
+        "nov": ["Lagerkontrolle"],
+        "dez": ["Lagerkontrolle"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Wenig, nur bei anhaltender Trockenheit",
+        "boden": "Locker, durchlässig, nicht frisch gedüngt",
+        "abstand": "10 cm in der Reihe"
+      }
+    },
+    {
+      "id": "erdbeere",
+      "name_de": "Erdbeere",
+      "name_lat": "Fragaria × ananassa",
+      "category": "obst",
+      "emoji": "🍓",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Altes Laub entfernen", "Boden vorsichtig lockern", "Kompost oder Beerendünger ausbringen"],
+        "apr": ["Stroh oder Holzwolle unter die Pflanzen legen", "Bei Spätfrost Vlies bereithalten", "Regelmäßig gießen"],
+        "mai": ["Blüten bei Spätfrostgefahr mit Vlies schützen", "Schnecken kontrollieren", "Unkraut jäten"],
+        "jun": ["Haupternte", "Morgens ernten für bestes Aroma", "Faulige Früchte sofort entfernen"],
+        "jul": ["Ernte fortsetzen bei Remontiersorten", "Ausläufer für Vermehrung nutzen oder abschneiden", "Nach Ernte düngen"],
+        "aug": ["Neue Erdbeerpflanzen setzen (ideale Pflanzzeit)", "Ausläufer bewurzeln oder entfernen", "Altes Laub nach der Ernte abschneiden"],
+        "sep": ["Neue Pflanzungen pflegen", "Boden mulchen"],
+        "okt": ["Beet für den Winter vorbereiten", "Laub als Winterschutz liegen lassen"],
+        "nov": ["Stroh oder Laub als Winterschutz auftragen"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, besonders während Fruchtreife",
+        "boden": "Humusreich, leicht sauer, durchlässig",
+        "abstand": "25–30 cm"
+      }
+    },
+    {
+      "id": "himbeere",
+      "name_de": "Himbeere",
+      "name_lat": "Rubus idaeus",
+      "category": "obst",
+      "emoji": "🫐",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Sommerhimbeeren: abgetragene Ruten bodennah abschneiden", "Neue Ruten am Spalier anbinden"],
+        "mar": ["Boden lockern und mit Kompost mulchen", "Beerendünger ausbringen", "Herbsthimbeeren bodennah schneiden"],
+        "apr": ["Auf neue Triebe achten, überzählige entfernen", "5–8 Ruten pro Meter stehen lassen"],
+        "mai": ["Mulchschicht erneuern", "Bei Trockenheit gießen", "Auf Rutenkrankheiten kontrollieren"],
+        "jun": ["Sommerhimbeeren ernten", "Regelmäßig pflücken"],
+        "jul": ["Ernte Sommerhimbeeren fortsetzen", "Abgeerntete Ruten sofort abschneiden"],
+        "aug": ["Herbsthimbeeren beginnen zu reifen", "Regelmäßig ernten"],
+        "sep": ["Herbsthimbeeren weiter ernten", "Junge Ruten der Sommersorten anbinden"],
+        "okt": ["Letzte Ernte Herbsthimbeeren", "Boden mulchen"],
+        "nov": ["Winterschutz mit Laub oder Stroh"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Regelmäßig, keine Staunässe",
+        "boden": "Humusreich, leicht sauer, durchlässig",
+        "abstand": "40–50 cm"
+      }
+    },
+    {
+      "id": "johannisbeere",
+      "name_de": "Johannisbeere",
+      "name_lat": "Ribes rubrum",
+      "category": "obst",
+      "emoji": "🔴",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Auslichtungsschnitt: älteste Triebe (4+ Jahre) bodennah entfernen", "8–10 Triebe pro Strauch belassen"],
+        "mar": ["Kompost und Beerendünger ausbringen", "Boden mulchen", "Boden vorsichtig lockern"],
+        "apr": ["Auf Blattfallkrankheit kontrollieren", "Bei Spätfrost Vlies über Blüten legen"],
+        "mai": ["Bei Trockenheit gießen", "Mulch erneuern"],
+        "jun": ["Ernte wenn Beeren voll ausgefärbt sind", "Ganze Trauben abschneiden"],
+        "jul": ["Ernte fortsetzen", "Nach Ernte düngen", "Zu dichte Triebe auslichten"],
+        "aug": ["Steckhölzer schneiden zur Vermehrung", "Boden mulchen"],
+        "sep": [],
+        "okt": ["Neue Sträucher pflanzen (ideale Pflanzzeit)", "Falllaub entfernen gegen Pilzkrankheiten"],
+        "nov": ["Falllaub entfernen", "Kompost ausbringen"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Regelmäßig, gleichmäßig feucht",
+        "boden": "Humusreich, nährstoffreich, leicht sauer",
+        "abstand": "120–150 cm"
+      }
+    },
+    {
+      "id": "apfelbaum",
+      "name_de": "Apfelbaum",
+      "name_lat": "Malus domestica",
+      "category": "obst",
+      "emoji": "🍎",
+      "care_plan": {
+        "jan": ["Winterschnitt an frostfreien Tagen", "Totholz und sich kreuzende Äste entfernen"],
+        "feb": ["Erziehungsschnitt fortsetzen", "Leimringe kontrollieren", "Baumscheibe freihalten"],
+        "mar": ["Kompost und Obstbaumdünger ausbringen", "Baumscheibe mulchen", "Auf Schädlingsbefall kontrollieren"],
+        "apr": ["Blüte beobachten", "Bei Spätfrost: Rasensprenger als Frostschutz", "Auf Blattläuse kontrollieren"],
+        "mai": ["Überflüssige Fruchtansätze ausdünnen (Juni-Fall abwarten)", "Auf Apfelschorf kontrollieren"],
+        "jun": ["Junifruchtfall abwarten, dann auf 1–2 Äpfel pro Büschel ausdünnen", "Gießen bei Trockenheit", "Sommerschnitt: Wasserschosse entfernen"],
+        "jul": ["Frühe Sorten ernten", "Fallobst aufsammeln gegen Schädlinge", "Bei Trockenheit wässern"],
+        "aug": ["Stützpfähle bei schweren Fruchtbehang", "Frühsorten ernten", "Fallobst entfernen"],
+        "sep": ["Haupternte Herbstsorten", "Pflückreife testen: Frucht drehen, löst sie sich leicht?", "Lagersorten kühl und dunkel einlagern"],
+        "okt": ["Spätsorten ernten", "Baumscheibe mit Kompost mulchen", "Leimringe anbringen gegen Frostspanner"],
+        "nov": ["Stamm mit weißem Kalkanstrich vor Frostrissen schützen", "Falllaub entfernen gegen Schorf"],
+        "dez": ["Lagerkontrolle: faulige Äpfel aussortieren"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig bei Trockenheit, besonders Jungbäume",
+        "boden": "Tiefgründig, nährstoffreich, lehmig-humos",
+        "abstand": "3–5 m je nach Unterlage"
+      }
+    },
+    {
+      "id": "kirschbaum",
+      "name_de": "Kirschbaum (Süßkirsche)",
+      "name_lat": "Prunus avium",
+      "category": "obst",
+      "emoji": "🍒",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Düngen mit Kompost und organischem Volldünger", "Baumscheibe mulchen"],
+        "apr": ["Blüte genießen", "Bei Spätfrost Vlies um kleine Bäume"],
+        "mai": ["Auf Kirschfruchtfliege kontrollieren", "Gelbtafeln aufhängen", "Bei Trockenheit gießen"],
+        "jun": ["Ernte Frühsorten", "Vogelschutznetz aufspannen", "Kirschen mit Stiel pflücken"],
+        "jul": ["Haupternte", "Sommerschnitt direkt nach der Ernte", "Totholz und nach innen wachsende Triebe entfernen"],
+        "aug": ["Sommerschnitt abschließen", "Schnittwunden bei Bedarf versorgen"],
+        "sep": [],
+        "okt": ["Falllaub entfernen gegen Monilia", "Fruchtmumien aus dem Baum entfernen"],
+        "nov": ["Stamm kalken gegen Frostrisse"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Mäßig, bei Trockenheit gießen",
+        "boden": "Tiefgründig, durchlässig, kalkhaltig",
+        "abstand": "5–8 m je nach Unterlage"
+      }
+    },
+    {
+      "id": "pflaume",
+      "name_de": "Pflaume / Zwetschge",
+      "name_lat": "Prunus domestica",
+      "category": "obst",
+      "emoji": "🟣",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Schnitt an frostfreien Tagen: Krone auslichten", "Abgestorbene und kranke Äste entfernen"],
+        "mar": ["Düngen mit Kompost", "Baumscheibe mulchen"],
+        "apr": ["Blüte beobachten", "Bei Spätfrost schützen"],
+        "mai": ["Auf Pflaumenwickler kontrollieren", "Überzählige Früchte ausdünnen"],
+        "jun": ["Fallobst aufsammeln (Pflaumenwickler!)", "Bei Trockenheit gießen"],
+        "jul": ["Frühe Sorten ernten", "Auf Fruchtfäule kontrollieren"],
+        "aug": ["Haupternte", "Reife Früchte sofort verarbeiten oder einfrieren"],
+        "sep": ["Späte Sorten ernten", "Fruchtmumien entfernen"],
+        "okt": ["Falllaub und Fruchtmumien entfernen", "Baumscheibe mulchen"],
+        "nov": ["Stamm kalken"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Mäßig bis regelmäßig",
+        "boden": "Tiefgründig, nährstoffreich, lehmig",
+        "abstand": "4–6 m"
+      }
+    },
+    {
+      "id": "heidelbeere",
+      "name_de": "Heidelbeere (Kulturheidelbeere)",
+      "name_lat": "Vaccinium corymbosum",
+      "category": "obst",
+      "emoji": "🫐",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Auslichtungsschnitt: alte Triebe (5+ Jahre) entfernen", "4–6 kräftige Triebe stehen lassen"],
+        "mar": ["Rhododendrondünger oder Spezial-Heidelbeerdünger ausbringen", "Mit Rindenmulch oder Nadelstreu mulchen"],
+        "apr": ["Nur mit Regenwasser oder kalkfreiem Wasser gießen", "Boden sauer halten (pH 4–5)"],
+        "mai": ["Auf Blüte achten", "Vogelnetz bereithalten", "Regelmäßig gießen"],
+        "jun": ["Vogelnetz aufspannen", "Gleichmäßig feucht halten"],
+        "jul": ["Ernte über mehrere Wochen", "Reife Beeren sind tiefblau und lösen sich leicht", "Weiter regelmäßig gießen"],
+        "aug": ["Ernte fortsetzen", "Mulchschicht erneuern"],
+        "sep": ["Letzte Ernte", "Herbstfärbung genießen"],
+        "okt": ["Mulch erneuern für Winterschutz"],
+        "nov": ["Wurzelbereich mit Laub und Nadelstreu schützen"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Gleichmäßig feucht, nur Regenwasser",
+        "boden": "Sauer (pH 4–5), humusreich, durchlässig",
+        "abstand": "100–150 cm"
+      }
+    },
+    {
+      "id": "weintraube",
+      "name_de": "Weintraube",
+      "name_lat": "Vitis vinifera",
+      "category": "obst",
+      "emoji": "🍇",
+      "care_plan": {
+        "jan": ["Winterschnitt (Januar–Februar): auf 2 Augen zurückschneiden"],
+        "feb": ["Winterschnitt abschließen vor Austrieb", "Spalierdrähte kontrollieren und reparieren"],
+        "mar": ["Kompost ausbringen", "Boden lockern"],
+        "apr": ["Neue Triebe am Spalier leiten", "Auf Austrieb achten"],
+        "mai": ["Überzählige Triebe ausbrechen", "Blatttriebe heften (anbinden)", "Auf Mehltau kontrollieren"],
+        "jun": ["Triebe heften und einkürzen", "Traubenzone entblättern für Belüftung", "Geiztriebe entfernen"],
+        "jul": ["Trauben ausdünnen für bessere Qualität", "Auf Mehltau und Botrytis kontrollieren"],
+        "aug": ["Traubenzone freihalten", "Vogelschutznetz anbringen", "Reife beobachten"],
+        "sep": ["Ernte bei Vollreife", "Zuckergehalt testen", "Tafeltrauben bei trockenem Wetter ernten"],
+        "okt": ["Nachreife abwarten bei Spätlesesorten", "Nach Ernte letzte Laubarbeiten"],
+        "nov": ["Rebholz entfernen", "Kompost ausbringen"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne, geschützter Standort (Südwand ideal)",
+        "wasser": "Mäßig, tiefwurzelnd",
+        "boden": "Durchlässig, kalkhaltig, nicht zu nährstoffreich",
+        "abstand": "1,5–2 m am Spalier"
+      }
+    },
+    {
+      "id": "basilikum",
+      "name_de": "Basilikum",
+      "name_lat": "Ocimum basilicum",
+      "category": "kraeuter",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Ab März im Haus aussäen (20–25 °C)", "Lichtkeimer: Samen nur andrücken, nicht bedecken"],
+        "apr": ["Jungpflanzen vereinzeln", "Hell und warm halten", "Ab Ende April auf Balkon abhärten"],
+        "mai": ["Nach Eisheiligen ins Freiland oder in Töpfe", "Geschützter, warmer Standort", "Regelmäßig gießen, aber nicht von oben"],
+        "jun": ["Regelmäßig ernten (Triebspitzen abknipsen)", "Blütenansätze entfernen für Blattwachstum", "Alle 2 Wochen düngen"],
+        "jul": ["Weiter ernten und Blüten entfernen", "Regelmäßig gießen, nie austrocknen lassen"],
+        "aug": ["Ernte fortsetzen", "Nachsaat möglich für Herbst", "Auf Schnecken achten"],
+        "sep": ["Vor dem ersten Frost ernten oder Topf reinholen", "Blätter trocknen oder einfrieren"],
+        "okt": ["Topfpflanzen ins Haus holen", "Restliche Pflanzen abernten"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne, warm und geschützt",
+        "wasser": "Regelmäßig, nie austrocknen lassen",
+        "boden": "Nährstoffreich, durchlässig, warm",
+        "abstand": "20–25 cm"
+      }
+    },
+    {
+      "id": "petersilie",
+      "name_de": "Petersilie",
+      "name_lat": "Petroselinum crispum",
+      "category": "kraeuter",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Ab März direkt ins Freiland säen", "Keimung dauert 3–4 Wochen, Geduld haben", "Boden feucht halten, Reihen markieren"],
+        "apr": ["Nachsaat möglich", "Unkraut vorsichtig entfernen", "Reihen feucht halten"],
+        "mai": ["Vereinzeln auf 10 cm Abstand", "Regelmäßig gießen"],
+        "jun": ["Laufend ernten, äußere Stängel zuerst", "Nicht ins Herz schneiden"],
+        "jul": ["Weiter ernten", "Im Halbschatten platzieren bei Hitze"],
+        "aug": ["Herbstaussaat möglich", "Weiter ernten"],
+        "sep": ["Blätter für Winter einfrieren oder trocknen", "Überwinterung im Freiland möglich"],
+        "okt": ["Mit Vlies oder Reisig schützen", "Im 2. Jahr blüht sie und stirbt ab"],
+        "nov": ["Winterschutz auflegen"],
+        "dez": ["Bei mildem Wetter noch ernten möglich"]
+      },
+      "quick_info": {
+        "sonne": "Halbschatten bis Sonne",
+        "wasser": "Gleichmäßig feucht",
+        "boden": "Nährstoffreich, humos, tiefgründig",
+        "abstand": "10–15 cm"
+      }
+    },
+    {
+      "id": "schnittlauch",
+      "name_de": "Schnittlauch",
+      "name_lat": "Allium schoenoprasum",
+      "category": "kraeuter",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Schnittlauch im Topf auf der Fensterbank antreiben"],
+        "mar": ["Aussaat oder Teilung bestehender Pflanzen", "Alte Pflanzen teilen fördert Wuchskraft"],
+        "apr": ["Erste Ernte wenn Halme 15 cm lang sind", "2 cm über dem Boden abschneiden", "Düngen mit Kompost"],
+        "mai": ["Regelmäßig ernten", "Blüten entfernen oder als essbare Deko nutzen"],
+        "jun": ["Nach der Blüte bodennah abschneiden", "Treibt frisch wieder aus", "Düngen nach Rückschnitt"],
+        "jul": ["Frischer Austrieb, weiter ernten"],
+        "aug": ["Regelmäßig ernten", "Bei Trockenheit gießen"],
+        "sep": ["Für Winter einfrieren (in Röllchen geschnitten)", "Töpfe zum Antreiben für Winter vorbereiten"],
+        "okt": ["Letzter Rückschnitt", "Pflanzen stehen lassen, ist winterhart"],
+        "nov": [],
+        "dez": ["Schnittlauch im Topf drinnen antreiben möglich"]
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Gleichmäßig feucht",
+        "boden": "Nährstoffreich, humos, nicht zu trocken",
+        "abstand": "15–20 cm"
+      }
+    },
+    {
+      "id": "rosmarin",
+      "name_de": "Rosmarin",
+      "name_lat": "Salvia rosmarinus",
+      "category": "kraeuter",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": ["Topfpflanzen im Winterquartier kontrollieren", "Sparsam gießen, nicht austrocknen lassen"],
+        "feb": ["Weiter im hellen, kühlen Winterquartier halten (5–10 °C)"],
+        "mar": ["Leichter Rückschnitt, Form geben", "Nicht ins alte Holz schneiden"],
+        "apr": ["Ab April nach draußen stellen (geschützter Platz)", "Umtopfen wenn nötig, durchlässiges Substrat"],
+        "mai": ["Langsam an volle Sonne gewöhnen", "Sparsam düngen", "Ganzjährig ernten möglich"],
+        "jun": ["Regelmäßig ernten, Triebspitzen abschneiden", "Fördert buschigen Wuchs"],
+        "jul": ["Stecklinge schneiden zur Vermehrung", "Mäßig gießen, verträgt Trockenheit gut"],
+        "aug": ["Weiter ernten", "Auf Schildläuse kontrollieren"],
+        "sep": ["Letzte Stecklinge schneiden", "Winterharten Sorten Platz im Beet geben"],
+        "okt": ["Topfpflanzen rechtzeitig ins Haus holen (vor Frost)", "Hell und kühl (5–10 °C) überwintern"],
+        "nov": ["Winterquartier: wenig gießen, nicht düngen"],
+        "dez": ["Im Winterquartier kontrollieren, auf Schädlinge prüfen"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Wenig, verträgt Trockenheit",
+        "boden": "Durchlässig, mager, kalkhaltig",
+        "abstand": "30–40 cm"
+      }
+    },
+    {
+      "id": "thymian",
+      "name_de": "Thymian",
+      "name_lat": "Thymus vulgaris",
+      "category": "kraeuter",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Rückschnitt um ein Drittel (nicht ins alte Holz)", "Boden lockern", "Aussaat im Haus möglich (Lichtkeimer)"],
+        "apr": ["Jungpflanzen abhärten", "Teilung älterer Pflanzen", "Ins Freiland pflanzen"],
+        "mai": ["Nach Eisheiligen auspflanzen", "Sonnigen, trockenen Standort wählen"],
+        "jun": ["Ernte vor und während der Blüte (bestes Aroma)", "Zum Trocknen ernten bei trockenem Wetter"],
+        "jul": ["Blüte lockt Bienen an", "Weiter ernten", "Stecklinge schneiden möglich"],
+        "aug": ["Ernte zum Trocknen", "Leichter Rückschnitt nach der Blüte"],
+        "sep": ["Letzte Ernte für Wintervorrat"],
+        "okt": ["Winterschutz mit Reisig bei empfindlichen Sorten"],
+        "nov": ["Reisig auflegen als Winterschutz"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Wenig, verträgt Trockenheit",
+        "boden": "Mager, durchlässig, kalkhaltig, sandig",
+        "abstand": "20–25 cm"
+      }
+    },
+    {
+      "id": "minze",
+      "name_de": "Minze",
+      "name_lat": "Mentha × piperita",
+      "category": "kraeuter",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Alte Triebe bodennah abschneiden", "Ausläufer kontrollieren (wuchert stark!)", "Rhizomsperre prüfen oder in Topf kultivieren"],
+        "apr": ["Neue Triebe wachsen lassen", "Kompost ausbringen", "Ausläufer ausstechen wo unerwünscht"],
+        "mai": ["Regelmäßig ernten fördert buschigen Wuchs", "Gut wässern"],
+        "jun": ["Vor der Blüte ernten für bestes Aroma", "Zum Trocknen bündeln und aufhängen"],
+        "jul": ["Blühende Triebe bodennah abschneiden", "Treibt frisch wieder aus", "Düngen nach Rückschnitt"],
+        "aug": ["Zweite Ernte", "Weiter regelmäßig gießen"],
+        "sep": ["Letzte Ernte", "Blätter trocknen oder einfrieren"],
+        "okt": ["Oberirdische Teile abschneiden"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Halbschatten bis Sonne",
+        "wasser": "Regelmäßig, feucht halten",
+        "boden": "Humusreich, nährstoffreich, feucht",
+        "abstand": "30 cm (am besten im Topf wegen Ausläufern)"
+      }
+    },
+    {
+      "id": "dill",
+      "name_de": "Dill",
+      "name_lat": "Anethum graveolens",
+      "category": "kraeuter",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": [],
+        "apr": ["Ab April direkt ins Freiland säen", "Nicht verpflanzen (Pfahlwurzel)", "Reihenabstand 25 cm"],
+        "mai": ["Nachsaat alle 3–4 Wochen für laufende Ernte", "Leicht feucht halten"],
+        "jun": ["Erste Ernte der Blätter", "Nachsaat fortsetzen", "Auf Blattläuse kontrollieren"],
+        "jul": ["Blätter und junge Dolden ernten", "Für Einlegen: Blütendolden verwenden"],
+        "aug": ["Samen reifen lassen für Gewürz", "Trockene Dolden abschneiden und Samen sammeln"],
+        "sep": ["Letzte Ernte", "Samen sammeln für nächstes Jahr", "Dill sät sich oft selbst aus"],
+        "okt": [],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Mäßig, gleichmäßig feucht",
+        "boden": "Durchlässig, nährstoffreich, locker",
+        "abstand": "15–20 cm"
+      }
+    },
+    {
+      "id": "salbei",
+      "name_de": "Salbei",
+      "name_lat": "Salvia officinalis",
+      "category": "kraeuter",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Kräftiger Rückschnitt um ein Drittel bis zur Hälfte", "Nicht ins alte Holz schneiden", "Boden lockern"],
+        "apr": ["Aussaat im Haus möglich", "Teilung älterer Pflanzen", "Jungpflanzen abhärten"],
+        "mai": ["Auspflanzen nach Eisheiligen", "Sonnigen, trockenen Standort wählen"],
+        "jun": ["Ernte vor der Blüte für bestes Aroma", "Blätter trocknen oder einfrieren", "Blüten sind auch essbar"],
+        "jul": ["Stecklinge schneiden", "Leicht zurückschneiden nach der Blüte"],
+        "aug": ["Weiter ernten", "Nicht zu stark ernten vor dem Winter"],
+        "sep": ["Letzte Ernte", "Nicht mehr düngen"],
+        "okt": ["Winterschutz mit Reisig oder Vlies vorbereiten"],
+        "nov": ["Reisig als Winterschutz auflegen"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Wenig bis mäßig, trockenheitsverträglich",
+        "boden": "Durchlässig, kalkhaltig, mager",
+        "abstand": "30–40 cm"
+      }
+    },
+    {
+      "id": "sonnenblume",
+      "name_de": "Sonnenblume",
+      "name_lat": "Helianthus annuus",
+      "category": "blumen",
+      "emoji": "🌻",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": [],
+        "apr": ["Ab Mitte April im Topf vorziehen (18–22 °C)", "Oder ab Ende April direkt ins Freiland säen"],
+        "mai": ["Nach Eisheiligen ins Freiland pflanzen", "Sonniger, windgeschützter Standort", "Kompost ins Pflanzloch geben"],
+        "jun": ["Stützstab bei hohen Sorten setzen", "Reichlich gießen", "Alle 2 Wochen düngen"],
+        "jul": ["Weiter kräftig gießen (großer Wasserbedarf)", "Anbinden bei Wind", "Auf Blattläuse kontrollieren"],
+        "aug": ["Blüte genießen", "Weiter gießen", "Verblühte Köpfe für Vögel stehen lassen oder Kerne ernten"],
+        "sep": ["Kerne ernten wenn Rückseite braun wird", "Zum Trocknen aufhängen"],
+        "okt": ["Pflanzenreste kompostieren", "Stängel als Rankhilfe weiterverwenden"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Hoher Wasserbedarf",
+        "boden": "Nährstoffreich, tiefgründig, locker",
+        "abstand": "40–60 cm je nach Sorte"
+      }
+    },
+    {
+      "id": "rose",
+      "name_de": "Rose (Beetrose)",
+      "name_lat": "Rosa × hybrida",
+      "category": "blumen",
+      "emoji": "🌹",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Winterschutz entfernen wenn kein Frost mehr", "Kräftiger Rückschnitt auf 3–5 Augen", "Rosendünger ausbringen", "Boden lockern und mulchen"],
+        "apr": ["Auf Austrieb achten", "Wildtriebe unterhalb der Veredelungsstelle entfernen", "Bei Bedarf nachschneiden"],
+        "mai": ["Blattlausbefall kontrollieren (Nützlinge fördern)", "Auf Sternrußtau und Mehltau achten", "Regelmäßig gießen am Boden (nicht über Blätter)"],
+        "jun": ["Erste Blüte", "Verblühtes regelmäßig ausschneiden", "Zweite Düngung mit Rosendünger"],
+        "jul": ["Verblühtes abschneiden für Nachblüte", "Bei Trockenheit gründlich gießen", "Auf Pilzkrankheiten kontrollieren"],
+        "aug": ["Letzte Düngung Anfang August (nicht später!)", "Verblühtes weiter entfernen", "Kranke Blätter aufsammeln"],
+        "sep": ["Nicht mehr schneiden (Triebe sollen ausreifen)", "Hagebutten stehen lassen"],
+        "okt": ["Falllaub entfernen (Pilzsporen!)", "Pflanzzeit für wurzelnackte Rosen"],
+        "nov": ["Winterschutz: Erde anhäufeln (15–20 cm)", "Reisig über die Pflanzen legen"],
+        "dez": ["Winterschutz kontrollieren"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne, luftig",
+        "wasser": "Regelmäßig, morgens am Boden gießen",
+        "boden": "Tiefgründig, lehmig-humos, nährstoffreich",
+        "abstand": "40–50 cm"
+      }
+    },
+    {
+      "id": "lavendel",
+      "name_de": "Lavendel",
+      "name_lat": "Lavandula angustifolia",
+      "category": "blumen",
+      "emoji": "💜",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Rückschnitt um ein Drittel bis zur Hälfte", "Nicht ins alte Holz schneiden", "Boden lockern"],
+        "apr": ["Neue Pflanzen setzen", "Aussaat im Haus möglich (Lichtkeimer, 15–20 °C)"],
+        "mai": ["Auspflanzen nach Eisheiligen", "Sonnigen, trockenen Standort wählen", "Nicht düngen (magerer Boden ideal)"],
+        "jun": ["Blütenknospen genießen", "Für Duftsäckchen ernten wenn erste Blüten aufgehen"],
+        "jul": ["Hauptblüte – Bienenweide", "Ernte für Trocknung: ganze Stängel abschneiden"],
+        "aug": ["Nach der Blüte leicht zurückschneiden", "Stecklinge schneiden zur Vermehrung"],
+        "sep": [],
+        "okt": ["Nicht mehr schneiden vor dem Winter"],
+        "nov": ["Winterschutz mit Reisig bei jungen Pflanzen", "Topfpflanzen geschützt aufstellen"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Wenig, trockenheitsverträglich",
+        "boden": "Durchlässig, mager, kalkhaltig, sandig",
+        "abstand": "30–40 cm"
+      }
+    },
+    {
+      "id": "dahlie",
+      "name_de": "Dahlie",
+      "name_lat": "Dahlia × hortensis",
+      "category": "blumen",
+      "emoji": "🌸",
+      "care_plan": {
+        "jan": ["Eingelagerte Knollen kontrollieren"],
+        "feb": ["Knollen kontrollieren, faulige Stellen entfernen"],
+        "mar": ["Knollen ab März im Haus vortreiben (Topf, 15–18 °C)", "Augen müssen nach oben zeigen"],
+        "apr": ["Vorgetriebene Pflanzen abhärten"],
+        "mai": ["Nach Eisheiligen ins Freiland pflanzen (10–15 cm tief)", "Stützstäbe setzen bei hohen Sorten", "Schneckenschutz!"],
+        "jun": ["Regelmäßig gießen und düngen", "Seitenknospen entfernen für große Blüten", "Auf Schnecken kontrollieren"],
+        "jul": ["Verblühtes regelmäßig abschneiden", "Alle 2 Wochen flüssig düngen", "Anbinden bei Wind"],
+        "aug": ["Volle Blüte genießen", "Weiter ausputzen und düngen", "Gut gießen"],
+        "sep": ["Weiter Verblühtes entfernen", "Blüten für Vasen schneiden"],
+        "okt": ["Nach dem ersten Frost: Stängel auf 10 cm kürzen", "Knollen vorsichtig ausgraben", "Trocknen lassen, Erde entfernen"],
+        "nov": ["Knollen in Kiste mit Torf/Sand lagern", "Kühl (5–8 °C), dunkel und frostfrei aufbewahren"],
+        "dez": ["Lagerung kontrollieren"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, reichlich bei Hitze",
+        "boden": "Nährstoffreich, humos, durchlässig",
+        "abstand": "50–80 cm je nach Sorte"
+      }
+    },
+    {
+      "id": "tulpe",
+      "name_de": "Tulpe",
+      "name_lat": "Tulipa gesneriana",
+      "category": "blumen",
+      "emoji": "🌷",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Erste Triebspitzen erscheinen"],
+        "mar": ["Düngen mit Blumenzwiebeldünger bei Austrieb", "Schnecken kontrollieren"],
+        "apr": ["Volle Blüte genießen", "Verblühte Blüten abschneiden (nicht das Laub!)"],
+        "mai": ["Laub stehen lassen bis es komplett vergilbt ist", "Zwiebel zieht Nährstoffe zurück"],
+        "jun": ["Vergilbtes Laub entfernen", "Zwiebeln markieren oder ausgraben", "Ausgegrabene Zwiebeln trocken und warm lagern"],
+        "jul": [],
+        "aug": [],
+        "sep": ["Ab Ende September neue Zwiebeln pflanzen", "Doppelte Pflanztiefe der Zwiebelhöhe"],
+        "okt": ["Pflanzzeit für Tulpenzwiebeln", "Spätestens November in die Erde"],
+        "nov": ["Letzte Gelegenheit zum Pflanzen", "Boden mulchen"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne bis Halbschatten",
+        "wasser": "Mäßig im Frühjahr",
+        "boden": "Durchlässig, nährstoffreich, keine Staunässe",
+        "abstand": "10–15 cm"
+      }
+    },
+    {
+      "id": "narzisse",
+      "name_de": "Narzisse (Osterglocke)",
+      "name_lat": "Narcissus pseudonarcissus",
+      "category": "blumen",
+      "emoji": "💛",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Erste Blattspitzen erscheinen"],
+        "mar": ["Düngen bei Austrieb", "Auf Narzissenfliege kontrollieren"],
+        "apr": ["Blüte genießen", "Verblühte Blüten abschneiden", "Laub unbedingt stehen lassen"],
+        "mai": ["Laub vergilben lassen (6–8 Wochen nach Blüte)", "Nicht abschneiden oder zusammenbinden"],
+        "jun": ["Vergilbtes Laub entfernen", "Zwiebeln können Jahrzehnte im Boden bleiben"],
+        "jul": [],
+        "aug": [],
+        "sep": ["Pflanzzeit für neue Zwiebeln", "10–15 cm tief pflanzen"],
+        "okt": ["Nachpflanzen möglich", "Gruppen pflanzen für natürlichen Effekt"],
+        "nov": ["Letzte Pflanzgelegenheit"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Mäßig im Frühjahr",
+        "boden": "Durchlässig, humos, keine Staunässe",
+        "abstand": "10–15 cm"
+      }
+    },
+    {
+      "id": "hortensie",
+      "name_de": "Hortensie",
+      "name_lat": "Hydrangea macrophylla",
+      "category": "blumen",
+      "emoji": "💙",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Winterschutz entfernen", "Abgestorbene Triebspitzen bis zur nächsten gesunden Knospe zurückschneiden", "NICHT radikal schneiden (blüht am vorjährigen Holz)"],
+        "apr": ["Hortensiendünger oder Rhododendrondünger ausbringen", "Boden mulchen mit Rindenmulch", "Auf neue Austriebe achten"],
+        "mai": ["Bei Spätfrost junge Triebe schützen", "Regelmäßig gießen (Regenwasser ideal)", "Nachdüngen"],
+        "jun": ["Reichlich gießen, besonders bei Hitze", "Blaue Sorten: Alaunwasser geben für Blaufärbung"],
+        "jul": ["Hauptblüte", "Nicht verblühtes abschneiden (schützt neue Knospen)", "Weiter reichlich gießen"],
+        "aug": ["Stecklinge schneiden zur Vermehrung", "Kein Dünger mehr nach August"],
+        "sep": ["Verblühte Dolden stehen lassen (Winterschutz für Knospen)"],
+        "okt": ["Falllaub um die Basis schichten als Schutz"],
+        "nov": ["Winterschutz: Vlies oder Jute um die Pflanze wickeln", "Laub und Reisig am Fuß anhäufen"],
+        "dez": ["Winterschutz kontrollieren"]
+      },
+      "quick_info": {
+        "sonne": "Halbschatten bis Schatten",
+        "wasser": "Hoher Wasserbedarf, Regenwasser bevorzugt",
+        "boden": "Humusreich, sauer bis neutral, feucht",
+        "abstand": "80–120 cm"
+      }
+    },
+    {
+      "id": "geranie",
+      "name_de": "Geranie (Pelargonie)",
+      "name_lat": "Pelargonium × hortorum",
+      "category": "blumen",
+      "emoji": "🌺",
+      "care_plan": {
+        "jan": ["Überwinterte Pflanzen kontrollieren", "Sparsam gießen"],
+        "feb": ["Zurückschneiden auf 10–15 cm", "Umtopfen in frische Erde", "Heller und wärmer stellen, mehr gießen"],
+        "mar": ["Neue Triebe bilden sich", "Stecklinge schneiden möglich", "Regelmäßig gießen und düngen beginnen"],
+        "apr": ["Abhärten: tagsüber rausstellen", "Alle 1–2 Wochen düngen"],
+        "mai": ["Nach Eisheiligen in Balkonkästen oder Beete pflanzen", "Sonniger Standort", "Regelmäßig gießen und düngen"],
+        "jun": ["Volle Blüte", "Wöchentlich flüssig düngen", "Verblühtes regelmäßig ausputzen"],
+        "jul": ["Weiter düngen und gießen", "Verblühtes entfernen", "Auf Geranienrost kontrollieren"],
+        "aug": ["Düngen und gießen fortsetzen", "Stecklinge schneiden für Vermehrung"],
+        "sep": ["Düngung reduzieren", "Weiter verblühtes entfernen"],
+        "okt": ["Vor dem ersten Frost ins Haus holen", "Auf 15 cm zurückschneiden", "Hell und kühl überwintern (5–10 °C)"],
+        "nov": ["Wenig gießen, nicht düngen", "Auf Schädlinge kontrollieren"],
+        "dez": ["Winterquartier kontrollieren", "Nur so viel gießen, dass Erde nicht austrocknet"]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, Staunässe vermeiden",
+        "boden": "Nährstoffreich, durchlässig, Blumenerde",
+        "abstand": "20–25 cm"
+      }
+    },
+    {
+      "id": "hosta",
+      "name_de": "Funkie (Hosta)",
+      "name_lat": "Hosta spp.",
+      "category": "stauden",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Schneckenbarriere rechtzeitig anlegen", "Boden um die Pflanze mulchen", "Kompost ausbringen"],
+        "apr": ["Auf Schnecken kontrollieren (Hauptfeind!)", "Neue Pflanzen setzen", "Teilung großer Horste möglich"],
+        "mai": ["Blätter entfalten sich", "Schneckenkorn oder Bierfallen aufstellen", "Regelmäßig gießen"],
+        "jun": ["Blüte bei einigen Sorten", "Weiter auf Schnecken achten", "Düngen mit Langzeitdünger"],
+        "jul": ["Blüte genießen", "Verblühte Stängel abschneiden", "Bei Trockenheit gießen"],
+        "aug": ["Weiter gießen bei Trockenheit", "Blätter in voller Pracht"],
+        "sep": ["Blattverfärbung beginnt"],
+        "okt": ["Abgestorbene Blätter entfernen", "Boden mulchen"],
+        "nov": ["Winterschutz mit Laub bei empfindlichen Sorten"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Halbschatten bis Schatten",
+        "wasser": "Regelmäßig, gleichmäßig feucht",
+        "boden": "Humusreich, feucht, nährstoffreich",
+        "abstand": "30–60 cm je nach Sorte"
+      }
+    },
+    {
+      "id": "rittersporn",
+      "name_de": "Rittersporn",
+      "name_lat": "Delphinium elatum",
+      "category": "stauden",
+      "emoji": "💙",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Boden lockern und Kompost einarbeiten", "Schneckenschutz anbringen (junge Triebe gefährdet!)"],
+        "apr": ["Stützstäbe oder Staudenringe setzen", "Düngen mit organischem Volldünger", "Auf Schnecken kontrollieren"],
+        "mai": ["Anbinden der wachsenden Stängel", "Bei Trockenheit gießen", "Auf Mehltau kontrollieren"],
+        "jun": ["Erste Blüte", "Prächtige Blütenkerzen genießen"],
+        "jul": ["Nach der Blüte sofort bodennah abschneiden", "Düngen und gießen für Nachblüte im Herbst"],
+        "aug": ["Neue Triebe für Herbstblüte wachsen lassen", "Düngen und gießen"],
+        "sep": ["Zweite Blüte (Nachblüte)", "Verblühtes abschneiden"],
+        "okt": ["Bodennah abschneiden nach Laubeinzug", "Boden mulchen"],
+        "nov": ["Winterschutz mit Laub oder Reisig"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, gleichmäßig feucht",
+        "boden": "Nährstoffreich, tiefgründig, lehmig-humos",
+        "abstand": "40–60 cm"
+      }
+    },
+    {
+      "id": "storchschnabel",
+      "name_de": "Storchschnabel",
+      "name_lat": "Geranium spp.",
+      "category": "stauden",
+      "emoji": "💜",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Alte Blätter und Stängel entfernen", "Boden lockern", "Kompost ausbringen"],
+        "apr": ["Neue Pflanzen setzen", "Teilung großer Horste möglich"],
+        "mai": ["Wächst zuverlässig und pflegeleicht", "Bei Trockenheit gießen"],
+        "jun": ["Hauptblüte", "Bienenweide", "Bodennah abschneiden nach Erstblüte für Remontieren"],
+        "jul": ["Zweite Blüte nach Rückschnitt", "Wenig Pflege nötig"],
+        "aug": ["Nachblüte genießen", "Robust und pflegeleicht"],
+        "sep": ["Herbstfärbung bei einigen Sorten"],
+        "okt": ["Abgestorbenes Laub entfernen oder als Winterschutz liegen lassen"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten je nach Art",
+        "wasser": "Mäßig, anspruchslos",
+        "boden": "Durchlässig, humos, anspruchslos",
+        "abstand": "30–40 cm"
+      }
+    },
+    {
+      "id": "astilbe",
+      "name_de": "Astilbe (Prachtspiere)",
+      "name_lat": "Astilbe spp.",
+      "category": "stauden",
+      "emoji": "🌸",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Alte Blütenstände abschneiden", "Kompost ausbringen", "Boden mulchen"],
+        "apr": ["Teilung alle 3–4 Jahre empfohlen", "Neue Pflanzen setzen", "Düngen mit Langzeitdünger"],
+        "mai": ["Gleichmäßig feucht halten", "Mulch erneuern", "Auf neue Austriebe achten"],
+        "jun": ["Erste Blüten erscheinen", "Weiter regelmäßig gießen", "Darf nie austrocknen"],
+        "jul": ["Hauptblüte", "Federartige Blütenrispen genießen"],
+        "aug": ["Verblühtes kann stehen bleiben (dekorativer Samenstand)", "Weiter gießen"],
+        "sep": ["Samenstände als Winterschmuck stehen lassen"],
+        "okt": ["Laub als natürlichen Winterschutz liegen lassen"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Halbschatten bis Schatten",
+        "wasser": "Hoch, nie austrocknen lassen",
+        "boden": "Humusreich, feucht, nährstoffreich",
+        "abstand": "30–50 cm je nach Sorte"
+      }
+    },
+    {
+      "id": "phlox",
+      "name_de": "Phlox (Flammenblume)",
+      "name_lat": "Phlox paniculata",
+      "category": "stauden",
+      "emoji": "🌸",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Alte Stängel bodennah abschneiden", "Kompost und Hornspäne ausbringen", "Boden lockern"],
+        "apr": ["Neue Pflanzen setzen", "Teilung alle 4–5 Jahre", "Austriebe ausdünnen für bessere Luftzirkulation"],
+        "mai": ["Regelmäßig gießen am Boden (nicht über Blätter)", "Auf Mehltau kontrollieren", "Düngen"],
+        "jun": ["Stützstäbe setzen bei hohen Sorten", "Weiter gießen und auf Mehltau achten"],
+        "jul": ["Hauptblüte beginnt", "Herrlicher Duft", "Verblühtes abschneiden für Nachblüte"],
+        "aug": ["Volle Blüte", "Regelmäßig ausputzen", "Nachblüte der zeitig geschnittenen Exemplare"],
+        "sep": ["Letzte Blüten genießen", "Samenstände entfernen (sät sich sonst unkontrolliert aus)"],
+        "okt": ["Stängel bodennah abschneiden", "Kompost ausbringen"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Regelmäßig, gleichmäßig feucht",
+        "boden": "Nährstoffreich, humos, frisch-feucht",
+        "abstand": "40–50 cm"
+      }
+    },
+    {
+      "id": "echinacea",
+      "name_de": "Sonnenhut (Echinacea)",
+      "name_lat": "Echinacea purpurea",
+      "category": "stauden",
+      "emoji": "🌸",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Alte Stängel und Samenstände abschneiden", "Kompost ausbringen", "Boden lockern"],
+        "apr": ["Neue Pflanzen setzen", "Aussaat im Haus möglich (Kaltkeimer vorbehandeln)"],
+        "mai": ["Gut angießen bei Neupflanzung", "Ansonsten wenig Pflege nötig"],
+        "jun": ["Wachstum beobachten", "Bei Trockenheit gießen"],
+        "jul": ["Blüte beginnt", "Bienenweide und Schmetterlingsmagnet"],
+        "aug": ["Volle Blüte", "Verblühtes stehen lassen für Vögel (Samen)"],
+        "sep": ["Nachblüte", "Samenstände für Vögel stehen lassen"],
+        "okt": ["Samenstände als Winterschmuck und Vogelfutter stehen lassen"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Mäßig, trockenheitsverträglich",
+        "boden": "Durchlässig, nicht zu nährstoffreich",
+        "abstand": "40–50 cm"
+      }
+    },
+    {
+      "id": "fetthenne",
+      "name_de": "Fetthenne (Hohe Fetthenne)",
+      "name_lat": "Sedum telephium",
+      "category": "stauden",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Alte Stängel bodennah abschneiden", "Boden lockern", "Wenig Düngung nötig"],
+        "apr": ["Neue Pflanzen setzen", "Teilung möglich", "Stecklinge von Trieben bewurzeln"],
+        "mai": ["Triebspitzen einkürzen für kompakteren Wuchs (Chelsea Chop)", "Kaum Pflege nötig"],
+        "jun": ["Trockenheitsverträglich, wenig gießen"],
+        "jul": ["Blütenknospen bilden sich", "Weiterhin pflegeleicht"],
+        "aug": ["Blüte beginnt", "Wichtige Bienenweide im Spätsommer"],
+        "sep": ["Volle Blüte", "Schmetterlinge und Bienen beobachten"],
+        "okt": ["Samenstände stehen lassen (Winterschmuck, Insektenquartier)"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Wenig, trockenheitsverträglich",
+        "boden": "Durchlässig, mager, sandig",
+        "abstand": "30–40 cm"
+      }
+    },
+    {
+      "id": "rhododendron",
+      "name_de": "Rhododendron",
+      "name_lat": "Rhododendron spp.",
+      "category": "straeucher",
+      "emoji": "🌺",
+      "care_plan": {
+        "jan": ["Bei Kahlfrost und Sonne: Winterschutz kontrollieren"],
+        "feb": ["An frostfreien Tagen gießen (Immergrüne verdunsten auch im Winter)"],
+        "mar": ["Winterschutz entfernen", "Rhododendrondünger ausbringen", "Mulch erneuern (Rindenmulch oder Nadelstreu)"],
+        "apr": ["Boden feucht halten (nur Regenwasser!)", "Auf Dickmaulrüssler kontrollieren"],
+        "mai": ["Volle Blüte", "Verblühte Blütenstände vorsichtig ausbrechen (nicht abschneiden)", "Auf Chlorose achten (gelbe Blätter = zu kalkhaltiger Boden)"],
+        "jun": ["Junge Pflanzen nach der Blüte düngen", "Bei Trockenheit gründlich gießen", "Mulchschicht erneuern"],
+        "jul": ["Bei Hitze gießen", "Knospen für nächstes Jahr bilden sich"],
+        "aug": ["Nicht mehr düngen nach August"],
+        "sep": ["Pflanzzeit für neue Rhododendren", "Boden sauer halten (Moorbeeterde)"],
+        "okt": ["Vor dem Winter gründlich wässern"],
+        "nov": ["Winterschutz: Vlies um empfindliche Sorten", "Wurzelbereich mit Laub mulchen"],
+        "dez": ["Bei Kahlfrost an frostfreien Tagen gießen"]
+      },
+      "quick_info": {
+        "sonne": "Halbschatten (keine pralle Mittagssonne)",
+        "wasser": "Regelmäßig, nur kalkfreies Wasser",
+        "boden": "Sauer (pH 4,5–5,5), humusreich, durchlässig",
+        "abstand": "100–200 cm je nach Sorte"
+      }
+    },
+    {
+      "id": "forsythie",
+      "name_de": "Forsythie (Goldglöckchen)",
+      "name_lat": "Forsythia × intermedia",
+      "category": "straeucher",
+      "emoji": "💛",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Blüte genießen (wichtiger Frühlingsbote)", "Zweige für die Vase schneiden"],
+        "apr": ["Direkt nach der Blüte schneiden!", "Älteste Triebe bodennah entfernen", "Junge Triebe stehen lassen (tragen nächste Blüten)"],
+        "mai": ["Jungtriebe wachsen lassen", "Bei Bedarf düngen mit Kompost"],
+        "jun": ["Stecklinge schneiden zur Vermehrung"],
+        "jul": [],
+        "aug": [],
+        "sep": [],
+        "okt": ["Pflanzzeit für neue Sträucher"],
+        "nov": ["Falllaub entfernen"],
+        "dez": ["Zweige ab Dezember ins Warme holen für Barbarazweige"]
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Halbschatten",
+        "wasser": "Mäßig, anspruchslos",
+        "boden": "Anspruchslos, durchlässig, normaler Gartenboden",
+        "abstand": "150–200 cm"
+      }
+    },
+    {
+      "id": "flieder",
+      "name_de": "Flieder",
+      "name_lat": "Syringa vulgaris",
+      "category": "straeucher",
+      "emoji": "💜",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Boden um den Strauch lockern", "Kompost ausbringen"],
+        "apr": [],
+        "mai": ["Volle Blüte und herrlicher Duft", "Verblühte Rispen abschneiden (direkt über den neuen Trieben)", "Ausläufer entfernen wo unerwünscht"],
+        "jun": ["Nach der Blüte: leichter Formschnitt", "Nicht radikal schneiden (blüht am vorjährigen Holz)"],
+        "jul": ["Wurzelausläufer ausstechen"],
+        "aug": [],
+        "sep": [],
+        "okt": ["Pflanzzeit für neue Sträucher"],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Wenig, trockenheitsverträglich wenn etabliert",
+        "boden": "Normaler Gartenboden, kalkhaltig, durchlässig",
+        "abstand": "200–300 cm"
+      }
+    },
+    {
+      "id": "buchsbaum",
+      "name_de": "Buchsbaum",
+      "name_lat": "Buxus sempervirens",
+      "category": "straeucher",
+      "emoji": "🟩",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": ["Boden lockern und Kompost ausbringen", "Auf Buchsbaumzünsler kontrollieren (Raupen in Gespinsten)"],
+        "apr": ["Erster Schnitt möglich bei mildem Wetter", "Buchsbaumdünger ausbringen", "Zünslerbefall: Bacillus thuringiensis spritzen"],
+        "mai": ["Auf Buchsbaumzünsler kontrollieren (2. Generation)", "Bei Bedarf nachbehandeln"],
+        "jun": ["Hauptschnitt in Form bringen", "Bei bedecktem Wetter schneiden (Sonnenbrand vermeiden)", "Regelmäßig gießen"],
+        "jul": ["Auf Pilzkrankheiten kontrollieren (Triebsterben)", "Befallene Teile sofort entfernen"],
+        "aug": ["Zweiter Formschnitt", "Auf Zünsler kontrollieren (3. Generation)"],
+        "sep": ["Letzter leichter Schnitt", "Düngen einstellen"],
+        "okt": ["Nicht mehr schneiden"],
+        "nov": ["Bei Kahlfrost gießen (Immergrün!)"],
+        "dez": ["An frostfreien Tagen gießen bei Bedarf"]
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Schatten",
+        "wasser": "Regelmäßig, besonders bei Kahlfrost",
+        "boden": "Kalkhaltig, humos, durchlässig",
+        "abstand": "15–30 cm (Hecke) oder einzeln"
+      }
+    },
+    {
+      "id": "liguster",
+      "name_de": "Liguster",
+      "name_lat": "Ligustrum vulgare",
+      "category": "straeucher",
+      "emoji": "🌿",
+      "care_plan": {
+        "jan": [],
+        "feb": ["Radikaler Rückschnitt möglich wenn nötig (vor Vogelschutzzeit ab März)"],
+        "mar": ["Kompost ausbringen", "Heckendünger geben"],
+        "apr": ["Austrieb beobachten", "Neue Pflanzen setzen"],
+        "mai": ["Auf Form und Dichte achten"],
+        "jun": ["Erster Heckenschnitt (trapezförmig schneiden: unten breiter als oben)", "Nicht bei Hitze und praller Sonne schneiden"],
+        "jul": ["Blüte (Bienenweide)", "Blüten riechen intensiv"],
+        "aug": ["Zweiter Heckenschnitt", "Form nachschneiden"],
+        "sep": ["Letzte Korrektur möglich", "Schwarze Beeren bilden sich (giftig, aber Vogelfutter)"],
+        "okt": ["Pflanzzeit für neue Hecken", "Wurzelware günstig verfügbar"],
+        "nov": ["Falllaub zwischen Hecke entfernen"],
+        "dez": []
+      },
+      "quick_info": {
+        "sonne": "Sonne bis Schatten",
+        "wasser": "Gering, anspruchslos",
+        "boden": "Anspruchslos, jeder Gartenboden",
+        "abstand": "30–40 cm (Hecke)"
+      }
+    }
+  ]
+}

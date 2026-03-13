@@ -1,0 +1,436 @@
+{
+  "monthly": {
+    "jan": {
+      "title": "Januar – Ruhezeit nutzen ❄️",
+      "emoji": "❄️",
+      "tips": [
+        "Gartengeräte warten, reinigen und schärfen – so sind sie im Frühjahr einsatzbereit",
+        "Saatgut für die neue Saison bestellen und Anzuchtplan erstellen",
+        "Immergrüne Pflanzen an frostfreien Tagen gießen – sie verdunsten auch im Winter Wasser",
+        "Vogelfutterstellen regelmäßig auffüllen und sauber halten",
+        "Komposthaufen kontrollieren – bei Frost mit Laub oder Vlies abdecken",
+        "Obstbäume auf Frostrisse und Schädlingsbefall kontrollieren",
+        "Wintergemüse wie Grünkohl, Feldsalat und Rosenkohl ernten",
+        "Gartenplanung für das neue Jahr machen – was soll wo wachsen?"
+      ]
+    },
+    "feb": {
+      "title": "Februar – Vorfreude & Vorbereitung 🌱",
+      "emoji": "🌱",
+      "tips": [
+        "Ab Mitte Februar Tomaten, Paprika und Chili auf der Fensterbank vorziehen",
+        "Obstbäume und Beerensträucher an frostfreien Tagen schneiden",
+        "Frühbeet vorbereiten und mit Kompost anreichern",
+        "Letzte Chance für den Winterschnitt von Rosen",
+        "Samen von Salat, Kohlrabi und Radieschen im Frühbeet aussäen",
+        "Nistkästen aufhängen oder alte reinigen – Vögel suchen jetzt Brutplätze",
+        "Kübelpflanzen im Winterquartier kontrollieren und bei Bedarf gießen",
+        "Beetflächen bei frostfreiem Boden mit Kompost oder Mist vorbereiten"
+      ]
+    },
+    "mar": {
+      "title": "März – Der Garten erwacht 🌸",
+      "emoji": "🌸",
+      "tips": [
+        "Beete vorbereiten: Erde lockern und Kompost einarbeiten",
+        "Frühkartoffeln ab Mitte März in vorgewärmten Boden setzen",
+        "Rosen zurückschneiden, wenn die Forsythien blühen (Zeigerpflanze!)",
+        "Stauden teilen und umpflanzen – jetzt ist der perfekte Zeitpunkt",
+        "Rasen vertikutieren und bei Bedarf nachsäen",
+        "Direkte Aussaat von Möhren, Spinat, Erbsen und Radieschen",
+        "Kräuter wie Petersilie, Schnittlauch und Dill aussäen",
+        "Unkraut frühzeitig entfernen, bevor es sich ausbreitet"
+      ]
+    },
+    "apr": {
+      "title": "April – Aussaat-Hochsaison 🌷",
+      "emoji": "🌷",
+      "tips": [
+        "Vorgezogene Jungpflanzen langsam abhärten (tagsüber nach draußen stellen)",
+        "Direktsaat von Bohnen, Zucchini, Kürbis und Salat ins Freiland",
+        "Rasen zum ersten Mal mähen – nicht kürzer als 5 cm",
+        "Dahlienknollen ab Mitte April in die Erde setzen",
+        "Erdbeeren mulchen und alte Blätter entfernen",
+        "Achtung Spätfrost! Empfindliche Pflanzen nachts mit Vlies schützen",
+        "Kompost auf Beete ausbringen – beste natürliche Düngung",
+        "Blumenzwiebeln für den Sommer pflanzen (Gladiolen, Lilien)"
+      ]
+    },
+    "mai": {
+      "title": "Mai – Nach den Eisheiligen durchstarten 🌻",
+      "emoji": "🌻",
+      "tips": [
+        "Nach den Eisheiligen (Mitte Mai) frostempfindliche Pflanzen raussetzen",
+        "Tomaten, Paprika, Gurken und Zucchini ins Freiland oder Gewächshaus pflanzen",
+        "Regelmäßig gießen – morgens ist die beste Zeit dafür",
+        "Wildkräuter wie Giersch und Brennnessel für Jauche sammeln",
+        "Rhododendren und Azaleen nach der Blüte düngen",
+        "Kletterrosen und Clematis an Rankhilfen leiten",
+        "Gemüsebeete mulchen, um Feuchtigkeit zu halten",
+        "Blattläuse bekämpfen – Nützlinge wie Marienkäfer fördern"
+      ]
+    },
+    "jun": {
+      "title": "Juni – Wachstum & erste Ernte 🍓",
+      "emoji": "🍓",
+      "tips": [
+        "Erdbeeren ernten und Ausläufer für neue Pflanzen nutzen",
+        "Tomaten ausgeizen – Seitentriebe in den Blattachseln entfernen",
+        "Hecken in Form schneiden (leichter Formschnitt erlaubt)",
+        "Verblühte Rosen regelmäßig abschneiden für Nachblüte",
+        "Kräuter ernten und trocknen oder einfrieren",
+        "Bei Trockenheit durchdringend gießen statt oft und wenig",
+        "Rasen nicht zu kurz mähen – bei Hitze auf 5-6 cm stehen lassen",
+        "Frühkartoffeln ab Ende Juni ernten"
+      ]
+    },
+    "jul": {
+      "title": "Juli – Hochsommer im Garten ☀️",
+      "emoji": "☀️",
+      "tips": [
+        "Morgens oder abends gießen – nie in der prallen Mittagssonne",
+        "Tomaten und Gurken regelmäßig ernten, damit sie weiter tragen",
+        "Herbstgemüse aussäen: Feldsalat, Spinat, Radieschen",
+        "Lavendel nach der Blüte zurückschneiden",
+        "Kompost feucht halten – er trocknet im Sommer schnell aus",
+        "Pflanzenjauche aus Brennnesseln als natürlichen Dünger ansetzen",
+        "Starkzehrer wie Tomaten und Zucchini regelmäßig nachdüngen",
+        "Fallobst aufsammeln, um Schädlinge nicht anzulocken"
+      ]
+    },
+    "aug": {
+      "title": "August – Erntezeit 🍅",
+      "emoji": "🍅",
+      "tips": [
+        "Gemüse täglich kontrollieren und reifes sofort ernten",
+        "Erdbeeren für nächstes Jahr pflanzen – jetzt ist die beste Pflanzzeit",
+        "Stecklinge von Buchsbaum und Lavendel schneiden",
+        "Zweite Aussaat von Buschbohnen und Salat für Herbsternte",
+        "Wassertonnen und Regensammler regelmäßig kontrollieren",
+        "Sommerblumen regelmäßig ausputzen für lange Blütezeit",
+        "Obstbäume: Fallobst entfernen und auf Krankheiten kontrollieren",
+        "Bewässerung bei Hitze intensivieren – tief wässern, nicht oberflächlich"
+      ]
+    },
+    "sep": {
+      "title": "September – Herbstvorbereitung 🍂",
+      "emoji": "🍂",
+      "tips": [
+        "Äpfel, Birnen und Pflaumen ernten und einlagern",
+        "Herbstblumenzwiebeln pflanzen: Tulpen, Narzissen, Krokusse",
+        "Rasen letztmals düngen mit kaliumbetontem Herbstdünger",
+        "Kompost umsetzen – reifer Kompost kann jetzt ausgebracht werden",
+        "Gründüngung auf abgeerntete Beete säen (z.B. Phacelia, Senf)",
+        "Letzte Kräuter ernten und für den Winter konservieren",
+        "Wintergemüse wie Grünkohl und Rosenkohl weiter pflegen",
+        "Empfindliche Kübelpflanzen langsam ans Winterquartier gewöhnen"
+      ]
+    },
+    "okt": {
+      "title": "Oktober – Aufräumen & Einwintern 🎃",
+      "emoji": "🎃",
+      "tips": [
+        "Dahlienknollen nach dem ersten Frost ausgraben und einlagern",
+        "Laub von Rasen und Wegen entfernen – unter Sträuchern liegen lassen",
+        "Regentonnen und Wasserleitungen vor Frost leeren",
+        "Empfindliche Rosen mit Erde anhäufeln und Reisig schützen",
+        "Letzte Ernte von Kürbis, Zucchini und Paprika vor dem Frost",
+        "Obstbäume mit Kalkanstrich vor Frostrissen schützen",
+        "Igelquartiere einrichten – Laubhaufen in ruhigen Ecken",
+        "Knoblauch und Wintersteckzwiebeln setzen"
+      ]
+    },
+    "nov": {
+      "title": "November – Winterfest machen 🍁",
+      "emoji": "🍁",
+      "tips": [
+        "Empfindliche Stauden und Gräser mit Laub oder Vlies abdecken",
+        "Gartenteich winterfest machen – Eisfreihalter einsetzen",
+        "Letzter Rasenschnitt, wenn es noch mild genug ist",
+        "Kübelpflanzen ins Winterquartier bringen (kühl und hell)",
+        "Komposthaufen mit Laub oder Stroh abdecken",
+        "Werkzeuge reinigen, ölen und frostfrei einlagern",
+        "Beetflächen mit organischem Material mulchen",
+        "Obstbaumschnitt planen und Schnittwerkzeug vorbereiten"
+      ]
+    },
+    "dez": {
+      "title": "Dezember – Garten-Winterschlaf 🎄",
+      "emoji": "🎄",
+      "tips": [
+        "Immergrüne Pflanzen bei Trockenheit an frostfreien Tagen gießen",
+        "Vogelfutterstellen einrichten und regelmäßig bestücken",
+        "Saatgutkataloge studieren und nächstes Jahr planen",
+        "Weihnachtsdeko aus Naturmaterialien basteln (Tannenzweige, Zapfen)",
+        "Wintergemüse wie Feldsalat und Winterportulak ernten",
+        "Gartentagebuch führen – was hat dieses Jahr gut funktioniert?",
+        "Gewächshaus oder Frühbeet lüften an milden Tagen",
+        "Christrosen und Winterjasmin genießen – die wenigen Winterblüher"
+      ]
+    }
+  },
+  "categories": {
+    "kompost": {
+      "title": "Kompostierung 🔄",
+      "emoji": "🔄",
+      "articles": [
+        {
+          "title": "Kompost-Grundlagen für Anfänger",
+          "content": "Kompostierung ist der einfachste Weg, Gartenabfälle und Küchenreste in wertvollen Dünger zu verwandeln. Du brauchst dafür keine Vorkenntnisse – nur einen geeigneten Platz und etwas Geduld. 🌱\n\nWas darf auf den Kompost:\n✅ Obst- und Gemüsereste (ungekocht)\n✅ Kaffeesatz und Teebeutel (ohne Plastik-Klammer)\n✅ Eierschalen (zerkleinert – sie liefern Kalk)\n✅ Laub und Grasschnitt\n✅ Kleingeschnittener Strauchschnitt\n✅ Verwelkte Blumen und Topfpflanzen (ohne Topf)\n✅ Zeitungspapier und Pappe (unbedruckt, in kleinen Mengen)\n✅ Holzasche in kleinen Mengen\n\nWas NICHT auf den Kompost darf:\n❌ Gekochte Speisereste (locken Ratten an)\n❌ Fleisch, Fisch und Milchprodukte\n❌ Kranke Pflanzen (Krankheiten überleben die Kompostierung)\n❌ Unkraut mit reifen Samen (z.B. Löwenzahn mit Pusteblume)\n❌ Zitrusfrüchte in großen Mengen (zu sauer, hemmt die Zersetzung)\n❌ Asche von behandeltem Holz oder Kohle\n❌ Windeln, Staubsaugerbeutel, Katzenstreu\n\nDie goldene Regel: Mische immer feuchte, stickstoffreiche Materialien (Grünschnitt, Küchenabfälle) mit trockenen, kohlenstoffreichen Materialien (Laub, Stroh, Äste). Ein gutes Verhältnis ist etwa 2 Teile braun zu 1 Teil grün. 🍂🥬"
+        },
+        {
+          "title": "Kompost richtig anlegen",
+          "content": "Der beste Standort für einen Komposthaufen ist ein halbschattiger, windgeschützter Platz mit direktem Erdkontakt. Stelle den Komposter NICHT auf Beton oder Pflaster – Regenwürmer und Mikroorganismen müssen von unten einwandern können. 📍\n\nSo legst du deinen Kompost Schicht für Schicht an:\n1️⃣ Unterste Schicht: Grobe Äste und Zweige (ca. 15 cm) – das sorgt für Belüftung von unten\n2️⃣ Darauf eine Schicht Gartenabfälle oder alten Kompost als 'Starter' mit vielen Mikroorganismen\n3️⃣ Dann abwechselnd grüne (feuchte) und braune (trockene) Schichten aufbauen\n4️⃣ Zwischendurch immer mal eine Handvoll Gartenerde einstreuen – sie enthält die nötigen Bakterien\n\nWelchen Komposter wählen? Für kleine Gärten eignen sich geschlossene Thermokomposter (ca. 300-600 Liter). Sie halten die Wärme besser und sind ordentlicher. Für größere Gärten sind offene Kompostmieten oder Drei-Kammer-Systeme ideal: In Kammer 1 kommt frisches Material, in Kammer 2 reift der Kompost, und aus Kammer 3 nimmst du den fertigen Humus. 🏡\n\nWichtig: Der Kompost sollte immer feucht sein wie ein ausgedrückter Schwamm – nicht tropfnass und nicht staubtrocken. Bei Trockenheit mit der Gießkanne wässern, bei Dauerregen mit einer Plane abdecken. 💧"
+        },
+        {
+          "title": "Kompost umsetzen – wann und wie",
+          "content": "Umsetzen bedeutet, den Komposthaufen mit einer Grabgabel komplett umzuschichten. Dabei kommen die äußeren, trockenen Teile nach innen und das Innere nach außen. Das bringt frischen Sauerstoff an die Mikroorganismen und beschleunigt die Zersetzung enorm. 💪\n\nWann umsetzen?\n🔄 Das erste Mal nach ca. 6-8 Wochen\n🔄 Danach alle 2-3 Monate\n🔄 Ideal im April (Saisonstart) und September (vor dem Winter)\n🔄 Wenn der Kompost schlecht riecht – das ist ein Zeichen für Sauerstoffmangel!\n\nSo gehst du vor: Schichte das Material mit der Grabgabel neben den alten Haufen auf einen neuen. Achte darauf, dass außen liegendes Material jetzt innen landet. Ist der Kompost zu trocken, gieße jede Schicht leicht an. Ist er zu feucht und riecht faulig, mische trockenes Material (Stroh, zerknülltes Papier, trockenes Laub) unter. 🌿\n\nProfi-Tipp: Wenn du den Kompost zweimal umsetzt, hast du in nur 3-4 Monaten fertigen Humus statt der üblichen 9-12 Monate. Für Eilige gibt es auch Schnellkomposter mit Belüftungssystem, die in 6-8 Wochen fertig sind. ⏱️"
+        },
+        {
+          "title": "Reifegrad erkennen",
+          "content": "Fertiger Kompost sieht aus wie dunkle, krümelige Erde und riecht angenehm nach Waldboden. Wenn du noch einzelne Pflanzenreste erkennst, ist er noch nicht fertig – das ist aber kein Problem, du kannst diese Reste einfach aussortieren und zurück auf den frischen Kompost geben. 🌍\n\nDie 3 Reifegrade:\n🟡 Frischkompost (3-6 Monate): Grob, teilweise noch erkennbare Pflanzenreste. Gut als Mulch zwischen Pflanzen, aber NICHT direkt an empfindliche Wurzeln geben – er ist noch zu 'scharf'.\n🟠 Reifkompost (6-12 Monate): Feinkrümelig, dunkel, angenehmer Geruch. Der Allrounder – perfekt zum Einarbeiten in Beete und als Pflanzerde-Zusatz.\n🟢 Humus (12+ Monate): Sehr fein und dunkel, fast wie gekaufte Blumenerde. Ideal für Aussaaten und empfindliche Jungpflanzen.\n\nEinfacher Test: Nimm eine Handvoll Kompost und drücke sie zusammen. Fertiger Kompost formt sich kurz und zerfällt dann wieder. Bleibt er als Klumpen zusammen, ist er zu feucht und braucht noch Zeit. Rieselt er sofort auseinander, ist er eventuell zu trocken gewesen. 🧪\n\nVerwendung: Bringe fertigen Kompost im Frühjahr (März/April) und Herbst (September/Oktober) auf deine Beete auf. Als Faustregel reichen 2-3 Liter pro Quadratmeter. Einfach dünn verteilen und leicht einharken – nicht eingraben! Bei Topfpflanzen kannst du fertigen Kompost 1:1 mit normaler Erde mischen. 🪴"
+        }
+      ]
+    },
+    "boden": {
+      "title": "Bodenpflege 🌍",
+      "emoji": "🌍",
+      "articles": [
+        {
+          "title": "Bodenarten erkennen",
+          "content": "Deinen Boden zu kennen ist der Schlüssel zum erfolgreichen Gärtnern. Die drei Hauptbodenarten erkennst du ganz einfach mit dem Fingertest: Nimm eine Handvoll feuchte Erde und versuche, sie zwischen den Fingern zu rollen. 🖐️\n\n🏖️ Sandiger Boden: Fühlt sich körnig an, lässt sich nicht formen, rieselt durch die Finger. Er erwärmt sich schnell im Frühling (super für Frühkartoffeln!), trocknet aber auch schnell aus und hält Nährstoffe schlecht. Verbesserung: Regelmäßig Kompost und Tonmehl einarbeiten.\n\n🧱 Lehmiger Boden: Fühlt sich glatt und etwas klebrig an, lässt sich zu einer Wurst rollen. Er speichert Wasser und Nährstoffe gut – der Traumboden für die meisten Pflanzen! Kann aber bei Nässe verdichten. Verbesserung: Kompost und Sand einarbeiten für bessere Durchlüftung.\n\n🪨 Toniger Boden: Sehr schwer, klebrig und lässt sich dünn ausrollen ohne zu brechen. Speichert Wasser extrem gut, wird bei Trockenheit aber steinhart und bei Nässe matschig. Verbesserung: Viel Kompost, Sand und organisches Material über Jahre einarbeiten.\n\nDie meisten Gartenböden sind Mischformen. Das Ziel ist immer ein lockerer, humusreicher Boden, der Wasser speichert und trotzdem gut durchlüftet ist. Mit regelmäßiger Kompostzugabe verbesserst du jeden Boden Schritt für Schritt. 🌱"
+        },
+        {
+          "title": "Umgraben – wann sinnvoll?",
+          "content": "Umgraben ist eine der umstrittensten Fragen im Garten. Früher wurde jeder Garten im Herbst komplett umgegraben – heute weiß man, dass das oft mehr schadet als nutzt. Denn beim Umgraben wird das Bodenleben (Regenwürmer, Pilze, Bakterien) durcheinandergebracht. 🪱\n\nWann Umgraben sinnvoll ist:\n✅ Bei Neuanlage eines Beetes auf verdichtetem oder verunkrautetem Boden\n✅ Bei sehr schwerem Tonboden, um ihn im Herbst aufzubrechen (Frost hilft beim Zerkleinern der Schollen)\n✅ Wenn du größere Mengen Kompost oder Sand tief einarbeiten willst\n\nWann du NICHT umgraben solltest:\n❌ Auf bereits lockeren, gut belebten Böden\n❌ Im Frühjahr – das stört die Bodenstruktur zur wichtigsten Wachstumszeit\n❌ Bei leichten, sandigen Böden – sie werden dadurch noch lockerer und trocknen schneller aus\n\nDie bessere Alternative: Flaches Lockern mit der Grabgabel oder dem Sauzahn (ein einzinkiges Gerät). Dabei stichst du die Gabel ein, hebelst den Boden leicht an, ohne ihn zu wenden. So wird er gelockert, aber das Bodenleben bleibt intakt. Obendrauf kommt eine Schicht Kompost, den die Regenwürmer von selbst einarbeiten. 🪴\n\nMerke: Ein gesunder, lebendiger Boden lockert sich mit der Zeit von selbst durch die Arbeit von Regenwürmern und anderen Bodenlebewesen. Dein Job ist es, diese Helfer zu füttern – mit Mulch und Kompost! 🐛"
+        },
+        {
+          "title": "Mulchen – der beste Bodenschutz",
+          "content": "Mulchen bedeutet, den nackten Boden mit einer Schicht organischem Material zu bedecken. In der Natur ist Boden nie nackt – im Wald liegt immer Laub, auf der Wiese dichtes Gras. Dieses Prinzip übertragen wir auf den Garten. 🍃\n\nVorteile des Mulchens:\n💧 Hält die Feuchtigkeit im Boden (bis zu 70% weniger Verdunstung!)\n🌡️ Schützt vor extremer Hitze und Kälte\n🚫 Unterdrückt Unkraut – weniger Jäten!\n🪱 Füttert Regenwürmer und Bodenlebewesen\n🌿 Liefert beim Verrotten langsam Nährstoffe\n\nWomit mulchen?\n🟢 Rasenschnitt: Nur dünn auftragen (2-3 cm), sonst fängt er an zu faulen. Vorher antrocknen lassen.\n🟤 Stroh: Ideal für Erdbeeren und Gemüsebeete. Achtung: Bindet beim Verrotten Stickstoff – etwas Hornspäne dazugeben.\n🍂 Laub: Perfekt für Beerensträucher und unter Bäumen. Eichenlaub ist sauer – gut für Heidelbeeren!\n🪵 Rindenmulch: Nur auf Wegen und unter Gehölzen. Im Gemüsebeet NICHT verwenden – er entzieht zu viel Stickstoff.\n🌿 Brennnesseln und Beinwell: Beste Mulchmaterialien überhaupt – nährstoffreich und verrotten schnell.\n\nSo mulchst du richtig: Trage 5-10 cm Material auf den feuchten Boden auf, aber halte 5 cm Abstand zum Pflanzenstängel – sonst droht Fäulnis. Mulche am besten im Frühjahr nach den Eisheiligen und im Herbst nach der Ernte. 📏"
+        },
+        {
+          "title": "Gründüngung einsetzen",
+          "content": "Gründüngung nennt man Pflanzen, die du nicht zum Ernten anbaust, sondern um den Boden zu verbessern. Sie werden auf leere Beete gesät und vor der Samenreife abgemäht und eingearbeitet. So bleibt kein Beet über Winter kahl und der Boden wird aktiv verbessert. 🌾\n\nDie besten Gründüngungspflanzen:\n🟡 Phacelia (Bienenfreund): Schnell wachsend, friert im Winter ab, tolle Bienenweide. Ideal für Anfänger!\n🟡 Senf (Gelbsenf): Wächst extrem schnell, lockert den Boden. NICHT vor oder nach Kohl anbauen (gleiche Pflanzenfamilie).\n🟢 Klee (Weißklee, Rotklee): Sammelt Stickstoff aus der Luft und speichert ihn im Boden – natürlicher Dünger!\n🟢 Lupinen: Tiefwurzler, lockert verdichtete Böden und sammelt ebenfalls Stickstoff.\n🟤 Winterroggen: Perfekt für die Aussaat im Herbst, bedeckt den Boden über Winter.\n\nSo geht's: Säe die Gründüngung auf abgeerntete Beete, sobald du mit der Ernte fertig bist. Im Frühjahr, ca. 2-3 Wochen vor der geplanten Neubepflanzung, schneidest du die Pflanzen ab und arbeitest sie flach in den Boden ein. Alternativ lässt du sie liegen und pflanzst direkt hinein. 🌿\n\nWichtig: Achte auf die Fruchtfolge! Senf und Raps gehören zu den Kreuzblütlern – also nicht vor Kohl, Radieschen oder Rettich. Klee und Lupinen gehören zu den Hülsenfrüchtlern – nicht vor Bohnen und Erbsen. Phacelia ist mit nichts verwandt und passt immer. 👍"
+        },
+        {
+          "title": "pH-Wert und Kalkung",
+          "content": "Der pH-Wert zeigt an, ob dein Boden sauer, neutral oder alkalisch ist. Die meisten Gemüse und Blumen mögen einen leicht sauren bis neutralen Boden mit einem pH-Wert zwischen 6,0 und 7,0. Heidelbeeren, Rhododendren und Hortensien bevorzugen saure Böden (pH 4,5-5,5). 📊\n\nSo misst du den pH-Wert:\n🧪 Einfache Teststreifen aus dem Gartencenter (ca. 5€) – Erde mit destilliertem Wasser mischen und Streifen eintauchen\n🔬 Genauer: Bodenprobe an ein Labor schicken (ca. 20-30€) – du bekommst gleich Düngeempfehlungen dazu\n📱 Digitale Bodenmessgeräte gibt es ab ca. 15€, sind aber oft ungenau\n\nWann kalken?\n⬆️ Wenn der pH-Wert unter 5,5 liegt, ist der Boden zu sauer. Kalke im Herbst oder zeitigen Frühjahr.\n📏 Dosierung: Leichter Sandboden braucht ca. 150g Kalk pro m², schwerer Lehmboden ca. 300g pro m².\n⚠️ Verwende Gartenkalk (kohlensaurer Kalk), keinen Branntkalk – der ist zu aggressiv für Hobbygärtner.\n\nWann NICHT kalken?\n⬇️ Wenn du Heidelbeeren, Rhododendren oder Hortensien hast – diese Pflanzen brauchen sauren Boden!\n❌ Nie gleichzeitig mit Dünger ausbringen – Kalk und Stickstoffdünger reagieren miteinander.\n❌ Nicht 'auf Verdacht' kalken – immer erst messen!\n\nFaustregel: Regelmäßige Kompostzugabe hält den pH-Wert auf natürliche Weise stabil. Wer gut kompostiert, muss selten kalken. 🌱"
+        }
+      ]
+    },
+    "duengung": {
+      "title": "Düngung 🧪",
+      "emoji": "🧪",
+      "articles": [
+        {
+          "title": "Organisch vs. mineralisch düngen",
+          "content": "Beim Düngen hast du die Wahl zwischen organischen (natürlichen) und mineralischen (chemischen) Düngern. Für Hobbygärtner und besonders für Anfänger empfehlen wir klar organische Dünger – sie sind schonender, nachhaltiger und verbessern langfristig den Boden. 🌿\n\nOrganische Dünger:\n✅ Kompost – der König der Dünger, enthält alles was Pflanzen brauchen\n✅ Hornspäne/Hornmehl – langsam wirkender Stickstoffdünger\n✅ Schafwolle – hervorragender Langzeitdünger für Tomaten und Kürbis\n✅ Pflanzenjauchen (Brennnessel, Beinwell) – schnell wirkender Flüssigdünger\n✅ Bokashi – fermentierte Küchenabfälle, sehr nährstoffreich\n\nMineralische Dünger:\n⚠️ Blaukorn & Co. – wirken schnell, können aber den Boden versalzen\n⚠️ Leicht überzudosieren – Verbrennungsgefahr an den Wurzeln\n⚠️ Keine Verbesserung des Bodenlebens\n⚠️ Umweltbelastung durch Auswaschung ins Grundwasser\n\nUnser Tipp: Starte mit Kompost als Grundversorgung und ergänze bei Bedarf mit Hornspänen (für Stickstoff) und Gesteinsmehl (für Spurenelemente). Damit deckst du 90% aller Gartenbedürfnisse ab, ohne viel Geld auszugeben oder etwas falsch zu machen. 💪"
+        },
+        {
+          "title": "Brennnesseljauche selbst herstellen",
+          "content": "Brennnesseljauche ist der beste kostenlose Dünger, den du selbst herstellen kannst! Sie ist reich an Stickstoff, Kalium und Spurenelementen und stärkt die Pflanzen gegen Krankheiten und Schädlinge. Einziger Nachteil: Sie riecht wirklich übel! 🤢😄\n\nSo stellst du Brennnesseljauche her:\n1️⃣ Sammle ca. 1 kg frische Brennnesseln (Handschuhe nicht vergessen!). Vor der Blüte geerntet ist sie am nährstoffreichsten.\n2️⃣ Schneide die Brennnesseln grob klein und gib sie in einen Eimer oder eine Tonne (KEIN Metall – verwende Plastik oder Holz)\n3️⃣ Übergieße mit ca. 10 Litern Regenwasser (kein Leitungswasser – Chlor tötet die nützlichen Bakterien)\n4️⃣ Stelle den Eimer an einen sonnigen Platz und rühre täglich um\n5️⃣ Nach 10-14 Tagen ist die Jauche fertig – sie schäumt nicht mehr und ist dunkel\n\nAnwendung: Verdünne die fertige Jauche 1:10 mit Wasser (1 Liter Jauche auf 10 Liter Wasser) und gieße damit deine Pflanzen an den Wurzeln. Alle 2-3 Wochen anwenden. Für Jungpflanzen stärker verdünnen (1:20). 🌱\n\nGegen den Geruch: Gib eine Handvoll Gesteinsmehl oder Urgesteinsmehl in die Jauche – das bindet den Gestank etwas. Und stelle die Tonne nicht direkt neben die Terrasse! 😅\n\nBonus-Tipp: Brennnesseljauche unverdünnt (1:1) auf befallene Blätter gesprüht hilft auch gegen Blattläuse. Aber nur bei bedecktem Himmel sprühen, nie bei Sonne! ☁️"
+        },
+        {
+          "title": "Starkzehrer, Mittelzehrer, Schwachzehrer",
+          "content": "Pflanzen haben unterschiedlichen Nährstoffhunger. Die Einteilung in Stark-, Mittel- und Schwachzehrer hilft dir beim Düngen und bei der Beetplanung (Fruchtfolge). So vermeidest du, dass du zu viel oder zu wenig düngst. 📋\n\n🔴 Starkzehrer – Die Hungrigen:\nTomaten, Kürbis, Zucchini, Gurken, Kohl (alle Arten), Kartoffeln, Mais, Sellerie\n➡️ Brauchen viel Kompost (3-5 Liter/m²), regelmäßige Düngergaben alle 2-3 Wochen und nährstoffreichen Boden. Ideal: Frisch mit Mist oder Kompost angereicherte Beete.\n\n🟡 Mittelzehrer – Die Genügsamen:\nMöhren, Zwiebeln, Knoblauch, Salat, Fenchel, Kohlrabi, Erdbeeren, die meisten Kräuter\n➡️ Kommen mit einer Grundversorgung von Kompost im Frühjahr aus. Gelegentlich mit Pflanzenjauche nachdüngen.\n\n🟢 Schwachzehrer – Die Sparsamen:\nErbsen, Bohnen, Radieschen, Feldsalat, Kräuter (Thymian, Salbei, Oregano)\n➡️ Brauchen kaum Dünger. Zu viele Nährstoffe schaden sogar – Kräuter werden geschmacklos, Bohnen und Erbsen bilden weniger Früchte.\n\nFruchtfolge-Trick: Lege deine Beete in einer Dreier-Rotation an. Im 1. Jahr kommen Starkzehrer auf das frisch gedüngte Beet. Im 2. Jahr Mittelzehrer (leben von den Resten). Im 3. Jahr Schwachzehrer. Dann fängst du von vorne an mit frischem Kompost. So wird der Boden optimal genutzt und einseitig ausgelaugt. 🔄"
+        },
+        {
+          "title": "Richtig düngen – Zeitpunkt und Dosierung",
+          "content": "Wann und wie viel du düngst, ist genauso wichtig wie womit. Zu viel Dünger ist schlimmer als zu wenig – überdüngte Pflanzen werden anfällig für Krankheiten und Schädlinge, und überschüssige Nährstoffe belasten das Grundwasser. 🎯\n\nDie wichtigsten Regeln:\n📅 Hauptdüngung im Frühjahr (März/April): 2-3 Liter Kompost pro m² auf die Beete ausbringen und leicht einharken\n📅 Nachdüngen bei Starkzehrern alle 2-3 Wochen von Mai bis August mit Pflanzenjauche oder Hornspänen\n📅 Herbstdüngung (September): Nur für Rasen – kaliumbetonten Herbstdünger verwenden, er macht die Gräser winterfest\n🚫 Ab August NICHT mehr mit Stickstoff düngen – die Pflanzen sollen ausreifen und sich auf den Winter vorbereiten\n\nDosierung für Kompost:\n🌱 Schwachzehrer: 1-2 Liter pro m² im Frühjahr, fertig\n🌿 Mittelzehrer: 2-3 Liter pro m² im Frühjahr\n🌳 Starkzehrer: 3-5 Liter pro m² im Frühjahr + regelmäßig nachdüngen\n\nDosierung für Hornspäne:\n📏 40-60g pro m² (ca. 2-3 Esslöffel) als Grunddüngung im Frühjahr in den Boden einarbeiten\n📏 Hornmehl wirkt schneller (2-3 Wochen), Hornspäne langsamer (2-3 Monate)\n\nWichtiger Grundsatz: Lieber öfter und weniger düngen als einmal zu viel. Und denke daran – wer gut kompostiert, muss weniger düngen! 🌻"
+        },
+        {
+          "title": "Gesteinsmehl und Urgesteinsmehl",
+          "content": "Gesteinsmehl (auch Urgesteinsmehl oder Basaltmehl genannt) ist ein oft unterschätzter Bodenhilfsstoff. Es ist fein gemahlenes Vulkangestein und liefert eine Vielzahl von Spurenelementen und Mineralien, die Pflanzen für ein gesundes Wachstum brauchen. 🪨\n\nVorteile von Gesteinsmehl:\n✨ Liefert Kalzium, Magnesium, Eisen und über 70 weitere Spurenelemente\n🦠 Fördert das Bodenleben – Mikroorganismen lieben es\n🫧 Bindet üble Gerüche im Kompost und in der Pflanzenjauche\n💪 Macht Pflanzen widerstandsfähiger gegen Schädlinge und Krankheiten\n🌍 Verbessert die Bodenstruktur langfristig\n\nAnwendung im Garten:\n📏 Beete: 150-200g pro m² im Frühjahr ausstreuen und leicht einharken (alle 1-2 Jahre)\n🔄 Kompost: Bei jedem Aufschichten eine dünne Schicht Gesteinsmehl einstreuen – bindet Nährstoffe und Gerüche\n🧴 Pflanzenjauche: Eine Handvoll pro 10 Liter Jauche dazugeben\n🌹 Rosen: Im Frühjahr rund um den Stock verteilen – Rosen lieben es!\n\nEinkaufstipp: Achte beim Kauf auf 'Urgesteinsmehl aus Basalt' – es hat die beste Zusammensetzung. Ein 10-kg-Sack kostet ca. 5-8€ im Baumarkt oder Gartencenter und reicht für die meisten Gärten eine ganze Saison. Nicht zu verwechseln mit Kalk – Gesteinsmehl verändert den pH-Wert kaum. 💰"
+        }
+      ]
+    },
+    "schaedlinge": {
+      "title": "Schädlinge & Krankheiten 🐛",
+      "emoji": "🐛",
+      "articles": [
+        {
+          "title": "Blattläuse natürlich bekämpfen",
+          "content": "Blattläuse sind die häufigsten Schädlinge im Garten. Die gute Nachricht: Sie lassen sich fast immer ohne Chemie in den Griff bekommen. Die wichtigste Regel: Nicht in Panik geraten! Ein paar Blattläuse sind normal und locken nützliche Fressfeinde an. 🐞\n\nSofort-Maßnahmen:\n💦 Mit einem kräftigen Wasserstrahl abspritzen – das reicht bei leichtem Befall oft schon\n🧴 Schmierseifenlösung: 1 EL reine Schmierseife (ohne Zusätze!) auf 1 Liter Wasser. Auf die befallenen Stellen sprühen. Abends oder bei bedecktem Himmel anwenden.\n🧄 Knoblauchsud: 3-4 Knoblauchzehen zerdrücken, mit 1 Liter kochendem Wasser übergießen, abkühlen lassen, abseihen und auf die Pflanzen sprühen.\n\nLangfristige Strategien:\n🐞 Nützlinge fördern! Marienkäfer, Florfliegen und Schwebfliegen fressen Blattläuse in Massen. Wildblumenstreifen und Insektenhotels helfen.\n🌿 Mischkultur: Lavendel, Bohnenkraut und Tagetes zwischen Gemüse pflanzen – sie vertreiben Blattläuse.\n🐜 Ameisen bekämpfen: Ameisen 'melken' Blattläuse und beschützen sie. Ameisen umsiedeln oder mit Leimringen am Baum stoppen.\n\nWichtig: Verzichte auf chemische Insektizide – sie töten auch die nützlichen Insekten und machen langfristig alles schlimmer. Ein gesunder Garten mit vielen Nützlingen reguliert Blattläuse von alleine. 🌻"
+        },
+        {
+          "title": "Schnecken fernhalten",
+          "content": "Schnecken können eine ganze Salatpflanzung in einer einzigen Nacht vernichten. Besonders die Spanische Wegschnecke (die große rötlich-braune) ist gefürchtet. Aber es gibt viele wirksame Methoden, sie ohne Gift in Schach zu halten. 🐌\n\nMechanische Barrieren:\n🔵 Schneckenzäune aus Kupfer oder verzinktem Blech – die effektivste Methode! Die Schnecken können den glatten Rand nicht überwinden.\n🧂 Schneckenkorn auf Eisen-III-Phosphat-Basis (z.B. 'Ferramol') – ungiftig für Igel und Haustiere, die Schnecken hören einfach auf zu fressen.\n🪺 Salatringe aus Plastik mit Kupferrand als Einzelschutz für wertvolle Pflanzen.\n\nNatürliche Feinde fördern:\n🦔 Igel – lass wilde Ecken im Garten, wo sie sich verstecken können\n🐸 Frösche und Kröten – ein kleiner Gartenteich zieht sie an\n🐛 Laufkäfer – Bodendecker und Mulch bieten ihnen Unterschlupf\n🦆 Laufenten – die effektivsten Schneckenjäger, aber nur für große Gärten geeignet\n\nTricks, die helfen:\n🌙 Abends absammeln – am effektivsten nach Regen oder nach dem Gießen. Mindestens 20m vom Garten entfernt aussetzen!\n☕ Kaffeesatz um empfindliche Pflanzen streuen – Koffein mögen Schnecken nicht\n🌿 Schneckenunempfindliche Pflanzen bevorzugen: Tomaten, Zucchini, Knoblauch, Rosmarin, Salbei\n\n❌ Bierfallen sind NICHT empfehlenswert – sie locken Schnecken aus der ganzen Nachbarschaft an! 🍺"
+        },
+        {
+          "title": "Mehltau erkennen und behandeln",
+          "content": "Mehltau ist eine der häufigsten Pilzkrankheiten im Garten. Es gibt zwei Arten: Echten Mehltau (weißer Belag auf der Blattoberseite, tritt bei Trockenheit auf) und Falschen Mehltau (gelbliche Flecken oben, grauer Belag unten, tritt bei Feuchtigkeit auf). 🍄\n\nEchter Mehltau – der 'Schönwetterpilz':\n👀 Erkennung: Weißer, mehlartiger Belag auf Blattoberseiten, besonders bei Rosen, Gurken, Zucchini und Kürbis\n🔧 Behandlung: Milch-Wasser-Lösung! Mische 1 Teil Vollmilch (KEINE H-Milch) mit 8 Teilen Wasser und sprühe alle 3 Tage auf die befallenen Blätter. Die Milchsäurebakterien bekämpfen den Pilz.\n🛡️ Vorbeugung: Pflanzen nicht zu eng setzen (Luft muss zirkulieren), widerstandsfähige Sorten wählen, Schachtelhalmbrühe vorbeugend sprühen.\n\nFalscher Mehltau – der 'Schlechtwetterpilz':\n👀 Erkennung: Gelblich-braune Flecken auf der Blattoberseite, grau-violetter Belag auf der Unterseite\n🔧 Behandlung: Befallene Blätter sofort entfernen und im Hausmüll entsorgen (NICHT auf den Kompost!). Knoblauchsud oder Schachtelhalmbrühe sprühen.\n🛡️ Vorbeugung: Nicht über die Blätter gießen, sondern nur am Boden. Morgens gießen, damit die Blätter tagsüber abtrocknen.\n\nGenerell gilt: Vorbeugen ist besser als behandeln. Gesunde, gut versorgte Pflanzen werden seltener befallen. Stärke deine Pflanzen mit Brennnesseljauche und Schachtelhalmbrühe – das sind die besten natürlichen Pflanzenstärkungsmittel. 💪"
+        },
+        {
+          "title": "Nützlinge im Garten fördern",
+          "content": "Ein Garten voller Nützlinge braucht kaum Schädlingsbekämpfung – die Natur regelt das von alleine! Dein Job ist es, den nützlichen Tieren ein Zuhause zu bieten und auf Gifte zu verzichten. 🏡\n\nDie wichtigsten Nützlinge und wie du sie anlockst:\n\n🐞 Marienkäfer: Ein einziger Marienkäfer frisst bis zu 150 Blattläuse am Tag! Überwintert gerne in Laubhaufen, Mauerritzen und Insektenhotels. Marienkäfer-Larven sind noch gefräßiger – sie sehen aus wie kleine schwarze Alligatoren mit orangenen Punkten.\n\n🦗 Florfliegen: Ihre Larven ('Blattlauslöwen') fressen ebenfalls massenhaft Blattläuse. Überwintern gerne in kühlen Räumen (Schuppen, Garage). Holzkästen mit Stroh füllen und aufhängen.\n\n🐝 Wildbienen & Hummeln: Unverzichtbar für die Bestäubung von Obst und Gemüse. Nisthilfen aus Hartholz mit Bohrlöchern (3-10mm) aufhängen. Wichtig: Südseite, regengeschützt!\n\n🦔 Igel: Fressen Schnecken, Raupen und Larven. Laub- und Reisighaufen in ruhigen Gartenecken als Unterschlupf bieten. Durchschlupf im Zaun lassen (10x10 cm)!\n\n🐸 Frösche & Kröten: Top-Schneckenjäger! Ein kleiner Gartenteich ohne Fische lockt sie an. Auch flache Wasserschalen mit Ausstiegshilfe helfen.\n\n🕷️ Spinnen: Ja, auch Spinnen sind extrem nützlich! Sie fangen Unmengen an Fliegen und Mücken. Bitte nicht entfernen.\n\nGrundregel: Verzichte komplett auf chemische Pflanzenschutzmittel. Auch 'bio-zugelassene' Breitband-Insektizide töten Nützlinge. Ein naturnaher Garten mit Wildblumen, Totholz, Steinhaufen und Wasserstellen zieht Nützlinge magisch an. 🌻🦋"
+        },
+        {
+          "title": "Kraut- und Braunfäule bei Tomaten",
+          "content": "Die Kraut- und Braunfäule (Phytophthora) ist der Albtraum jedes Tomatengärtners. Der Pilz breitet sich bei feuchtem Wetter rasend schnell aus und kann die gesamte Ernte vernichten. Aber mit der richtigen Vorsorge lässt sich das Risiko stark reduzieren. 🍅\n\nErkennung:\n👀 Braune, wässrige Flecken auf Blättern, die sich schnell ausbreiten\n👀 Stängel werden braun und matschig\n👀 Früchte bekommen braune, eingesunkene Stellen\n👀 Bei feuchtem Wetter weißer Pilzrasen auf der Blattunterseite\n\nVorbeugung – das A und O:\n🏠 Tomaten IMMER regengeschützt anbauen – unter einem Dachvorsprung, Tomatendach oder im Gewächshaus. Regen auf den Blättern ist der Hauptauslöser!\n💨 Ausreichend Abstand zwischen den Pflanzen (60-80 cm) für gute Luftzirkulation\n✂️ Untere Blätter bis 30 cm Höhe entfernen – Spritzwasser vom Boden überträgt den Pilz\n💧 Immer nur am Boden gießen, NIE über die Blätter\n🌿 Mulchen, damit kein Erdspritzer auf die Blätter kommt\n\nWenn es doch passiert:\n🗑️ Befallene Blätter SOFORT entfernen und im Hausmüll entsorgen\n🍅 Noch grüne Tomaten ernten und drinnen nachreifen lassen\n🚫 Befallene Pflanzenteile NIEMALS auf den Kompost – der Pilz überlebt dort!\n\nSortentipp: Wähle widerstandsfähige Sorten wie 'De Berao', 'Phantasia' oder Wildtomaten. Freilandtomaten sind generell anfälliger als Gewächshaustomaten. 🏆"
+        }
+      ]
+    },
+    "bewaesserung": {
+      "title": "Bewässerung 💧",
+      "emoji": "💧",
+      "articles": [
+        {
+          "title": "Richtig gießen – Grundregeln",
+          "content": "Falsches Gießen ist einer der häufigsten Anfängerfehler im Garten. Die goldene Regel lautet: Lieber seltener und durchdringend gießen als häufig und oberflächlich! Wenn du nur die obere Erdschicht befeuchtest, bilden die Pflanzen flache Wurzeln und werden noch durstiger. 💧\n\nDie wichtigsten Gieß-Regeln:\n🌅 Morgens gießen ist ideal – das Wasser versickert, bevor die Mittagssonne es verdunsten kann. Blätter, die nass in die Nacht gehen, bekommen Pilzkrankheiten.\n🎯 Immer am Boden gießen, direkt an die Wurzeln. Nie über die Blätter – das fördert Pilzkrankheiten und bei Sonne gibt es Verbrennungen durch den Lupeneffekt.\n📏 Faustregel: Pro Gießgang etwa 10-20 Liter pro m². Stich mit dem Finger in die Erde – erst wenn es in 5 cm Tiefe trocken ist, muss gegossen werden.\n🚿 Verwende eine Gießkanne mit Brause oder einen Schlauch mit sanftem Strahl. Ein harter Wasserstrahl verdichtet den Boden und spült Erde weg.\n\nWasser sparen im Garten:\n🌧️ Regentonnen aufstellen – Regenwasser ist kostenlos und besser für die Pflanzen als kalkhaltiges Leitungswasser\n🍃 Mulchen, mulchen, mulchen – reduziert die Verdunstung um bis zu 70%\n🏺 Tontöpfe zum Bewässern: Unglasierte Tontöpfe in die Erde eingraben und mit Wasser füllen – das Wasser sickert langsam durch die Tonwand\n\nÜbrigens: Rasen muss man selten gießen. Selbst brauner Rasen erholt sich nach Regen innerhalb einer Woche. Nur frisch gesäter Rasen braucht regelmäßig Wasser. 🌿"
+        },
+        {
+          "title": "Regenwasser sammeln und nutzen",
+          "content": "Regenwasser ist das beste Gießwasser überhaupt – es ist weich, kalkfrei, hat die richtige Temperatur und ist komplett kostenlos! In Deutschland fallen im Schnitt 700-800 Liter Regen pro Quadratmeter Dachfläche im Jahr. Das ist eine Menge kostenloses Gießwasser! 🌧️\n\nSo sammelst du Regenwasser:\n🏠 Regentonne am Fallrohr: Die einfachste Lösung. Eine 200-300 Liter Tonne reicht für einen kleinen Garten. Kaufe einen Fallrohr-Sammler (ab 10€), der leitet das Wasser automatisch in die Tonne und stoppt, wenn sie voll ist.\n🏗️ Für größere Gärten: IBC-Container (1000 Liter) oder mehrere verbundene Tonnen. IBC-Container gibt es gebraucht ab ca. 50€.\n🦟 Deckel drauf! Offene Wassertonnen sind Brutstätten für Mücken. Immer einen Deckel oder ein feinmaschiges Netz verwenden.\n\nWichtig im Winter:\n❄️ Vor dem ersten Frost Tonnen leeren oder den Hahn offen lassen – gefrorenes Wasser sprengt die Tonne!\n🔧 Fallrohr-Sammler im Winter umstellen, sodass das Wasser wieder normal abfließt.\n\nRegenwasser-Qualität:\n✅ Perfekt für alle Gartenpflanzen – besonders für Moorbeetpflanzen (Heidelbeeren, Rhododendren), die kalkhaltiges Leitungswasser nicht vertragen\n✅ Darf leicht grünlich sein (harmlose Algen) – einfach umrühren und verwenden\n⚠️ Wasser vom Kupferdach oder frisch geteerten Dach NICHT zum Gießen verwenden\n\nRechenbeispiel: Bei 50 m² Dachfläche sammelst du ca. 35.000 Liter Wasser pro Jahr – das reicht für einen 200 m² Garten die ganze Saison! 💰"
+        },
+        {
+          "title": "Tröpfchenbewässerung selber bauen",
+          "content": "Eine Tröpfchenbewässerung bringt das Wasser genau dorthin, wo es gebraucht wird – direkt an die Wurzeln. Das spart bis zu 50% Wasser im Vergleich zum Gießen mit Schlauch oder Sprenger und reduziert Pilzkrankheiten, weil die Blätter trocken bleiben. 🎯\n\nEinfache DIY-Variante mit Tropfschlauch:\n1️⃣ Kaufe einen Perlschlauch oder Tropfschlauch im Baumarkt (ab ca. 15€ für 15 Meter)\n2️⃣ Verlege ihn entlang deiner Pflanzreihen, direkt auf dem Boden\n3️⃣ Schließe ihn an den Gartenschlauch oder die Regentonne an (bei Regentonne brauchst du genug Gefälle für Wasserdruck)\n4️⃣ Bedecke den Schlauch mit Mulch – das schützt ihn vor UV-Strahlung und sieht ordentlicher aus\n\nMit Zeitschaltuhr automatisieren:\n⏰ Eine einfache Bewässerungsuhr (ab 15€) am Wasserhahn spart dir das tägliche Gießen\n📅 Programmiere sie auf morgens früh, 30-60 Minuten je nach Bedarf\n💡 An heißen Tagen länger laufen lassen, bei Regen ausschalten\n\nOllas – die antike Methode:\n🏺 Unglasierte Tontöpfe in die Erde eingraben (bis zum Rand), mit Wasser füllen und mit einem Untersetzer abdecken. Das Wasser sickert langsam durch den Ton und bewässert die umliegenden Pflanzen. Perfekt für Tomaten und Zucchini! Alle 2-3 Tage nachfüllen.\n\nKosten-Nutzen: Eine einfache Tröpfchenbewässerung für 4-6 Gemüsebeete kostet ca. 30-50€ und spart dir im Sommer täglich 15-20 Minuten Gießzeit. Das lohnt sich schon in der ersten Saison! 💪"
+        },
+        {
+          "title": "Bewässerung im Urlaub",
+          "content": "Zwei Wochen Urlaub und kein Pflanzensitter in Sicht? Kein Problem! Mit der richtigen Vorbereitung überstehen deine Pflanzen auch mal 2-3 Wochen ohne dich. 🏖️\n\nVorbereitung vor dem Urlaub:\n💧 Am Tag vor der Abreise alles gründlich durchdringend wässern – den Boden richtig satt machen\n🍃 Dick mulchen (10 cm Grasschnitt, Stroh oder Laub) – das hält die Feuchtigkeit wochenlang\n✂️ Rasen vor der Abreise NICHT extra kurz mähen – längerer Rasen beschattet den Boden und verdunstet weniger\n🍅 Alle reifen Früchte ernten – das regt die Pflanze an, weiterzutragen, bis du zurück bist\n\nBewässerungs-Tricks für den Urlaub:\n🍼 PET-Flaschen-Trick: 1,5-Liter-Flasche mit Wasser füllen, Deckel mit einem Nagel durchbohren und kopfüber neben die Pflanze in die Erde stecken. Hält ca. 5-7 Tage.\n🧵 Wollfaden-Methode: Einen dicken Wollfaden von einem Wassereimer in die Blumenerde leiten. Das Wasser wandert durch Kapillarwirkung zum Topf. Funktioniert erstaunlich gut!\n🏺 Ollas (Tontöpfe): In die Erde eingegrabene Tontöpfe, die langsam Wasser abgeben. Halten je nach Größe 5-10 Tage.\n⏰ Bewässerungsuhr: Die beste Lösung für regelmäßigen Urlaub. Einmal installiert, gießt sie zuverlässig automatisch.\n\nFür Balkonpflanzen:\n🪴 Alle Töpfe zusammenstellen an einen schattigen Platz – sie profitieren von der gegenseitigen Verdunstung\n🛁 Kleine Töpfe in eine Wanne mit 2-3 cm Wasser stellen (Staunässe-Alarm: nur für den Urlaub!)\n🌡️ Jalousien halb schließen, um direkte Sonne zu reduzieren\n\nAb 3 Wochen Abwesenheit ist ein Pflanzensitter unersetzlich – frag Nachbarn, Freunde oder poste in der Nachbarschafts-App! 🤝"
+        }
+      ]
+    },
+    "winterschutz": {
+      "title": "Winterschutz 🧣",
+      "emoji": "🧣",
+      "articles": [
+        {
+          "title": "Welche Pflanzen brauchen Winterschutz?",
+          "content": "Nicht jede Pflanze muss im Winter geschützt werden – viele heimische Stauden und Gehölze sind vollkommen winterhart. Aber einige Gartenlieblinge brauchen Hilfe, um unbeschadet durch Frost und Kälte zu kommen. 🌡️\n\nKein Winterschutz nötig:\n✅ Heimische Laubbäume und Sträucher (Buche, Hainbuche, Flieder)\n✅ Winterharte Stauden (Sonnenhut, Fetthenne, Storchschnabel) – oberirdisch absterben ist normal!\n✅ Wintergemüse (Grünkohl, Rosenkohl, Feldsalat, Topinambur)\n✅ Die meisten Obstbäume (Apfel, Birne, Pflaume, Kirsche)\n\nWinterschutz empfohlen:\n🧣 Rosen (besonders Edelrosen und Hochstämmchen) – Veredelungsstelle mit Erde anhäufeln\n🧣 Junge, frisch gepflanzte Bäume und Sträucher – in den ersten 2-3 Wintern\n🧣 Gräser (Pampasgras, Chinaschilf) – zusammenbinden, damit kein Wasser ins Herz läuft\n🧣 Immergrüne wie Kirschlorbeer und Buchsbaum bei strengem Frost und Wintersonne\n🧣 Kräuter wie Rosmarin, Salbei und Lavendel – mit Reisig abdecken\n\nWinterschutz unbedingt nötig:\n🔴 Dahlien, Gladiolen, Canna – Knollen ausgraben und frostfrei lagern!\n🔴 Kübelpflanzen (Oleander, Olivenbäumchen, Zitrus) – ins kühle Winterquartier (5-10°C, hell)\n🔴 Feigenbäume in kalten Regionen – dick einpacken mit Vlies und Laub\n🔴 Fuchsien und Geranien, wenn sie überwintert werden sollen\n\nFaustregel: Pflanzen, die aus dem Mittelmeerraum oder wärmeren Regionen stammen, brauchen in Deutschland Winterschutz. Im Zweifelsfall auf dem Pflanzenetikett nachschauen – dort steht die Winterhärtezone. 📋"
+        },
+        {
+          "title": "Winterschutz-Materialien richtig einsetzen",
+          "content": "Für den Winterschutz gibt es verschiedene Materialien – jedes hat seine Vor- und Nachteile. Wichtig ist, dass der Schutz luftdurchlässig ist. Pflanzen, die unter Plastikfolie eingepackt werden, faulen und ersticken! 🚫🎁\n\nDie besten Materialien:\n🍂 Laub: Kostenlos und hervorragend! Schicht von 15-20 cm auf Beete und um Pflanzen anhäufeln. Mit Reisig oder einem Netz beschweren, damit es nicht wegweht. Ideal für Rosen und Stauden.\n🌿 Reisig/Tannenzweige: Perfekt für Kräuter und niedrige Sträucher. Schützt vor Frost UND Wintersonne (die ist oft gefährlicher als der Frost!). Nach Weihnachten gibt es Tannenbäume kostenlos.\n🧶 Gartenvlies: Atmungsaktiv und lichtdurchlässig. Ideal für Kübelpflanzen und zum Umwickeln empfindlicher Gehölze. In mehreren Lagen verwenden. Ab ca. 5€ im Baumarkt.\n🌾 Stroh: Guter Isolator, besonders für Beete und Hochbeete. Kann aber Mäuse anlocken – nicht direkt an Baumstämme legen!\n🫧 Luftpolsterfolie: Nur für Kübel von außen umwickeln, NICHT direkt um die Pflanze. Schützt die Wurzeln im Topf vor Durchfrieren.\n🪵 Rindenmulch: 10-15 cm dicke Schicht schützt den Boden vor Frost. Gut für Beerensträucher und Staudenbeete.\n\nSo NICHT:\n❌ Plastikfolie direkt um Pflanzen – Staunässe und Fäulnis\n❌ Zu früh einpacken (erst ab Dauertemperaturen unter 0°C)\n❌ Zu spät auspacken im Frühling – Schimmelgefahr!\n❌ Dicht einpacken ohne Luftzirkulation\n\nAuspacken im Frühling: Winterschutz schrittweise entfernen, nicht alles auf einmal. An einem bedeckten Tag auspacken, damit die Pflanze sich langsam an die Sonne gewöhnt. Meist ab Mitte März, wenn kein strenger Frost mehr zu erwarten ist. 🌸"
+        },
+        {
+          "title": "Kübelpflanzen überwintern",
+          "content": "Kübelpflanzen sind besonders frostgefährdet, weil ihre Wurzeln in einem begrenzten Erdvolumen stecken und nicht tief genug im Boden sitzen, um vor Kälte geschützt zu sein. Ein durchgefrorener Topf kann sowohl die Pflanze als auch das Gefäß zerstören. 🪴\n\nVariante 1 – Draußen überwintern (nur für bedingt winterharte Pflanzen):\n📦 Topf mit Luftpolsterfolie, Jute oder Vlies umwickeln – mehrere Lagen!\n🧱 Auf eine Styroporplatte oder Holzbrett stellen (Kälteschutz von unten)\n🏠 An eine geschützte Hauswand stellen (Südseite vermeiden – Wintersonne!)\n🍂 Erde mit Laub oder Reisig abdecken\n🌡️ Bei extremem Frost (unter -10°C) zusätzlich mit Vlies umhüllen\n\nVariante 2 – Kühles Winterquartier (für nicht winterharte Pflanzen):\n🌡️ Ideale Temperatur: 5-10°C – zu warm ist schlimmer als zu kalt!\n💡 Möglichst hell – ein kühles Treppenhaus, eine unbeheizte Garage mit Fenster oder ein Keller mit Licht\n💧 Wenig gießen – gerade so viel, dass die Erde nicht komplett austrocknet (alle 2-4 Wochen prüfen)\n✂️ Vor dem Einräumen die Pflanze zurückschneiden und auf Schädlinge kontrollieren\n🍂 Gelbe und abgestorbene Blätter regelmäßig entfernen (Schimmelgefahr)\n\nWann raus, wann rein?\n📥 Einräumen: Wenn die ersten Nachtfröste angekündigt werden (meist Mitte Oktober)\n📤 Ausräumen: Nach den Eisheiligen (Mitte Mai) oder bei stabilen Nachttemperaturen über 5°C\n⚠️ Nicht sofort in die volle Sonne stellen – erst ein paar Tage im Schatten abhärten lassen\n\nTypische Winterquartier-Pflanzen: Oleander, Olivenbaum, Zitrusgewächse, Fuchsien, Geranien, Engelstrompete, Bougainvillea. 🌺"
+        },
+        {
+          "title": "Gartenteich winterfest machen",
+          "content": "Ein Gartenteich braucht im Winter etwas Vorbereitung, damit Fische und Pflanzen gut durch die kalte Jahreszeit kommen. Die wichtigste Regel: Der Teich darf NIE komplett zufrieren, wenn Fische darin leben – unter dem Eis bilden sich Faulgase, die tödlich sein können. 🐟\n\nVor dem Winter erledigen:\n🍂 Laub mit einem Netz abfischen oder ein Laubnetz über den Teich spannen (am besten schon im September)\n🌿 Abgestorbene Pflanzenteile abschneiden, aber Röhrichtpflanzen (Schilf, Rohrkolben) stehen lassen – sie transportieren Sauerstoff unter die Wasseroberfläche!\n🔌 Pumpen und Filter ab ca. 5°C Wassertemperatur abschalten und frostfrei lagern\n🧹 Schlamm vom Teichboden absaugen – weniger Faulschlamm bedeutet weniger Faulgase im Winter\n\nFische überwintern:\n🐠 Ab 8°C Wassertemperatur nicht mehr füttern – die Fische fahren ihren Stoffwechsel herunter\n📏 Der Teich muss mindestens 80 cm tief sein, damit er nicht bis zum Grund durchfriert\n🫧 Eisfreihalter einsetzen – schwimmende Styroporringe oder spezielle Teich-Eisfreihalter halten eine Stelle eisfrei\n⚠️ NIEMALS Eis aufhacken – die Druckwellen können die Fische töten! Stattdessen heißes Wasser auf eine Stelle gießen, um ein Loch zu schmelzen.\n\nTeich ohne Fische:\n✅ Kleine Teiche und Miniteiche können komplett zufrieren – kein Problem\n✅ Wasserpflanzen in Körben auf den tiefsten Punkt stellen\n✅ Fertigteiche aus Plastik bei leerem Zustand mit Brettern stabilisieren – Eis kann sie verformen\n\nIm Frühling (ab März): Filter und Pumpe wieder einsetzen, wenn das Wasser über 10°C hat. Algen sind im Frühling normal – sie verschwinden, sobald die Unterwasserpflanzen wieder wachsen. 🌱"
+        }
+      ]
+    },
+    "werkzeuge": {
+      "title": "Werkzeuge & Ausstattung 🔧",
+      "emoji": "🔧",
+      "articles": [
+        {
+          "title": "Grundausstattung für Gartenanfänger",
+          "content": "Du brauchst keine teure Ausrüstung, um einen schönen Garten zu haben. Starte mit wenigen, aber guten Werkzeugen und kaufe nach Bedarf dazu. Billige Werkzeuge machen mehr Frust als Freude – investiere lieber in Qualität, die hält ein Leben lang. 🛠️\n\nDie Top 10 für den Start:\n1️⃣ Spaten – zum Umsetzen von Pflanzen und Erdarbeiten. Ein geschmiedeter Spaten aus einem Stück Stahl ist unverwüstlich.\n2️⃣ Grabgabel – zum Lockern des Bodens und Kompost umsetzen. Schont das Bodenleben besser als der Spaten.\n3️⃣ Handschaufel (Pflanzkelle) – für Pflanzarbeiten, Unkraut jäten und Topfpflanzen.\n4️⃣ Gartenschere (Bypass-Schere) – für lebende Triebe und Blumen. Eine gute Schere für 20-30€ reicht völlig.\n5️⃣ Gießkanne (10 Liter) – mit abnehmbarer Brause. Metallkannen halten ewig, Plastik ist leichter.\n6️⃣ Harke/Rechen – zum Einebnen, Laubharken und Saatbeet vorbereiten.\n7️⃣ Unkrautstecher – spart Rückenschmerzen beim Löwenzahn-Entfernen!\n8️⃣ Handschuhe – gute Gartenhandschuhe schützen vor Dornen und Blasen. Leder für grobe Arbeit, dünne für feine.\n9️⃣ Eimer (10 Liter) – für Ernten, Unkraut sammeln und Transport.\n🔟 Schubkarre – unverzichtbar, sobald du Erde, Kompost oder Pflanzen bewegen musst.\n\nBudget-Tipp: Schau auf Flohmärkten und Kleinanzeigen nach gebrauchten Qualitätswerkzeugen von Marken wie Fiskars, Gardena oder Wolf-Garten. Alte geschmiedete Spaten sind oft besser als neue Billigware! 💰"
+        },
+        {
+          "title": "Werkzeuge pflegen und schärfen",
+          "content": "Gut gepflegte Werkzeuge machen die Gartenarbeit leichter und halten Jahrzehnte. Die wichtigste Zeit für Werkzeugpflege ist nach der letzten Nutzung im Herbst und vor dem ersten Einsatz im Frühjahr. Nimm dir einen Nachmittag dafür – am besten im Januar, wenn draußen sowieso nichts los ist. ❄️\n\nNach JEDEM Gebrauch:\n🧹 Erde mit einem Holzstück oder einer Bürste abklopfen – trockene Erde löst sich leichter als nasse\n💧 Nasse Werkzeuge immer trocknen lassen – Rost ist der Feind Nummer 1\n🏠 Werkzeuge nicht draußen liegen lassen – Regen und Feuchtigkeit zerstören sie schnell\n\nJährliche Pflege (ideal im Winter):\n🪒 Spaten und Hacken schärfen: Mit einer Flachfeile die Schneide nachschärfen. Immer nur in eine Richtung feilen, im gleichen Winkel wie die Originalschneide (ca. 25°).\n🌿 Gartenschere schärfen: Die flache Seite auf ein feines Schleifpapier (Körnung 400) legen und kreisend schleifen. Oder zum Schleifer bringen (ca. 5€).\n🛢️ Metallteile einölen: Nach dem Schärfen alle Metallflächen dünn mit Leinöl oder Kamelienöl einreiben – das verhindert Rost.\n🪵 Holzstiele pflegen: Mit feinem Schleifpapier glätten (verhindert Splitter) und mit Leinöl einreiben.\n🔩 Schrauben und Muttern prüfen: Lose Verbindungen nachziehen, kaputte Griffe ersetzen.\n\nProfi-Trick: Einen Eimer mit Sand und etwas Altöl mischen. Nach dem Gebrauch die Metallteile kurz in den Ölsand stecken – reinigt und ölt gleichzeitig! 🪣"
+        },
+        {
+          "title": "Hochbeet bauen und befüllen",
+          "content": "Ein Hochbeet ist das perfekte Projekt für Gartenanfänger: Du kannst auf kleinem Raum erstaunlich viel ernten, das Gärtnern ist rückenschonend, und Schnecken haben es deutlich schwerer. Außerdem wird die Erde im Hochbeet wärmer als im normalen Beet – du kannst früher im Jahr starten! 🌱\n\nDie richtige Größe:\n📏 Breite: Maximal 120 cm – du musst von beiden Seiten die Mitte erreichen können\n📏 Länge: Nach Belieben, 200 cm ist ein gängiges Maß\n📏 Höhe: 80-100 cm für rückenschonendes Arbeiten\n📐 Standort: Möglichst sonnig (mindestens 6 Stunden Sonne), in Nord-Süd-Richtung aufstellen\n\nMaterial:\n🪵 Lärche oder Douglasie – halten 10-15 Jahre ohne Holzschutz\n🪵 Kiefer/Fichte – günstiger, halten aber nur 5-8 Jahre\n🔩 Folie (Noppenfolie oder Teichfolie) innen als Schutz – verlängert die Lebensdauer deutlich\n🐭 Drahtgitter am Boden gegen Wühlmäuse – unbedingt einplanen!\n\nDie Schichtung (von unten nach oben):\n1️⃣ Drahtgitter am Boden (gegen Wühlmäuse)\n2️⃣ Grobe Äste und Strauchschnitt (25 cm) – Drainage und langsame Nährstoffquelle\n3️⃣ Umgedrehte Grassoden oder grobe Gartenabfälle (15 cm)\n4️⃣ Laub und halbreifer Kompost (20 cm)\n5️⃣ Reifer Kompost gemischt mit guter Gartenerde (25-30 cm)\n\nWichtig: Das Hochbeet sackt im ersten Jahr um ca. 20 cm ab – das ist normal! Einfach im Herbst mit Kompost und Erde auffüllen. Durch die Verrottung der unteren Schichten entsteht Wärme und es werden über Jahre Nährstoffe freigesetzt. In den ersten 2 Jahren ist das Hochbeet so nährstoffreich, dass du keine Starkzehrer-Düngung brauchst! 🔥"
+        },
+        {
+          "title": "Gewächshaus und Frühbeet",
+          "content": "Ein Gewächshaus oder Frühbeet verlängert deine Gartensaison um Wochen bis Monate – du kannst früher starten und länger ernten. Für Tomaten, Gurken und Paprika ist ein Gewächshaus in Deutschland fast unverzichtbar, weil sie Wärme und Regenschutz brauchen. 🏡\n\nFrühbeet – der günstige Einstieg:\n💰 Kosten: Ab 30€ für einfache Modelle, 80-150€ für stabile Holz-Frühbeete\n📅 Nutzung: Ab Februar für Vorkultur, im Sommer für Gurken und Melonen, im Herbst/Winter für Feldsalat\n🔧 Selbstbau: Alter Fensterrahmen auf einen Holzkasten – fertig! Schräg aufstellen, damit Regen abläuft.\n⚠️ Wichtig: An sonnigen Tagen lüften! Im geschlossenen Frühbeet kann es über 40°C heiß werden.\n\nGewächshaus – Größen und Typen:\n🏠 Foliengewächshaus (ab 50€): Günstig, leicht aufzubauen, hält 2-5 Jahre. Gut zum Ausprobieren.\n🏠 Anlehn-Gewächshaus (ab 300€): An die Hauswand gelehnt, nutzt die Hauswärme, spart Platz.\n🏠 Freistehendes Gewächshaus (ab 500€): Der Klassiker. Glas oder Doppelstegplatten. Minimum 6 m² planen.\n\nTipps fürs Gewächshaus:\n🌡️ Automatische Fensteröffner (ab 25€) – öffnen bei Hitze und schließen bei Kälte, auch wenn du nicht da bist\n💧 Regelmäßig lüften – hohe Luftfeuchtigkeit fördert Pilzkrankheiten\n🌱 Fruchtfolge beachten – Tomaten und Gurken NICHT zusammen anbauen (Tomaten mögen es trocken, Gurken feucht)\n🪱 Jedes Jahr 2-3 cm Kompost auf die Beete – die Erde im Gewächshaus wird nicht vom Regen ausgewaschen, daher Salze regelmäßig mit viel Wasser spülen\n\nAnfänger-Tipp: Starte mit einem Frühbeet oder Foliengewächshaus und teste, ob dir das Gärtnern unter Dach Spaß macht, bevor du in ein teures Glasgewächshaus investierst. 👍"
+        },
+        {
+          "title": "Kompostbehälter im Vergleich",
+          "content": "Den richtigen Komposter zu wählen, hängt von deiner Gartengröße, deinem Budget und deinen Anforderungen ab. Hier ein ehrlicher Vergleich der gängigsten Systeme, damit du die beste Wahl für deinen Garten triffst. 🔄\n\nOffene Kompostmiete:\n📏 Platzbedarf: Ab 2 m² (ideal: 3 Kammern à 1x1 m)\n💰 Kosten: Kostenlos bis 50€ (aus Paletten selbst gebaut)\n✅ Vorteile: Großes Volumen, leicht zugänglich, einfaches Umsetzen\n❌ Nachteile: Braucht viel Platz, sieht nicht immer ordentlich aus, Zugang für Ratten möglich\n🎯 Ideal für: Große Gärten mit viel Grünschnitt\n\nGeschlossener Thermokomposter:\n📏 Platzbedarf: Ca. 1 m²\n💰 Kosten: 50-150€ (oft Zuschuss von der Gemeinde!)\n✅ Vorteile: Platzsparend, ordentlich, schnellere Kompostierung durch Wärme, kein Rattenzugang\n❌ Nachteile: Kleines Volumen (300-600 Liter), umsetzen ist umständlich, kann bei falscher Befüllung anfangen zu stinken\n🎯 Ideal für: Kleine bis mittlere Gärten, Anfänger\n\nWurmkomposter (Wurmkiste):\n📏 Platzbedarf: Minimal – passt sogar auf den Balkon!\n💰 Kosten: 80-200€ (oder selbst bauen ab 30€)\n✅ Vorteile: Extrem platzsparend, funktioniert ganzjährig, liefert hochwertigen Wurmhumus, geruchlos bei richtiger Nutzung\n❌ Nachteile: Nur für Küchenabfälle geeignet, Würmer brauchen Pflege (nicht unter 5°C, nicht über 30°C)\n🎯 Ideal für: Balkongärtner, kleine Haushalte, Experimentierfreudige\n\nBokashi-Eimer:\n📏 Platzbedarf: Minimal – steht in der Küche\n💰 Kosten: 30-60€ für 2 Eimer + regelmäßig Bokashi-Ferment nachkaufen\n✅ Vorteile: Nimmt auch gekochte Reste und Zitrusfrüchte, kein Geruch bei geschlossenem Deckel, fertig in 2-4 Wochen\n❌ Nachteile: Kein fertiger Kompost – das fermentierte Material muss noch in der Erde verrotten. Bokashi-Ferment muss nachgekauft werden.\n🎯 Ideal für: Wohnungen ohne Garten als Ergänzung, wer alles verwerten will\n\nUnsere Empfehlung für Anfänger: Starte mit einem Thermokomposter. Er ist pflegeleicht, ordentlich und liefert zuverlässig guten Kompost. Frag bei deiner Gemeinde nach – viele bezuschussen den Kauf mit 20-50€! 💚"
+        }
+      ]
+    }
+  },
+  "general_tasks": [
+    {
+      "title": "Rasen mähen",
+      "emoji": "🌿",
+      "months": ["apr", "mai", "jun", "jul", "aug", "sep", "okt"],
+      "description": "Regelmäßig mähen, nicht kürzer als 4 cm. Bei Trockenheit seltener mähen und höher stehen lassen (5-6 cm). Idealerweise alle 7-10 Tage."
+    },
+    {
+      "title": "Hecke schneiden",
+      "emoji": "✂️",
+      "months": ["mar", "jun", "sep"],
+      "description": "Formschnitt erlaubt ganzjährig. Radikalschnitt nur Oktober bis Februar (Vogelschutz!). Immer trapezförmig schneiden – unten breiter als oben."
+    },
+    {
+      "title": "Kompost umsetzen",
+      "emoji": "🔄",
+      "months": ["apr", "sep"],
+      "description": "Kompost mit Grabgabel umsetzen für bessere Durchlüftung. Äußeres Material nach innen schichten. Bei Trockenheit leicht wässern."
+    },
+    {
+      "title": "Laub harken",
+      "emoji": "🍂",
+      "months": ["okt", "nov"],
+      "description": "Laub von Rasen und Wegen entfernen. Unter Sträuchern und auf Beeten als Winterschutz liegen lassen. Laubhaufen in Ecken für Igel."
+    },
+    {
+      "title": "Rasen vertikutieren",
+      "emoji": "🌱",
+      "months": ["mar", "apr"],
+      "description": "Moos und Rasenfilz entfernen. Vorher kurz mähen, danach nachsäen und düngen. Nur bei trockenem Boden durchführen."
+    },
+    {
+      "title": "Beete vorbereiten",
+      "emoji": "🛏️",
+      "months": ["mar", "apr"],
+      "description": "Boden lockern, Kompost einarbeiten, Unkraut entfernen. Erde sollte sich krümelig anfühlen und nicht mehr gefroren sein."
+    },
+    {
+      "title": "Gießen",
+      "emoji": "💧",
+      "months": ["mai", "jun", "jul", "aug", "sep"],
+      "description": "Bei Trockenheit morgens gründlich gießen. Lieber seltener und durchdringend als täglich oberflächlich. Regenwasser bevorzugen."
+    },
+    {
+      "title": "Unkraut jäten",
+      "emoji": "🌾",
+      "months": ["apr", "mai", "jun", "jul", "aug", "sep"],
+      "description": "Regelmäßig Unkraut entfernen, bevor es Samen bildet. Am einfachsten nach Regen, wenn der Boden weich ist. Mulchen reduziert Unkraut deutlich."
+    },
+    {
+      "title": "Düngen",
+      "emoji": "🧪",
+      "months": ["mar", "apr", "mai", "jun", "jul"],
+      "description": "Hauptdüngung mit Kompost im Frühjahr. Starkzehrer alle 2-3 Wochen nachdüngen. Ab August nicht mehr mit Stickstoff düngen."
+    },
+    {
+      "title": "Pflanzenschutz kontrollieren",
+      "emoji": "🔍",
+      "months": ["apr", "mai", "jun", "jul", "aug"],
+      "description": "Pflanzen regelmäßig auf Schädlinge und Krankheiten kontrollieren. Blattunterseiten prüfen! Befallene Blätter sofort entfernen."
+    },
+    {
+      "title": "Obstbäume schneiden",
+      "emoji": "🍎",
+      "months": ["jan", "feb", "mar"],
+      "description": "Kernobst (Apfel, Birne) im Winter schneiden. Steinobst (Kirsche, Pflaume) nach der Ernte im Sommer. Krankes und totes Holz immer entfernen."
+    },
+    {
+      "title": "Winterschutz anbringen",
+      "emoji": "🧣",
+      "months": ["nov"],
+      "description": "Empfindliche Pflanzen mit Vlies, Laub oder Reisig schützen. Rosen anhäufeln. Kübelpflanzen einräumen. Wassertonnen leeren."
+    },
+    {
+      "title": "Winterschutz entfernen",
+      "emoji": "🌤️",
+      "months": ["mar"],
+      "description": "Ab Mitte März schrittweise Winterschutz entfernen. An bedeckten Tagen, damit Pflanzen sich langsam an die Sonne gewöhnen."
+    },
+    {
+      "title": "Vogelfütterung",
+      "emoji": "🐦",
+      "months": ["nov", "dez", "jan", "feb", "mar"],
+      "description": "Futterstellen sauber halten und regelmäßig auffüllen. Verschiedene Futterarten anbieten (Sonnenblumenkerne, Fettknödel, Haferflocken)."
+    },
+    {
+      "title": "Regentonnen & Bewässerung prüfen",
+      "emoji": "🛢️",
+      "months": ["mar", "okt"],
+      "description": "Im März: Regentonnen aufstellen und Bewässerungssystem prüfen. Im Oktober: Tonnen leeren und Leitungen vor Frost schützen."
+    }
+  ]
+}

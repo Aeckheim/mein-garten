@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐜 Casa de la Hormiga</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-decorations">
+        <span class="float-emoji" style="--delay: 0s; --x: 5%;">🌿</span>
+        <span class="float-emoji" style="--delay: 2s; --x: 15%;">🌸</span>
+        <span class="float-emoji" style="--delay: 4s; --x: 25%;">🍃</span>
+        <span class="float-emoji" style="--delay: 1s; --x: 75%;">🌻</span>
+        <span class="float-emoji" style="--delay: 3s; --x: 85%;">🦋</span>
+        <span class="float-emoji" style="--delay: 5s; --x: 95%;">🐝</span>
+    </div>
+
+    <nav class="main-nav">
+        <div class="nav-brand" onclick="navigate('garten')">
+            <span class="brand-emoji">🐜</span>
+            <span class="brand-text">Casa de la Hormiga</span>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-section="garten" onclick="navigate('garten')">🌿 Pflanzen</button>
+            <button class="nav-btn" data-section="kalender" onclick="navigate('kalender')">📅 Kalender</button>
+            <button class="nav-btn" data-section="tipps" onclick="navigate('tipps')">💡 Tipps</button>
+            <button class="nav-btn" data-section="wissen" onclick="navigate('wissen')">📖 Wissen</button>
+            <button class="nav-btn nav-settings" onclick="openSettings()">⚙️</button>
+        </div>
+    </nav>
+
+    <!-- Mein Garten -->
+    <section id="section-garten" class="app-section active">
+        <div class="hero-banner">
+            <img src="images/hero.jpg" alt="Mein Garten" class="hero-image">
+            <div class="hero-overlay">
+                <h1 class="hero-title">🐜 Casa de la Hormiga</h1>
+                <p class="hero-subtitle">Mein Garten im Überblick</p>
+            </div>
+        </div>
+        <div class="action-bar">
+            <button class="btn-primary" onclick="openAddPlantDialog()">📸 Pflanze erkennen</button>
+            <button class="btn-secondary" onclick="openManualAddDialog()">➕ Pflanze hinzufügen</button>
+        </div>
+        <div id="plants-grid" class="plants-grid"></div>
+        <div id="empty-garden" class="empty-state" style="display: none;">
+            <div class="empty-animation">🌱</div>
+            <h2>Dein Garten ist noch leer!</h2>
+            <p>Füge deine erste Pflanze hinzu 🌿</p>
+            <button class="btn-primary" onclick="openManualAddDialog()">🌿 Los geht's</button>
+        </div>
+    </section>
+
+    <!-- Pflanzen-Detail -->
+    <section id="section-detail" class="app-section">
+        <button class="btn-back" onclick="navigate('garten')">← Zurück</button>
+        <div id="plant-detail" class="plant-detail"></div>
+    </section>
+
+    <!-- Kalender -->
+    <section id="section-kalender" class="app-section">
+        <div class="section-header">
+            <h1>📅 Gartenkalender</h1>
+            <p class="section-subtitle">Was steht an?</p>
+        </div>
+        <div id="calendar-container" class="calendar-container"></div>
+    </section>
+
+    <!-- Tipps -->
+    <section id="section-tipps" class="app-section">
+        <div class="section-header">
+            <h1>💡 Garten-Tipps</h1>
+            <p class="section-subtitle">Wissen für deinen grünen Daumen</p>
+        </div>
+        <div id="tips-container" class="tips-container"></div>
+    </section>
+
+    <!-- Wissen / Enzyklopädie -->
+    <section id="section-wissen" class="app-section">
+        <div class="section-header">
+            <h1>📖 Mein Gartenwissen</h1>
+            <p class="section-subtitle">Deine persönliche Garten-Enzyklopädie</p>
+        </div>
+
+        <div class="wissen-ask-box">
+            <h3>🌿 Frag Claude zu deinem Garten</h3>
+            <p class="settings-info">Stell eine Frage, frag Claude über <a href="https://claude.ai" target="_blank">claude.ai</a> (dein Abo), und speichere die Antwort hier in deiner Enzyklopädie.</p>
+            <div class="wissen-input-row">
+                <input type="text" id="wissen-question" placeholder="z.B. Wie funktioniert Kompostierung? Wann pflanze ich Kartoffeln?"
+                       onkeydown="if(event.key==='Enter') askGardenQuestion()">
+                <button class="btn-primary" onclick="askGardenQuestion()">🌱 Bei Claude fragen</button>
+            </div>
+            <div id="wissen-paste-box" class="wissen-paste-box" style="display: none;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="font-size: 24px;">📋</span>
+                    <div>
+                        <p style="font-weight: 700;">Frage: <span id="wissen-current-question"></span></p>
+                        <p class="settings-info" style="margin: 0;">Kopiere Claudes Antwort von claude.ai hier rein</p>
+                    </div>
+                </div>
+                <textarea id="wissen-answer-paste" rows="8" placeholder="Claudes Antwort hier einfügen..." style="width: 100%; padding: 12px; border: 2px solid var(--green-pale); border-radius: var(--radius-sm); font-family: Nunito; font-size: 14px; resize: vertical;"></textarea>
+                <div class="form-actions" style="margin-top: 12px;">
+                    <button class="btn-secondary btn-small" onclick="cancelWissenPaste()">Abbrechen</button>
+                    <button class="btn-primary btn-small" onclick="saveWissenFromPaste()">📖 In Enzyklopädie speichern</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="wissen-library">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                <h3>📚 Deine Enzyklopädie</h3>
+                <span id="wissen-count" style="font-size: 13px; color: var(--text-medium);"></span>
+            </div>
+            <input type="text" id="wissen-search" placeholder="🔍 Suche in deinem Wissen..." oninput="filterWissen(this.value)"
+                   style="width: 100%; padding: 12px 16px; border: 2px solid var(--green-pale); border-radius: var(--radius-sm); font-family: Nunito; font-size: 15px; margin-bottom: 16px;">
+            <div id="wissen-entries"></div>
+            <div id="wissen-empty" class="calendar-empty">
+                <div style="font-size: 48px; margin-bottom: 16px;">📖</div>
+                <p>Noch keine Einträge. Stell deine erste Frage!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal: Foto-Erkennung -->
+    <div id="modal-add-plant" class="modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('modal-add-plant')">✕</button>
+            <div id="add-plant-step1" class="add-step">
+                <h2>📸 Pflanze erkennen</h2>
+                <p>Lade ein Foto hoch und wir erkennen deine Pflanze!</p>
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">📷</div>
+                    <p>Foto hierher ziehen oder klicken</p>
+                    <input type="file" id="plant-photo-input" accept="image/*" capture="environment" onchange="handlePhotoUpload(event)">
+                </div>
+                <div id="photo-preview" class="photo-preview" style="display: none;">
+                    <img id="preview-image" src="" alt="Vorschau">
+                    <button class="btn-primary" onclick="analyzePlant()">🔍 Analysieren</button>
+                </div>
+            </div>
+            <div id="add-plant-step2" class="add-step" style="display: none;">
+                <div class="analyzing-animation"><div class="spinner">🌱</div><p>Pflanze wird erkannt...</p></div>
+            </div>
+            <div id="add-plant-step3" class="add-step" style="display: none;">
+                <h2>🎉 Erkannt!</h2>
+                <div class="recognition-result">
+                    <img id="result-image" src="" alt="">
+                    <div class="result-info">
+                        <div class="form-group"><label>Name</label><input type="text" id="plant-name" placeholder="z.B. Tomate"></div>
+                        <div class="form-group"><label>Art</label><input type="text" id="plant-species" readonly></div>
+                        <div class="form-group"><label>Konfidenz</label><div id="confidence-bar" class="confidence-bar"></div></div>
+                        <div class="form-group"><label>Standort</label><input type="text" id="plant-location" placeholder="z.B. Hochbeet"></div>
+                        <div class="form-group"><label>Status</label>
+                            <select id="plant-status">
+                                <option value="gesund">🟢 Gesund</option>
+                                <option value="achtung">🟡 Aufmerksamkeit</option>
+                                <option value="krank">🔴 Krank</option>
+                                <option value="ruhend">🌙 Ruhend</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-secondary" onclick="resetAddPlant()">🔄 Nochmal</button>
+                    <button class="btn-primary" onclick="savePlant()">🌿 Hinzufügen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Pflanze hinzufügen (Datenbank + Wikipedia) -->
+    <div id="modal-manual-add" class="modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('modal-manual-add')">✕</button>
+            <h2>➕ Pflanze hinzufügen</h2>
+            <div class="manual-tabs">
+                <button class="manual-tab active" onclick="switchManualTab('database')">📚 Datenbank (51)</button>
+                <button class="manual-tab" onclick="switchManualTab('freetext')">🔍 Beliebige Pflanze</button>
+            </div>
+            <div id="manual-tab-database" class="manual-tab-content">
+                <div class="form-group">
+                    <input type="text" id="manual-search" placeholder="🔍 Suche z.B. Tomate, Rose..." oninput="filterPlantDatabase(this.value)">
+                    <div id="plant-database-list" class="plant-database-list"></div>
+                </div>
+            </div>
+            <div id="manual-tab-freetext" class="manual-tab-content" style="display: none;">
+                <div class="form-group">
+                    <label>Pflanze suchen (beliebiger Name)</label>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="wiki-search-input" placeholder="z.B. Bärlauch, Mangold, Feige..."
+                               onkeydown="if(event.key==='Enter') searchWikipedia()" style="flex:1;">
+                        <button class="btn-primary btn-small" onclick="searchWikipedia()">🔍</button>
+                    </div>
+                </div>
+                <div id="wiki-loading" class="analyzing-animation" style="display: none;">
+                    <div class="spinner" style="font-size: 30px;">🌿</div>
+                    <p style="font-size: 14px;">Suche auf Wikipedia...</p>
+                </div>
+                <div id="wiki-results"></div>
+                <div id="wiki-detail" style="display: none;">
+                    <div style="display: flex; gap: 16px; padding: 16px; background: var(--green-bg); border-radius: var(--radius-sm); margin-top: 12px;">
+                        <img id="wiki-plant-image" src="" alt="" style="width: 100px; height: 100px; border-radius: var(--radius-sm); object-fit: cover; display: none;">
+                        <div style="flex: 1;">
+                            <h4 id="wiki-plant-title" style="color: var(--green-dark); margin-bottom: 4px;"></h4>
+                            <p id="wiki-plant-taxonomy" style="font-size: 12px; color: var(--text-medium); font-style: italic;"></p>
+                            <p id="wiki-plant-description" style="font-size: 13px; line-height: 1.5; margin-top: 8px; max-height: 100px; overflow-y: auto;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="manual-selected" style="display: none;">
+                <hr style="border: 1px solid var(--green-pale); margin: 20px 0;">
+                <h3 style="margin-bottom: 12px;">🌿 Details</h3>
+                <div class="form-group"><label>Eigener Name</label><input type="text" id="manual-name" placeholder="z.B. Omas Tomate"></div>
+                <div class="form-group"><label>Standort</label><input type="text" id="manual-location" placeholder="z.B. Hochbeet, Südseite"></div>
+                <div class="form-group"><label>Kategorie</label>
+                    <select id="manual-category" onchange="showBioTips()">
+                        <option value="gemuese">🥬 Gemüse</option><option value="obst">🍎 Obst</option>
+                        <option value="kraeuter">🌿 Kräuter</option><option value="blumen">🌸 Blumen</option>
+                        <option value="stauden">🌼 Stauden</option><option value="straeucher">🌳 Sträucher</option>
+                        <option value="sonstige">🌱 Sonstige</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Foto (optional)</label><input type="file" id="manual-photo-input" accept="image/*"></div>
+                <div id="bio-tips-preview" class="bio-tips-preview">
+                    <h4>🌿 Bio-Garten Tipps</h4>
+                    <div id="bio-tips-content"></div>
+                </div>
+                <button class="btn-primary" onclick="saveManualPlant()" style="width: 100%; margin-top: 16px;">🌿 Hinzufügen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Einstellungen -->
+    <div id="modal-settings" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-settings')">✕</button>
+            <h2>⚙️ Einstellungen</h2>
+            <div class="settings-section">
+                <h3>🌿 Pl@ntNet API</h3>
+                <p class="settings-info">Foto-Erkennung (kostenlos): <a href="https://my.plantnet.org" target="_blank">my.plantnet.org</a></p>
+                <div class="form-group"><label>API-Key</label><input type="text" id="plantnet-api-key" placeholder="Dein Pl@ntNet API-Key"></div>
+                <button class="btn-secondary btn-small" onclick="savePlantNetKey()">💾 Speichern</button>
+            </div>
+            <div class="settings-section">
+                <h3>🤖 Claude API (optional)</h3>
+                <p class="settings-info">Für automatische Antworten. Ohne Key → manuelles Copy-Paste von claude.ai</p>
+                <div class="form-group"><label>API-Key</label><input type="text" id="claude-api-key" placeholder="sk-ant-..."></div>
+                <button class="btn-secondary btn-small" onclick="saveClaudeKey()">💾 Speichern</button>
+            </div>
+            <div class="settings-section">
+                <h3>🔥 Firebase</h3>
+                <div id="firebase-status" class="firebase-status"><span class="status-dot"></span><span>Wird geprüft...</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Aufgabe -->
+    <div id="modal-add-task" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-add-task')">✕</button>
+            <h2>📝 Aufgabe hinzufügen</h2>
+            <div class="form-group"><label>Aufgabe</label><input type="text" id="task-text" placeholder="z.B. Rankhilfe aufstellen"></div>
+            <div class="form-group"><label>Monat</label>
+                <select id="task-month">
+                    <option value="jan">Januar</option><option value="feb">Februar</option><option value="mar">März</option>
+                    <option value="apr">April</option><option value="mai">Mai</option><option value="jun">Juni</option>
+                    <option value="jul">Juli</option><option value="aug">August</option><option value="sep">September</option>
+                    <option value="okt">Oktober</option><option value="nov">November</option><option value="dez">Dezember</option>
+                </select>
+            </div>
+            <button class="btn-primary" onclick="saveCustomTask()">✅ Speichern</button>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+    <script src="firebase-config.js"></script>
+    <script src="plantnet-api.js"></script>
+    <script src="wikipedia-api.js"></script>
+    <script src="calendar.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
