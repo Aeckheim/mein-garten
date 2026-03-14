@@ -16,6 +16,15 @@ let selectedDbPlant = null;
 // ============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Token aus URL übernehmen (z.B. ?token=ghp_xxx)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlToken = urlParams.get('token');
+    if (urlToken) {
+        localStorage.setItem('github_token', urlToken);
+        // Token aus URL entfernen (Sicherheit)
+        window.history.replaceState({}, '', window.location.pathname);
+    }
+
     // Storage initialisieren (GitHub API + localStorage Fallback)
     await StorageLayer.init();
 
