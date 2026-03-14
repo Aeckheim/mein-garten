@@ -96,6 +96,15 @@ const GitHubStorage = {
 
     async _pushToGitHub(data) {
         try {
+            // Aktuelle SHA holen (verhindert Konflikte wenn anderes Gerät geschrieben hat)
+            try {
+                const current = await this.apiRequest(`contents/${DATA_FILE}?ref=${GITHUB_BRANCH}`);
+                this.fileSha = current.sha;
+            } catch (e) {
+                // Datei existiert noch nicht, kein Problem
+                this.fileSha = null;
+            }
+
             // UTF-8 korrekt als Base64 kodieren
             const jsonStr = JSON.stringify(data, null, 2);
             const utf8Bytes = unescape(encodeURIComponent(jsonStr));
@@ -143,6 +152,43 @@ const StorageLayer = {
         if (!this._data.plants) this._data.plants = [];
         if (!this._data.general_tasks) this._data.general_tasks = [];
         if (!this._data.wissen) this._data.wissen = [];
+
+        // Automatisch neu laden wenn Tab/App wieder aktiv wird
+        document.addEventListener('visibilitychange', async () => {
+            if (document.visibilityState === 'visible' && GitHubStorage.isConfigured()) {
+                console.log('🔄 Tab aktiv – lade Daten von GitHub...');
+                await this.refresh();
+            }
+        });
+    },
+
+    // Daten von GitHub neu laden und UI aktualisieren
+    async refresh() {
+        const remote = await GitHubStorage.loadData();
+        if (!remote) return;
+
+        // Merge: alle Pflanzen zusammenführen (nach ID deduplizieren)
+        const mergedPlants = this._mergeLists(this._data.plants, remote.plants || [], 'id');
+        const mergedWissen = this._mergeLists(this._data.wissen, remote.wissen || [], 'id');
+        const mergedTasks = this._mergeLists(this._data.general_tasks, remote.general_tasks || [], 'id');
+
+        this._data.plants = mergedPlants;
+        this._data.wissen = mergedWissen;
+        this._data.general_tasks = mergedTasks;
+
+        // UI neu rendern wenn vorhanden
+        if (typeof renderPlantsGrid === 'function') renderPlantsGrid();
+        console.log('🔄 Daten synchronisiert');
+    },
+
+    // Zwei Listen nach key-Feld zusammenführen (ohne Duplikate)
+    _mergeLists(local, remote, key) {
+        const map = new Map();
+        for (const item of local) map.set(item[key], item);
+        for (const item of remote) {
+            if (!map.has(item[key])) map.set(item[key], item);
+        }
+        return Array.from(map.values());
     },
 
     async _save() {
