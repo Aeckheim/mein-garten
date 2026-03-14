@@ -793,9 +793,15 @@ function saveGitHubToken() {
     const token = document.getElementById('github-token').value.trim();
     localStorage.setItem('github_token', token);
     GitHubStorage.token = token;
-    // Daten sofort synchronisieren
-    GitHubStorage.loadData().then(data => {
-        StorageLayer._data = data;
+    // Daten synchronisieren: lokal + remote mergen
+    const localData = { ...StorageLayer._data };
+    GitHubStorage.loadData().then(async remote => {
+        // Merge: lokale UND remote Pflanzen zusammenführen
+        StorageLayer._data.plants = StorageLayer._mergeLists(localData.plants || [], remote.plants || [], 'id');
+        StorageLayer._data.wissen = StorageLayer._mergeLists(localData.wissen || [], remote.wissen || [], 'id');
+        StorageLayer._data.general_tasks = StorageLayer._mergeLists(localData.general_tasks || [], remote.general_tasks || [], 'id');
+        // Gemergte Daten zurück auf GitHub pushen
+        await StorageLayer._save();
         loadPlants().then(() => renderPlantsGrid());
     });
     updateGitHubStatus();
