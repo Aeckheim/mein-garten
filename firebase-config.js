@@ -59,12 +59,19 @@ const GitHubStorage = {
             const content = atob(result.content.replace(/\n/g, ''));
             // UTF-8 dekodieren
             const decoded = decodeURIComponent(escape(content));
-            const data = JSON.parse(decoded);
+            const remote = JSON.parse(decoded);
 
-            // Lokalen Cache aktualisieren
+            // Mit lokalen Daten mergen (lokale Daten haben Vorrang)
+            const local = this.getLocalData();
+            const data = {
+                plants: this._mergeById(local.plants || [], remote.plants || []),
+                general_tasks: this._mergeById(local.general_tasks || [], remote.general_tasks || []),
+                wissen: this._mergeById(local.wissen || [], remote.wissen || [])
+            };
+
             this.cache = data;
             localStorage.setItem('garten_data', JSON.stringify(data));
-            console.log('🐙 Daten von GitHub geladen');
+            console.log('🐙 Daten von GitHub geladen + mit lokal gemergt');
             return data;
         } catch (err) {
             if (err.message.includes('Not Found') || err.message.includes('404')) {
@@ -89,9 +96,9 @@ const GitHubStorage = {
 
         if (!this.isConfigured()) return;
 
-        // Debounce: mehrere schnelle Änderungen bündeln
+        // Debounce: kurz warten falls mehrere Änderungen gleichzeitig kommen
         clearTimeout(this.saveTimeout);
-        this.saveTimeout = setTimeout(() => this._pushToGitHub(data), 2000);
+        this.saveTimeout = setTimeout(() => this._pushToGitHub(data), 500);
     },
 
     async _pushToGitHub(data) {
@@ -127,6 +134,14 @@ const GitHubStorage = {
             console.error('🐙 GitHub Speichern fehlgeschlagen:', err.message);
             // Daten sind trotzdem lokal gesichert
         }
+    },
+
+    // Zwei Listen nach 'id' zusammenführen (lokal hat Vorrang)
+    _mergeById(local, remote) {
+        const map = new Map();
+        for (const item of remote) if (item.id) map.set(item.id, item);
+        for (const item of local) if (item.id) map.set(item.id, item); // lokal überschreibt remote
+        return Array.from(map.values());
     },
 
     getLocalData() {
