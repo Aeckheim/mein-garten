@@ -1,6 +1,81 @@
 {
   "plants": [
     {
+      "name": "Tomate",
+      "species": "Solanum lycopersicum",
+      "location": "",
+      "status": "gesund",
+      "emoji": "🍅",
+      "photo_url": null,
+      "care_plan": {
+        "jan": [
+          "Saatgut bestellen und Sorten auswählen"
+        ],
+        "feb": [
+          "Ab Mitte Februar auf der Fensterbank vorziehen (20–22 °C)",
+          "Anzuchterde verwenden, Samen 0,5 cm tief setzen"
+        ],
+        "mar": [
+          "Pikieren bei 2. Blattpaar in Einzeltöpfe",
+          "Hell und etwas kühler stellen (18 °C)"
+        ],
+        "apr": [
+          "Abhärten: tagsüber stundenweise rausstellen",
+          "Flüssigdünger alle 2 Wochen geben"
+        ],
+        "mai": [
+          "Nach den Eisheiligen (ab 15. Mai) ins Freiland pflanzen",
+          "Stützstäbe setzen, Mulch ausbringen"
+        ],
+        "jun": [
+          "Regelmäßig ausgeizen (Seitentriebe entfernen)",
+          "Gleichmäßig gießen, Staunässe vermeiden"
+        ],
+        "jul": [
+          "Weiter ausgeizen",
+          "Tomatendünger alle 2 Wochen",
+          "Auf Braunfäule kontrollieren"
+        ],
+        "aug": [
+          "Ernte der reifen Früchte",
+          "Blütenspitzen kappen ab Mitte August",
+          "Weiter regelmäßig gießen und düngen"
+        ],
+        "sep": [
+          "Letzte Ernte, grüne Tomaten nachreifen lassen",
+          "Pflanzen bei Kälte mit Vlies schützen"
+        ],
+        "okt": [
+          "Restliche grüne Tomaten ernten und drinnen nachreifen lassen",
+          "Pflanzenreste entfernen und kompostieren"
+        ],
+        "nov": [
+          "Beet für nächstes Jahr vorbereiten",
+          "Kompost einarbeiten"
+        ],
+        "dez": [
+          "Saatgutkatalog studieren für nächste Saison"
+        ]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, Boden gleichmäßig feucht halten",
+        "boden": "Nährstoffreich, humos, durchlässig",
+        "abstand": "50–60 cm"
+      },
+      "bio_tips": {
+        "mischkultur": "Nutze Mischkultur: Tomaten + Basilikum, Möhren + Zwiebeln, Bohnen + Bohnenkraut",
+        "duengung": "Brennnesseljauche (1:10 verdünnt) alle 2 Wochen als natürlicher Dünger",
+        "schaedlinge": "Nützlinge fördern: Marienkäfer gegen Blattläuse, Schlupfwespen gegen Raupen",
+        "mulch": "Mulchen mit Grasschnitt oder Stroh hält Feuchtigkeit und unterdrückt Beikraut"
+      },
+      "wiki_description": "",
+      "category": "gemuese",
+      "custom_tasks": [],
+      "added_date": "2026-03-14T08:50:31.960Z",
+      "id": "plant_1773478231962"
+    },
+    {
       "name": "Goldruten",
       "species": "= Goldruten",
       "location": "",
@@ -239,6 +314,81 @@
       "custom_tasks": [],
       "added_date": "2026-03-13T21:36:25.581Z",
       "id": "plant_1773437785581"
+    },
+    {
+      "name": "Tomate",
+      "species": "Solanum lycopersicum",
+      "location": "",
+      "status": "gesund",
+      "emoji": "🍅",
+      "photo_url": null,
+      "care_plan": {
+        "jan": [
+          "Saatgut bestellen und Sorten auswählen"
+        ],
+        "feb": [
+          "Ab Mitte Februar auf der Fensterbank vorziehen (20–22 °C)",
+          "Anzuchterde verwenden, Samen 0,5 cm tief setzen"
+        ],
+        "mar": [
+          "Pikieren bei 2. Blattpaar in Einzeltöpfe",
+          "Hell und etwas kühler stellen (18 °C)"
+        ],
+        "apr": [
+          "Abhärten: tagsüber stundenweise rausstellen",
+          "Flüssigdünger alle 2 Wochen geben"
+        ],
+        "mai": [
+          "Nach den Eisheiligen (ab 15. Mai) ins Freiland pflanzen",
+          "Stützstäbe setzen, Mulch ausbringen"
+        ],
+        "jun": [
+          "Regelmäßig ausgeizen (Seitentriebe entfernen)",
+          "Gleichmäßig gießen, Staunässe vermeiden"
+        ],
+        "jul": [
+          "Weiter ausgeizen",
+          "Tomatendünger alle 2 Wochen",
+          "Auf Braunfäule kontrollieren"
+        ],
+        "aug": [
+          "Ernte der reifen Früchte",
+          "Blütenspitzen kappen ab Mitte August",
+          "Weiter regelmäßig gießen und düngen"
+        ],
+        "sep": [
+          "Letzte Ernte, grüne Tomaten nachreifen lassen",
+          "Pflanzen bei Kälte mit Vlies schützen"
+        ],
+        "okt": [
+          "Restliche grüne Tomaten ernten und drinnen nachreifen lassen",
+          "Pflanzenreste entfernen und kompostieren"
+        ],
+        "nov": [
+          "Beet für nächstes Jahr vorbereiten",
+          "Kompost einarbeiten"
+        ],
+        "dez": [
+          "Saatgutkatalog studieren für nächste Saison"
+        ]
+      },
+      "quick_info": {
+        "sonne": "Volle Sonne",
+        "wasser": "Regelmäßig, Boden gleichmäßig feucht halten",
+        "boden": "Nährstoffreich, humos, durchlässig",
+        "abstand": "50–60 cm"
+      },
+      "bio_tips": {
+        "mischkultur": "Nutze Mischkultur: Tomaten + Basilikum, Möhren + Zwiebeln, Bohnen + Bohnenkraut",
+        "duengung": "Brennnesseljauche (1:10 verdünnt) alle 2 Wochen als natürlicher Dünger",
+        "schaedlinge": "Nützlinge fördern: Marienkäfer gegen Blattläuse, Schlupfwespen gegen Raupen",
+        "mulch": "Mulchen mit Grasschnitt oder Stroh hält Feuchtigkeit und unterdrückt Beikraut"
+      },
+      "wiki_description": "",
+      "category": "gemuese",
+      "custom_tasks": [],
+      "added_date": "2026-03-14T08:50:31.960Z",
+      "id": "plant_1773478231962"
     }
   ],
   "general_tasks": [],
