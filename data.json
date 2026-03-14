@@ -3,6 +3,196 @@
     {
       "name": "Goldruten",
       "species": "= Goldruten",
+      "location": "",
+      "status": "gesund",
+      "emoji": "🌱",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Solidago_gigantea01.jpg/330px-Solidago_gigantea01.jpg",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": [
+          "Standort vorbereiten"
+        ],
+        "apr": [
+          "Boden lockern, Kompost einarbeiten"
+        ],
+        "mai": [
+          "Auspflanzen, mulchen"
+        ],
+        "jun": [
+          "Regelmäßig gießen"
+        ],
+        "jul": [
+          "Pflegen und beobachten"
+        ],
+        "aug": [
+          "Pflegen"
+        ],
+        "sep": [
+          "Herbstvorbereitung"
+        ],
+        "okt": [
+          "Winterschutz prüfen"
+        ],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": null,
+      "bio_tips": {
+        "mischkultur": "Nutze Mischkultur: Tomaten + Basilikum, Möhren + Zwiebeln, Bohnen + Bohnenkraut",
+        "duengung": "Brennnesseljauche (1:10 verdünnt) alle 2 Wochen als natürlicher Dünger",
+        "schaedlinge": "Nützlinge fördern: Marienkäfer gegen Blattläuse, Schlupfwespen gegen Raupen",
+        "mulch": "Mulchen mit Grasschnitt oder Stroh hält Feuchtigkeit und unterdrückt Beikraut"
+      },
+      "wiki_description": "Die Goldruten (Solidago), auch Goldrauten genannt, sind eine Pflanzengattung innerhalb der Familie der Korbblütler (Asteraceae). Die etwa 100 Arten sind hauptsächlich in Nordamerika verbreitet. Die einzige in Mitteleuropa heimische Art ist die Gewöhnliche Goldrute.",
+      "category": "sonstige",
+      "custom_tasks": [],
+      "added_date": "2026-03-13T21:37:21.032Z",
+      "id": "plant_1773437841055"
+    },
+    {
+      "name": "Brombeeren",
+      "species": "= Brombeeren",
+      "location": "",
+      "status": "gesund",
+      "emoji": "🍎",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Brombeere_0815-23.jpg/330px-Brombeere_0815-23.jpg",
+      "care_plan": {
+        "jan": [
+          "Obstbaumschnitt bei frostfreiem Wetter",
+          "Leimringe kontrollieren"
+        ],
+        "feb": [
+          "Obstbaumschnitt fortsetzen",
+          "Baumscheiben mit Kompost mulchen"
+        ],
+        "mar": [
+          "Kalkanstrich erneuern (Frostschutz)",
+          "Ohrwurm-Quartiere aufhängen (gegen Blattläuse)"
+        ],
+        "apr": [
+          "Blütenansatz beobachten",
+          "Bei Spätfrost: Vlies über Blüten"
+        ],
+        "mai": [
+          "Baumscheibe mulchen",
+          "Raupen von Hand ablesen"
+        ],
+        "jun": [
+          "Junifruchtfall abwarten",
+          "Befallene Früchte entfernen"
+        ],
+        "jul": [
+          "Sommerschnitt bei Kirsche",
+          "Fallobst aufsammeln (Schädlingskreislauf unterbrechen)"
+        ],
+        "aug": [
+          "Ernte! Nur reife Früchte pflücken",
+          "Fruchtmumien entfernen"
+        ],
+        "sep": [
+          "Letzte Ernte",
+          "Leimringe anbringen"
+        ],
+        "okt": [
+          "Baumscheibe mit Kompost mulchen",
+          "Totholz als Nützlingshotel stapeln"
+        ],
+        "nov": [
+          "Stammschutz anbringen",
+          "Laub unter Bäumen liegen lassen (Humusbildung)"
+        ],
+        "dez": [
+          "Winterschnitt planen",
+          "Nistkästen reinigen"
+        ]
+      },
+      "quick_info": null,
+      "bio_tips": {
+        "mischkultur": "Unterpflanzung mit Kapuzinerkresse oder Knoblauch schützt vor Schädlingen",
+        "duengung": "Baumscheibe mit reifem Kompost mulchen – beste natürliche Düngung",
+        "schaedlinge": "Ohrwurm-Tontöpfe in Bäume hängen – Ohrwürmer fressen Blattläuse",
+        "mulch": "Baumscheibe nie nackt lassen – Mulch oder Unterpflanzung schützt den Boden"
+      },
+      "wiki_description": "Die Brombeeren sind eine Sektion aus der umfangreichen und weltweit verbreiteten Pflanzengattung Rubus innerhalb der Familie der Rosengewächse (Rosaceae). Die Sektion umfasst mehrere tausend Arten, allein in Europa wurden mehr als 2000 Arten beschrieben. Die Früchte werden als Obst verwendet. Das Wort Brombeere hat sich aus dem althochdeutschen Wort brāmberi‚ Dorngebüschbeere oder Beere des Dornstrauchs, entwickelt. Biologisch betrachtet hat die Brombeere allerdings keine Dornen, sondern Stacheln.",
+      "category": "obst",
+      "custom_tasks": [],
+      "added_date": "2026-03-13T21:59:06.882Z",
+      "id": "plant_1773439146892"
+    },
+    {
+      "name": "Erdbeeren",
+      "species": "= Erdbeeren",
+      "location": "",
+      "status": "gesund",
+      "emoji": "🍎",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Illustration_Fragaria_vesca0.jpg/330px-Illustration_Fragaria_vesca0.jpg",
+      "care_plan": {
+        "jan": [
+          "Obstbaumschnitt bei frostfreiem Wetter",
+          "Leimringe kontrollieren"
+        ],
+        "feb": [
+          "Obstbaumschnitt fortsetzen",
+          "Baumscheiben mit Kompost mulchen"
+        ],
+        "mar": [
+          "Kalkanstrich erneuern (Frostschutz)",
+          "Ohrwurm-Quartiere aufhängen (gegen Blattläuse)"
+        ],
+        "apr": [
+          "Blütenansatz beobachten",
+          "Bei Spätfrost: Vlies über Blüten"
+        ],
+        "mai": [
+          "Baumscheibe mulchen",
+          "Raupen von Hand ablesen"
+        ],
+        "jun": [
+          "Junifruchtfall abwarten",
+          "Befallene Früchte entfernen"
+        ],
+        "jul": [
+          "Sommerschnitt bei Kirsche",
+          "Fallobst aufsammeln (Schädlingskreislauf unterbrechen)"
+        ],
+        "aug": [
+          "Ernte! Nur reife Früchte pflücken",
+          "Fruchtmumien entfernen"
+        ],
+        "sep": [
+          "Letzte Ernte",
+          "Leimringe anbringen"
+        ],
+        "okt": [
+          "Baumscheibe mit Kompost mulchen",
+          "Totholz als Nützlingshotel stapeln"
+        ],
+        "nov": [
+          "Stammschutz anbringen",
+          "Laub unter Bäumen liegen lassen (Humusbildung)"
+        ],
+        "dez": [
+          "Winterschnitt planen",
+          "Nistkästen reinigen"
+        ]
+      },
+      "quick_info": null,
+      "bio_tips": {
+        "mischkultur": "Unterpflanzung mit Kapuzinerkresse oder Knoblauch schützt vor Schädlingen",
+        "duengung": "Baumscheibe mit reifem Kompost mulchen – beste natürliche Düngung",
+        "schaedlinge": "Ohrwurm-Tontöpfe in Bäume hängen – Ohrwürmer fressen Blattläuse",
+        "mulch": "Baumscheibe nie nackt lassen – Mulch oder Unterpflanzung schützt den Boden"
+      },
+      "wiki_description": "Die Erdbeeren (Fragaria) sind eine Gattung in der Unterfamilie der Rosoideae innerhalb der Familie der Rosengewächse (Rosaceae). Zur Gattung Fragaria gehören ungefähr zwanzig Arten, meistens in den gemäßigten Zonen der Nordhalbkugel vorkommend, und verschiedene Unterarten; daneben gibt es viele hybride Formen mit zahlreichen Kultursorten.",
+      "category": "obst",
+      "custom_tasks": [],
+      "added_date": "2026-03-13T21:59:51.846Z",
+      "id": "plant_1773439191846"
+    },
+    {
+      "name": "Goldruten",
+      "species": "= Goldruten",
       "location": "Überall",
       "status": "gesund",
       "emoji": "🌱",
