@@ -139,16 +139,22 @@ const GitHubStorage = {
     // Zwei Listen nach 'id' zusammenführen (Deep-Merge für Pflanzen)
     _mergeById(local, remote) {
         const map = new Map();
+        // Remote zuerst (Basis)
         for (const item of remote) if (item.id) map.set(item.id, item);
+        // Lokale Items: nur hinzufügen wenn remote nicht existiert,
+        // oder Arrays (Fotos/Journal/Tasks) zusammenführen
         for (const item of local) {
             if (!item.id) continue;
-            if (map.has(item.id)) {
-                // Deep-Merge: lokale Felder gewinnen, aber Arrays werden zusammengeführt
+            if (!map.has(item.id)) {
+                // Nur lokal vorhanden → übernehmen
+                map.set(item.id, item);
+            } else {
+                // Existiert beidseitig → Remote als Basis, Arrays mergen
                 const remoteItem = map.get(item.id);
-                const merged = { ...remoteItem, ...item };
+                const merged = { ...remoteItem };
                 // Fotos zusammenführen (nach date deduplizieren)
-                if (remoteItem.photos || item.photos) {
-                    const allPhotos = [...(remoteItem.photos || []), ...(item.photos || [])];
+                const allPhotos = [...(remoteItem.photos || []), ...(item.photos || [])];
+                if (allPhotos.length > 0) {
                     const seen = new Set();
                     merged.photos = allPhotos.filter(p => {
                         const key = p.date || p.data?.substring(0, 50);
@@ -158,8 +164,8 @@ const GitHubStorage = {
                     });
                 }
                 // Journal zusammenführen (nach id deduplizieren)
-                if (remoteItem.journal || item.journal) {
-                    const allJournal = [...(remoteItem.journal || []), ...(item.journal || [])];
+                const allJournal = [...(remoteItem.journal || []), ...(item.journal || [])];
+                if (allJournal.length > 0) {
                     const seenJ = new Set();
                     merged.journal = allJournal.filter(j => {
                         const key = j.id || j.date;
@@ -169,8 +175,8 @@ const GitHubStorage = {
                     });
                 }
                 // Custom tasks zusammenführen
-                if (remoteItem.custom_tasks || item.custom_tasks) {
-                    const allTasks = [...(remoteItem.custom_tasks || []), ...(item.custom_tasks || [])];
+                const allTasks = [...(remoteItem.custom_tasks || []), ...(item.custom_tasks || [])];
+                if (allTasks.length > 0) {
                     const seenT = new Set();
                     merged.custom_tasks = allTasks.filter(t => {
                         const key = t.id || (t.text + t.due_month);
@@ -180,8 +186,6 @@ const GitHubStorage = {
                     });
                 }
                 map.set(item.id, merged);
-            } else {
-                map.set(item.id, item);
             }
         }
         return Array.from(map.values());
