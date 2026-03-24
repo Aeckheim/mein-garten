@@ -136,11 +136,54 @@ const GitHubStorage = {
         }
     },
 
-    // Zwei Listen nach 'id' zusammenführen (lokal hat Vorrang)
+    // Zwei Listen nach 'id' zusammenführen (Deep-Merge für Pflanzen)
     _mergeById(local, remote) {
         const map = new Map();
         for (const item of remote) if (item.id) map.set(item.id, item);
-        for (const item of local) if (item.id) map.set(item.id, item); // lokal überschreibt remote
+        for (const item of local) {
+            if (!item.id) continue;
+            if (map.has(item.id)) {
+                // Deep-Merge: lokale Felder gewinnen, aber Arrays werden zusammengeführt
+                const remoteItem = map.get(item.id);
+                const merged = { ...remoteItem, ...item };
+                // Fotos zusammenführen (nach date deduplizieren)
+                if (remoteItem.photos || item.photos) {
+                    const allPhotos = [...(remoteItem.photos || []), ...(item.photos || [])];
+                    const seen = new Set();
+                    merged.photos = allPhotos.filter(p => {
+                        const key = p.date || p.data?.substring(0, 50);
+                        if (seen.has(key)) return false;
+                        seen.add(key);
+                        return true;
+                    });
+                }
+                // Journal zusammenführen (nach id deduplizieren)
+                if (remoteItem.journal || item.journal) {
+                    const allJournal = [...(remoteItem.journal || []), ...(item.journal || [])];
+                    const seenJ = new Set();
+                    merged.journal = allJournal.filter(j => {
+                        const key = j.id || j.date;
+                        if (seenJ.has(key)) return false;
+                        seenJ.add(key);
+                        return true;
+                    });
+                }
+                // Custom tasks zusammenführen
+                if (remoteItem.custom_tasks || item.custom_tasks) {
+                    const allTasks = [...(remoteItem.custom_tasks || []), ...(item.custom_tasks || [])];
+                    const seenT = new Set();
+                    merged.custom_tasks = allTasks.filter(t => {
+                        const key = t.id || (t.text + t.due_month);
+                        if (seenT.has(key)) return false;
+                        seenT.add(key);
+                        return true;
+                    });
+                }
+                map.set(item.id, merged);
+            } else {
+                map.set(item.id, item);
+            }
+        }
         return Array.from(map.values());
     },
 
@@ -196,14 +239,9 @@ const StorageLayer = {
         console.log('🔄 Daten synchronisiert');
     },
 
-    // Zwei Listen nach key-Feld zusammenführen (ohne Duplikate)
-    _mergeLists(local, remote, key) {
-        const map = new Map();
-        for (const item of local) map.set(item[key], item);
-        for (const item of remote) {
-            if (!map.has(item[key])) map.set(item[key], item);
-        }
-        return Array.from(map.values());
+    // Deep-Merge über GitHubStorage nutzen
+    _mergeLists(local, remote) {
+        return GitHubStorage._mergeById(local, remote);
     },
 
     async _save() {
