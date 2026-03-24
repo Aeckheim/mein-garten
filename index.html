@@ -173,66 +173,59 @@
         </div>
     </div>
 
-    <!-- Modal: Pflanze hinzufügen (Datenbank + Wikipedia) -->
+    <!-- Modal: Pflanze hinzufügen -->
     <div id="modal-manual-add" class="modal">
         <div class="modal-content modal-large">
             <button class="modal-close" onclick="closeModal('modal-manual-add')">✕</button>
-            <h2>➕ Pflanze hinzufügen</h2>
-            <div class="manual-tabs">
-                <button class="manual-tab active" onclick="switchManualTab('database')">📚 Datenbank (51)</button>
-                <button class="manual-tab" onclick="switchManualTab('freetext')">🔍 Beliebige Pflanze</button>
-            </div>
-            <div id="manual-tab-database" class="manual-tab-content">
+            <h2>🌱 Pflanze anlegen</h2>
+
+            <!-- Schritt 1: Name eingeben -->
+            <div id="create-step1">
                 <div class="form-group">
-                    <input type="text" id="manual-search" placeholder="🔍 Suche z.B. Tomate, Rose..." oninput="filterPlantDatabase(this.value)">
-                    <div id="plant-database-list" class="plant-database-list"></div>
-                </div>
-            </div>
-            <div id="manual-tab-freetext" class="manual-tab-content" style="display: none;">
-                <div class="form-group">
-                    <label>Pflanze suchen (beliebiger Name)</label>
+                    <label>Wie heißt deine Pflanze?</label>
                     <div class="wiki-search-bar">
-                        <input type="search" id="wiki-search-input" placeholder="z.B. Bärlauch, Mangold, Feige..."
-                               onkeydown="if(event.key==='Enter'){event.preventDefault();searchWikipedia();}"
-                               onchange="searchWikipedia()">
-                        <button class="btn-primary btn-small wiki-search-btn" onclick="searchWikipedia()">🔍 Suchen</button>
+                        <input type="text" id="create-plant-name" placeholder="z.B. Tomate, Bärlauch, Feige..."
+                               onkeydown="if(event.key==='Enter'){event.preventDefault();startPlantSearch();}">
+                        <button class="btn-primary btn-small" onclick="startPlantSearch()">🔍 Suchen</button>
                     </div>
                 </div>
-                <div id="wiki-loading" class="analyzing-animation" style="display: none;">
+                <div id="create-loading" class="analyzing-animation" style="display: none;">
                     <div class="spinner" style="font-size: 30px;">🌿</div>
-                    <p style="font-size: 14px;">Suche auf Wikipedia...</p>
+                    <p style="font-size: 14px;">Suche Infos...</p>
                 </div>
-                <div id="wiki-results"></div>
-                <div id="wiki-detail" style="display: none;">
-                    <div style="display: flex; gap: 16px; padding: 16px; background: var(--green-bg); border-radius: var(--radius-sm); margin-top: 12px;">
-                        <img id="wiki-plant-image" src="" alt="" style="width: 100px; height: 100px; border-radius: var(--radius-sm); object-fit: cover; display: none;">
-                        <div style="flex: 1;">
-                            <h4 id="wiki-plant-title" style="color: var(--green-dark); margin-bottom: 4px;"></h4>
-                            <p id="wiki-plant-taxonomy" style="font-size: 12px; color: var(--text-medium); font-style: italic;"></p>
-                            <p id="wiki-plant-description" style="font-size: 13px; line-height: 1.5; margin-top: 8px; max-height: 100px; overflow-y: auto;"></p>
-                        </div>
-                    </div>
-                </div>
+                <div id="create-suggestions"></div>
             </div>
-            <div id="manual-selected" style="display: none;">
-                <hr style="border: 1px solid var(--green-pale); margin: 20px 0;">
-                <h3 style="margin-bottom: 12px;">🌿 Details</h3>
-                <div class="form-group"><label>Eigener Name</label><input type="text" id="manual-name" placeholder="z.B. Omas Tomate"></div>
-                <div class="form-group"><label>Standort</label><input type="text" id="manual-location" placeholder="z.B. Hochbeet, Südseite"></div>
+
+            <!-- Schritt 2: Details & Fotos -->
+            <div id="create-step2" style="display: none;">
+                <div id="create-wiki-info" class="wiki-info-box"></div>
+
+                <div class="form-group"><label>Name</label><input type="text" id="create-name" placeholder="z.B. Omas Tomate"></div>
+                <div class="form-group"><label>Standort</label><input type="text" id="create-location" placeholder="z.B. Hochbeet, Südseite"></div>
                 <div class="form-group"><label>Kategorie</label>
-                    <select id="manual-category" onchange="showBioTips()">
+                    <select id="create-category">
                         <option value="gemuese">🥬 Gemüse</option><option value="obst">🍎 Obst</option>
                         <option value="kraeuter">🌿 Kräuter</option><option value="blumen">🌸 Blumen</option>
                         <option value="stauden">🌼 Stauden</option><option value="straeucher">🌳 Sträucher</option>
                         <option value="sonstige">🌱 Sonstige</option>
                     </select>
                 </div>
-                <div class="form-group"><label>Foto (optional)</label><input type="file" id="manual-photo-input" accept="image/*"></div>
-                <div id="bio-tips-preview" class="bio-tips-preview">
-                    <h4>🌿 Bio-Garten Tipps</h4>
-                    <div id="bio-tips-content"></div>
+
+                <div class="form-group">
+                    <label>📸 Fotos</label>
+                    <div class="photo-upload-area" onclick="document.getElementById('create-photo-input').click()">
+                        <span style="font-size: 32px;">📷</span>
+                        <p>Fotos hinzufügen (auch mehrere)</p>
+                        <input type="file" id="create-photo-input" accept="image/*" multiple capture="environment"
+                               onchange="handleCreatePhotos(event)" style="display:none;">
+                    </div>
+                    <div id="create-photo-preview" class="photo-gallery-preview"></div>
                 </div>
-                <button class="btn-primary" onclick="saveManualPlant()" style="width: 100%; margin-top: 16px;">🌿 Hinzufügen</button>
+
+                <div class="form-actions" style="margin-top: 16px;">
+                    <button class="btn-secondary" onclick="backToStep1()">← Zurück</button>
+                    <button class="btn-primary" onclick="saveNewPlant()" style="flex: 1;">🌱 Anlegen</button>
+                </div>
             </div>
         </div>
     </div>

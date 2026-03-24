@@ -211,6 +211,8 @@ function showPlantDetail(plantId) {
     // Quick Info aus der Datenbank holen
     const dbPlant = findInDatabase(plant.species || plant.name);
     const quickInfo = plant.quick_info || dbPlant?.quick_info;
+    const photos = plant.photos || [];
+    const journal = plant.journal || [];
 
     container.innerHTML = `
         <div class="detail-header">
@@ -241,6 +243,7 @@ function showPlantDetail(plantId) {
                     ${quickInfo.abstand ? `<div class="quick-info-item"><strong>📏 Abstand</strong>${quickInfo.abstand}</div>` : ''}
                 </div>
                 ` : ''}
+                ${plant.wiki_description ? `<p class="detail-wiki-desc">${plant.wiki_description.substring(0, 300)}${plant.wiki_description.length > 300 ? '...' : ''}</p>` : ''}
                 <div class="detail-actions">
                     <select onchange="updatePlantStatus('${plant.id}', this.value)" style="padding: 8px 12px; border-radius: 20px; border: 2px solid var(--green-pale); font-family: Nunito; font-weight: 700;">
                         <option value="gesund" ${plant.status === 'gesund' ? 'selected' : ''}>🟢 Gesund</option>
@@ -253,8 +256,60 @@ function showPlantDetail(plantId) {
             </div>
         </div>
 
+        <!-- 📸 Fotogalerie -->
+        <div class="detail-section">
+            <div class="detail-section-header">
+                <h2>📸 Fotos (${photos.length})</h2>
+                <label class="btn-secondary btn-small" style="cursor:pointer;">
+                    ➕ Foto
+                    <input type="file" accept="image/*" multiple capture="environment"
+                           onchange="addPhotosToPlant('${plant.id}', event)" style="display:none;">
+                </label>
+            </div>
+            <div class="photo-gallery">
+                ${photos.length > 0 ? photos.map((p, i) => `
+                    <div class="gallery-item">
+                        <img src="${p.data}" alt="Foto ${i+1}" onclick="openPhotoViewer('${plant.id}', ${i})">
+                        <span class="gallery-date">${new Date(p.date).toLocaleDateString('de-DE')}</span>
+                        <button class="gallery-remove" onclick="removePhoto('${plant.id}', ${i})">✕</button>
+                    </div>
+                `).join('') : '<p style="color:var(--text-medium); font-style:italic; grid-column:1/-1;">Noch keine Fotos. Füge welche hinzu!</p>'}
+            </div>
+        </div>
+
+        <!-- 📝 Tagebuch -->
+        <div class="detail-section">
+            <div class="detail-section-header">
+                <h2>📝 Tagebuch</h2>
+                <button class="btn-secondary btn-small" onclick="toggleJournalForm('${plant.id}')">➕ Eintrag</button>
+            </div>
+            <div id="journal-form-${plant.id}" class="journal-form" style="display:none;">
+                <textarea id="journal-text-${plant.id}" placeholder="Was hast du gemacht? Was fällt dir auf?" rows="3"></textarea>
+                <div style="display:flex; gap:8px; align-items:center; margin-top:8px;">
+                    <label class="btn-secondary btn-small" style="cursor:pointer;">
+                        📷 Foto
+                        <input type="file" accept="image/*" id="journal-photo-${plant.id}" style="display:none;">
+                    </label>
+                    <span id="journal-photo-name-${plant.id}" style="font-size:12px; color:var(--text-medium);"></span>
+                    <button class="btn-primary btn-small" onclick="saveJournalEntry('${plant.id}')" style="margin-left:auto;">💾 Speichern</button>
+                </div>
+            </div>
+            <div class="journal-entries">
+                ${journal.length > 0 ? journal.slice().reverse().map((entry, i) => `
+                    <div class="journal-entry">
+                        <div class="journal-entry-header">
+                            <span class="journal-date">📅 ${new Date(entry.date).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                            <button class="gallery-remove" onclick="deleteJournalEntry('${plant.id}', ${journal.length - 1 - i})">✕</button>
+                        </div>
+                        <p class="journal-text">${entry.text}</p>
+                        ${entry.photo ? `<img class="journal-photo" src="${entry.photo}" alt="Foto">` : ''}
+                    </div>
+                `).join('') : '<p style="color:var(--text-medium); font-style:italic;">Noch keine Einträge. Dokumentiere deinen Garten!</p>'}
+            </div>
+        </div>
+
         <!-- Jahres-Pflegeplan -->
-        <div class="year-plan">
+        <div class="detail-section">
             <h2>📋 Jahres-Pflegeplan</h2>
             <div class="year-plan-grid">
                 ${MONTH_KEYS.map((key, idx) => {
@@ -274,7 +329,7 @@ function showPlantDetail(plantId) {
         </div>
 
         <!-- Anstehende Aufgaben -->
-        <div class="upcoming-tasks">
+        <div class="detail-section">
             <h2>📌 Anstehende Aufgaben</h2>
             <button class="btn-secondary btn-small" onclick="openAddTaskDialog('${plant.id}')" style="margin-bottom: 16px;">
                 ➕ Eigene Aufgabe hinzufügen
@@ -283,7 +338,112 @@ function showPlantDetail(plantId) {
         </div>
     `;
 
+    // Journal-Foto Listener
+    const journalPhotoInput = document.getElementById(`journal-photo-${plant.id}`);
+    if (journalPhotoInput) {
+        journalPhotoInput.addEventListener('change', (e) => {
+            const name = e.target.files[0]?.name || '';
+            document.getElementById(`journal-photo-name-${plant.id}`).textContent = name;
+        });
+    }
+
     navigate('detail');
+}
+
+// ============================================
+// 📸 Foto-Funktionen
+// ============================================
+
+async function addPhotosToPlant(plantId, event) {
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant) return;
+    if (!plant.photos) plant.photos = [];
+
+    const files = Array.from(event.target.files);
+    for (const file of files) {
+        const base64 = await compressPhoto(file);
+        plant.photos.push({ data: base64, date: new Date().toISOString() });
+    }
+
+    // Erstes Foto auch als Hauptfoto setzen wenn noch keins da
+    if (!plant.photo_url && plant.photos.length > 0) {
+        plant.photo_url = plant.photos[0].data;
+    }
+
+    await StorageLayer.updatePlant(plantId, { photos: plant.photos, photo_url: plant.photo_url });
+    showPlantDetail(plantId);
+    showToast(`📸 ${files.length} Foto(s) hinzugefügt!`, 'success');
+}
+
+async function removePhoto(plantId, index) {
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant || !plant.photos) return;
+
+    plant.photos.splice(index, 1);
+    if (plant.photos.length > 0) {
+        plant.photo_url = plant.photos[0].data;
+    } else {
+        plant.photo_url = null;
+    }
+
+    await StorageLayer.updatePlant(plantId, { photos: plant.photos, photo_url: plant.photo_url });
+    showPlantDetail(plantId);
+}
+
+function openPhotoViewer(plantId, index) {
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant?.photos?.[index]) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'photo-viewer-overlay';
+    overlay.innerHTML = `<img src="${plant.photos[index].data}" alt="Foto">`;
+    overlay.addEventListener('click', () => overlay.remove());
+    document.body.appendChild(overlay);
+}
+
+// ============================================
+// 📝 Tagebuch-Funktionen
+// ============================================
+
+function toggleJournalForm(plantId) {
+    const form = document.getElementById(`journal-form-${plantId}`);
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+async function saveJournalEntry(plantId) {
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant) return;
+
+    const text = document.getElementById(`journal-text-${plantId}`).value.trim();
+    if (!text) { showToast('❌ Bitte schreib etwas!', 'error'); return; }
+
+    const photoInput = document.getElementById(`journal-photo-${plantId}`);
+    let photo = null;
+    if (photoInput?.files[0]) {
+        photo = await compressPhoto(photoInput.files[0]);
+    }
+
+    if (!plant.journal) plant.journal = [];
+    plant.journal.push({
+        id: 'j_' + Date.now(),
+        date: new Date().toISOString(),
+        text,
+        photo
+    });
+
+    await StorageLayer.updatePlant(plantId, { journal: plant.journal });
+    showPlantDetail(plantId);
+    showToast('📝 Eintrag gespeichert!', 'success');
+}
+
+async function deleteJournalEntry(plantId, index) {
+    if (!confirm('Eintrag löschen?')) return;
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant?.journal) return;
+
+    plant.journal.splice(index, 1);
+    await StorageLayer.updatePlant(plantId, { journal: plant.journal });
+    showPlantDetail(plantId);
 }
 
 function renderUpcomingTasks(plant) {
@@ -478,117 +638,257 @@ async function savePlant() {
 }
 
 // ============================================
-// ➕ Manuelle Pflanze hinzufügen
+// ➕ Pflanze anlegen (neuer Flow)
 // ============================================
 
+let createPhotos = []; // temporäre Fotos beim Anlegen
+let createWikiInfo = null; // Wikipedia-Infos der gewählten Pflanze
+
 function openManualAddDialog() {
-    selectedDbPlant = null;
-    selectedWikiPlant = null;
-    document.getElementById('manual-selected').style.display = 'none';
-    document.getElementById('manual-search').value = '';
-    document.getElementById('wiki-results').innerHTML = '';
-    document.getElementById('wiki-detail').style.display = 'none';
-    const wikiInput = document.getElementById('wiki-search-input');
-    if (wikiInput) wikiInput.value = '';
-    switchManualTab('database');
-    renderPlantDatabaseList('');
+    createPhotos = [];
+    createWikiInfo = null;
+    document.getElementById('create-step1').style.display = 'block';
+    document.getElementById('create-step2').style.display = 'none';
+    document.getElementById('create-plant-name').value = '';
+    document.getElementById('create-suggestions').innerHTML = '';
+    document.getElementById('create-loading').style.display = 'none';
     openModal('modal-manual-add');
 }
 
-function filterPlantDatabase(query) {
-    renderPlantDatabaseList(query);
+async function startPlantSearch() {
+    const query = document.getElementById('create-plant-name').value.trim();
+    if (!query) return;
+
+    document.getElementById('create-loading').style.display = 'block';
+    document.getElementById('create-suggestions').innerHTML = '';
+
+    // Erst in lokaler Datenbank suchen
+    const q = query.toLowerCase();
+    const dbMatches = plantDatabase.filter(p =>
+        p.name_de.toLowerCase().includes(q) ||
+        p.name_lat.toLowerCase().includes(q)
+    ).slice(0, 3);
+
+    // Dann Wikipedia suchen
+    let wikiResults = [];
+    try {
+        wikiResults = await WikipediaAPI.search(query);
+    } catch (e) {
+        console.warn('Wikipedia-Suche fehlgeschlagen:', e);
+    }
+
+    document.getElementById('create-loading').style.display = 'none';
+
+    let html = '';
+
+    // Datenbank-Treffer
+    if (dbMatches.length > 0) {
+        html += '<p style="font-size:12px; color:var(--text-medium); margin:8px 0 4px;">📚 Aus der Datenbank:</p>';
+        dbMatches.forEach(p => {
+            html += `
+                <div class="plant-db-item" onclick="selectCreatePlant('db', '${p.id}')">
+                    <span class="plant-db-item-emoji">${p.emoji}</span>
+                    <div>
+                        <div class="plant-db-item-name">${p.name_de}</div>
+                        <div class="plant-db-item-latin">${p.name_lat}</div>
+                    </div>
+                </div>`;
+        });
+    }
+
+    // Wikipedia-Treffer
+    if (wikiResults.length > 0) {
+        window._wikiResults = wikiResults;
+        html += '<p style="font-size:12px; color:var(--text-medium); margin:12px 0 4px;">🌍 Von Wikipedia:</p>';
+        wikiResults.forEach((r, i) => {
+            html += `
+                <div class="plant-db-item" onclick="selectCreatePlant('wiki', ${i})">
+                    <span class="plant-db-item-emoji">🌿</span>
+                    <div>
+                        <div class="plant-db-item-name">${r.title.replace(/</g, '&lt;')}</div>
+                        <div class="plant-db-item-latin">${(r.description || '').replace(/</g, '&lt;')}</div>
+                    </div>
+                </div>`;
+        });
+    }
+
+    // Freie Eingabe immer anbieten
+    html += `
+        <div class="plant-db-item" onclick="selectCreatePlant('free', '${query.replace(/'/g, "\\'")}')">
+            <span class="plant-db-item-emoji">✏️</span>
+            <div>
+                <div class="plant-db-item-name">"${query}" einfach anlegen</div>
+                <div class="plant-db-item-latin">Ohne automatische Infos</div>
+            </div>
+        </div>`;
+
+    document.getElementById('create-suggestions').innerHTML = html;
 }
 
-function renderPlantDatabaseList(query) {
-    const list = document.getElementById('plant-database-list');
-    const q = query.toLowerCase();
-    const filtered = plantDatabase.filter(p =>
-        p.name_de.toLowerCase().includes(q) ||
-        p.name_lat.toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q)
-    );
+async function selectCreatePlant(type, idOrIndex) {
+    createWikiInfo = null;
 
-    const categoryLabels = {
-        gemuese: '🥬 Gemüse',
-        obst: '🍎 Obst',
-        kraeuter: '🌿 Kräuter',
-        blumen: '🌸 Blumen',
-        stauden: '🌼 Stauden',
-        straeucher: '🌳 Sträucher'
-    };
+    if (type === 'db') {
+        const dbPlant = plantDatabase.find(p => p.id === idOrIndex);
+        if (!dbPlant) return;
+        createWikiInfo = {
+            source: 'db',
+            name: dbPlant.name_de,
+            species: dbPlant.name_lat,
+            emoji: dbPlant.emoji,
+            category: dbPlant.category,
+            care_plan: dbPlant.care_plan,
+            quick_info: dbPlant.quick_info,
+            description: ''
+        };
+        goToStep2(dbPlant.name_de, dbPlant.category);
 
-    list.innerHTML = filtered.map(p => `
-        <div class="plant-db-item" onclick="selectDbPlant('${p.id}')">
-            <span class="plant-db-item-emoji">${p.emoji}</span>
-            <div>
-                <div class="plant-db-item-name">${p.name_de}</div>
-                <div class="plant-db-item-latin">${p.name_lat}</div>
-            </div>
-            <span class="plant-db-item-category">${categoryLabels[p.category] || p.category}</span>
+    } else if (type === 'wiki') {
+        const result = window._wikiResults?.[idOrIndex];
+        if (!result) return;
+
+        document.getElementById('create-loading').style.display = 'block';
+        try {
+            const info = await WikipediaAPI.getPlantInfo(result.title);
+            const guessedCat = WikipediaAPI.guessCategory((info.description || '') + ' ' + (info.taxonomy?.familie || ''));
+
+            createWikiInfo = {
+                source: 'wiki',
+                name: info.title,
+                species: info.taxonomy?.wissenschaftlich || '',
+                emoji: getCategoryEmoji(guessedCat),
+                category: guessedCat,
+                care_plan: WikipediaAPI.generateBioCarePlan(guessedCat),
+                quick_info: null,
+                description: info.description || '',
+                image_url: info.image_url,
+                taxonomy: info.taxonomy,
+                bio_tips: WikipediaAPI.getBioTips(guessedCat)
+            };
+
+            document.getElementById('create-loading').style.display = 'none';
+            goToStep2(info.title, guessedCat);
+        } catch (err) {
+            document.getElementById('create-loading').style.display = 'none';
+            showToast('❌ Konnte Details nicht laden', 'error');
+        }
+
+    } else if (type === 'free') {
+        createWikiInfo = {
+            source: 'free',
+            name: idOrIndex,
+            species: '',
+            emoji: '🌱',
+            category: 'sonstige',
+            care_plan: generateEmptyCarePlan(),
+            quick_info: null,
+            description: ''
+        };
+        goToStep2(idOrIndex, 'sonstige');
+    }
+}
+
+function goToStep2(name, category) {
+    document.getElementById('create-step1').style.display = 'none';
+    document.getElementById('create-step2').style.display = 'block';
+
+    document.getElementById('create-name').value = name;
+    document.getElementById('create-category').value = category;
+    document.getElementById('create-location').value = '';
+
+    // Wiki-Info anzeigen
+    const infoBox = document.getElementById('create-wiki-info');
+    if (createWikiInfo?.description) {
+        infoBox.style.display = 'block';
+        infoBox.innerHTML = `
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+                ${createWikiInfo.image_url ? `<img src="${createWikiInfo.image_url}" alt="" style="width:80px; height:80px; border-radius:8px; object-fit:cover;">` : ''}
+                <div style="flex:1;">
+                    <strong>${createWikiInfo.name}</strong>
+                    ${createWikiInfo.species ? `<span style="font-style:italic; color:var(--text-medium);"> – ${createWikiInfo.species}</span>` : ''}
+                    <p style="font-size:13px; margin-top:4px; line-height:1.5;">${createWikiInfo.description.substring(0, 250)}${createWikiInfo.description.length > 250 ? '...' : ''}</p>
+                </div>
+            </div>`;
+    } else {
+        infoBox.style.display = 'none';
+    }
+
+    // Foto-Preview zurücksetzen
+    createPhotos = [];
+    document.getElementById('create-photo-preview').innerHTML = '';
+}
+
+function backToStep1() {
+    document.getElementById('create-step1').style.display = 'block';
+    document.getElementById('create-step2').style.display = 'none';
+}
+
+async function handleCreatePhotos(event) {
+    const files = Array.from(event.target.files);
+    for (const file of files) {
+        const base64 = await compressPhoto(file);
+        createPhotos.push({ data: base64, date: new Date().toISOString() });
+    }
+    renderCreatePhotoPreview();
+}
+
+function renderCreatePhotoPreview() {
+    const container = document.getElementById('create-photo-preview');
+    container.innerHTML = createPhotos.map((p, i) => `
+        <div class="photo-thumb">
+            <img src="${p.data}" alt="Foto ${i+1}">
+            <button class="photo-thumb-remove" onclick="createPhotos.splice(${i},1); renderCreatePhotoPreview();">✕</button>
         </div>
     `).join('');
 }
 
-function selectDbPlant(id) {
-    const plant = plantDatabase.find(p => p.id === id);
-    if (!plant) return;
-
-    selectedDbPlant = plant;
-    selectedWikiPlant = null;
-
-    // Highlight
-    document.querySelectorAll('.plant-db-item').forEach(el => el.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
-
-    // Formular anzeigen + Kategorie setzen
-    document.getElementById('manual-selected').style.display = 'block';
-    document.getElementById('manual-name').placeholder = plant.name_de;
-    document.getElementById('manual-category').value = plant.category || 'sonstige';
-    showBioTips();
+async function compressPhoto(file) {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let w = img.width, h = img.height;
+                const MAX = 800;
+                if (w > MAX || h > MAX) {
+                    const scale = MAX / Math.max(w, h);
+                    w = Math.round(w * scale);
+                    h = Math.round(h * scale);
+                }
+                canvas.width = w;
+                canvas.height = h;
+                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                resolve(canvas.toDataURL('image/jpeg', 0.7));
+            };
+            img.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+    });
 }
 
-async function saveManualPlant() {
-    const source = selectedDbPlant || selectedWikiPlant;
-    if (!source) {
-        showToast('❌ Bitte wähle eine Pflanze aus!', 'error');
-        return;
-    }
+async function saveNewPlant() {
+    const name = document.getElementById('create-name').value.trim();
+    if (!name) { showToast('❌ Bitte gib einen Namen ein!', 'error'); return; }
 
-    const customName = document.getElementById('manual-name').value.trim() || source.name_de || source.title || 'Unbekannt';
-    const location = document.getElementById('manual-location').value.trim();
-    const category = document.getElementById('manual-category').value;
-    const photoInput = document.getElementById('manual-photo-input');
-
-    let photoUrl = selectedWikiPlant?.image_url || null;
-    if (photoInput.files[0]) {
-        const base64 = await PlantNetAPI.fileToBase64(photoInput.files[0]);
-        photoUrl = base64;
-        try {
-            if (firebaseReady) {
-                photoUrl = await StorageLayer.uploadPhoto(photoInput.files[0], 'plant_' + Date.now());
-            }
-        } catch (err) {
-            console.warn('Photo upload fallback to base64');
-        }
-    }
-
-    // Pflegeplan: aus DB oder Bio-Template generieren
-    const carePlan = selectedDbPlant?.care_plan || WikipediaAPI.generateBioCarePlan(category);
-    const bioTips = WikipediaAPI.getBioTips(category);
+    const location = document.getElementById('create-location').value.trim();
+    const category = document.getElementById('create-category').value;
 
     const plant = {
-        name: customName,
-        species: source.name_lat || source.taxonomy?.wissenschaftlich || '',
+        name,
+        species: createWikiInfo?.species || '',
         location,
         status: 'gesund',
-        emoji: source.emoji || getCategoryEmoji(category),
-        photo_url: photoUrl,
-        care_plan: carePlan,
-        quick_info: source.quick_info || null,
-        bio_tips: bioTips,
-        wiki_description: selectedWikiPlant?.description || '',
+        emoji: createWikiInfo?.emoji || getCategoryEmoji(category),
+        photo_url: createPhotos[0]?.data || createWikiInfo?.image_url || null,
+        photos: createPhotos,
+        care_plan: createWikiInfo?.care_plan || generateEmptyCarePlan(),
+        quick_info: createWikiInfo?.quick_info || null,
+        bio_tips: createWikiInfo?.bio_tips || null,
+        wiki_description: createWikiInfo?.description || '',
         category,
         custom_tasks: [],
+        journal: [],
         added_date: new Date().toISOString()
     };
 
@@ -597,7 +897,7 @@ async function saveManualPlant() {
 
     closeModal('modal-manual-add');
     renderPlantsGrid();
-    showToast(`🌱 "${customName}" wurde zu deinem Garten hinzugefügt!`, 'success');
+    showToast(`🌱 "${name}" wurde zu deinem Garten hinzugefügt!`, 'success');
 }
 
 function getCategoryEmoji(cat) {
@@ -879,182 +1179,7 @@ function showToast(message, type = 'success') {
     }, 4000);
 }
 
-// ============================================
-// 🔍 Wikipedia-Suche für beliebige Pflanzen
-// ============================================
-
-let selectedWikiPlant = null;
-
-function switchManualTab(tab) {
-    document.querySelectorAll('.manual-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.manual-tab-content').forEach(c => c.style.display = 'none');
-
-    if (tab === 'database') {
-        document.querySelector('.manual-tab:first-child').classList.add('active');
-        document.getElementById('manual-tab-database').style.display = 'block';
-    } else {
-        document.querySelector('.manual-tab:last-child').classList.add('active');
-        document.getElementById('manual-tab-freetext').style.display = 'block';
-    }
-    document.getElementById('manual-selected').style.display = 'none';
-    selectedDbPlant = null;
-    selectedWikiPlant = null;
-}
-
-async function searchWikipedia() {
-    const query = document.getElementById('wiki-search-input').value.trim();
-    if (!query) return;
-
-    document.getElementById('wiki-loading').style.display = 'block';
-    document.getElementById('wiki-results').innerHTML = '';
-    document.getElementById('wiki-detail').style.display = 'none';
-    document.getElementById('manual-selected').style.display = 'none';
-
-    try {
-        const results = await WikipediaAPI.search(query);
-        document.getElementById('wiki-loading').style.display = 'none';
-
-        if (results.length === 0) {
-            document.getElementById('wiki-results').innerHTML = '<p style="color: var(--text-medium); padding: 12px;">Nichts gefunden. Versuche einen anderen Suchbegriff.</p>';
-            return;
-        }
-
-        const container = document.getElementById('wiki-results');
-        container.innerHTML = '';
-        results.forEach((r, i) => {
-            const div = document.createElement('div');
-            div.className = 'plant-db-item';
-            div.innerHTML = `
-                <span class="plant-db-item-emoji">🌿</span>
-                <div>
-                    <div class="plant-db-item-name">${r.title.replace(/</g, '&lt;')}</div>
-                    <div class="plant-db-item-latin">${(r.description || '').replace(/</g, '&lt;')}</div>
-                </div>
-            `;
-            div.addEventListener('click', () => selectWikiResult(i));
-            container.appendChild(div);
-        });
-
-        // Ergebnisse global speichern
-        window._wikiResults = results;
-        console.log('[searchWikipedia] saved', results.length, 'results to window._wikiResults');
-    } catch (err) {
-        document.getElementById('wiki-loading').style.display = 'none';
-        showToast('❌ Wikipedia-Suche fehlgeschlagen', 'error');
-    }
-}
-
-async function selectWikiResult(index) {
-    console.log('[selectWikiResult] called with index:', index);
-    const result = window._wikiResults?.[index];
-    if (!result) { console.log('[selectWikiResult] no result at index', index); return; }
-    console.log('[selectWikiResult] result:', result.title);
-
-    // Nur gewähltes Ergebnis behalten, Rest ausblenden
-    const items = document.querySelectorAll('#wiki-results .plant-db-item');
-    items.forEach((el, idx) => {
-        if (idx === index) {
-            el.classList.add('selected');
-        } else {
-            el.style.display = 'none';
-        }
-    });
-    // "Andere Ergebnisse" Link
-    let backLink = document.getElementById('wiki-back-link');
-    if (!backLink) {
-        backLink = document.createElement('a');
-        backLink.id = 'wiki-back-link';
-        backLink.href = '#';
-        backLink.textContent = '← Andere Ergebnisse anzeigen';
-        backLink.style.cssText = 'display:block; margin-top:8px; font-size:13px; color:var(--green-main);';
-        backLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelectorAll('#wiki-results .plant-db-item').forEach(el => {
-                el.style.display = '';
-                el.classList.remove('selected');
-            });
-            document.getElementById('wiki-detail').style.display = 'none';
-            document.getElementById('manual-selected').style.display = 'none';
-            backLink.remove();
-            selectedWikiPlant = null;
-        });
-        document.getElementById('wiki-results').after(backLink);
-    }
-
-    document.getElementById('wiki-loading').style.display = 'block';
-
-    try {
-        const info = await WikipediaAPI.getPlantInfo(result.title);
-        document.getElementById('wiki-loading').style.display = 'none';
-
-        // Detail anzeigen
-        document.getElementById('wiki-detail').style.display = 'block';
-        document.getElementById('wiki-plant-title').textContent = info.title;
-        document.getElementById('wiki-plant-taxonomy').textContent =
-            [info.taxonomy.familie, info.taxonomy.wissenschaftlich].filter(Boolean).join(' · ') || '';
-        document.getElementById('wiki-plant-description').textContent = info.description?.substring(0, 300) || '';
-
-        const img = document.getElementById('wiki-plant-image');
-        if (info.image_url) {
-            img.src = info.image_url;
-            img.style.display = 'block';
-        } else {
-            img.style.display = 'none';
-        }
-
-        // Kategorie erraten
-        const guessedCat = WikipediaAPI.guessCategory(info.description + ' ' + info.taxonomy.familie);
-
-        selectedWikiPlant = {
-            title: info.title,
-            name_de: info.title,
-            name_lat: info.taxonomy.wissenschaftlich || '',
-            description: info.description,
-            image_url: info.image_url,
-            taxonomy: info.taxonomy,
-            category: guessedCat
-        };
-
-        // Formular anzeigen
-        document.getElementById('manual-selected').style.display = 'block';
-        document.getElementById('manual-name').placeholder = info.title;
-        document.getElementById('manual-category').value = guessedCat;
-        showBioTips();
-
-        // Zum Detail scrollen
-        document.getElementById('wiki-detail').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-    } catch (err) {
-        console.error('[selectWikiResult] Error:', err);
-        document.getElementById('wiki-loading').style.display = 'none';
-        // Ergebnisse wieder einblenden bei Fehler
-        document.querySelectorAll('#wiki-results .plant-db-item').forEach(el => el.style.display = '');
-        showToast('❌ Konnte Details nicht laden: ' + err.message, 'error');
-    }
-}
-
-// ============================================
-// 🌿 Bio-Garten Tipps anzeigen
-// ============================================
-
-function showBioTips() {
-    const category = document.getElementById('manual-category').value;
-    const tips = WikipediaAPI.getBioTips(category);
-    const container = document.getElementById('bio-tips-content');
-    const preview = document.getElementById('bio-tips-preview');
-
-    if (tips) {
-        preview.style.display = 'block';
-        container.innerHTML = `
-            <div style="display: grid; gap: 8px; margin-top: 8px;">
-                ${tips.mischkultur ? `<div class="bio-tip-item">🌱 <strong>Mischkultur:</strong> ${tips.mischkultur}</div>` : ''}
-                ${tips.duengung ? `<div class="bio-tip-item">🧪 <strong>Bio-Düngung:</strong> ${tips.duengung}</div>` : ''}
-                ${tips.schaedlinge ? `<div class="bio-tip-item">🐛 <strong>Natürlicher Schutz:</strong> ${tips.schaedlinge}</div>` : ''}
-                ${tips.mulch ? `<div class="bio-tip-item">🍂 <strong>Mulch:</strong> ${tips.mulch}</div>` : ''}
-            </div>
-        `;
-    }
-}
+// (Wikipedia-Suche ist jetzt in startPlantSearch/selectCreatePlant integriert)
 
 // ============================================
 // 📖 Wissen / Enzyklopädie
