@@ -260,9 +260,14 @@ function showPlantDetail(plantId) {
         <div class="detail-section">
             <div class="detail-section-header">
                 <h2>📸 Fotos (${photos.length})</h2>
+                <label class="btn-secondary btn-small" style="cursor:pointer; margin-right:4px;">
+                    📷
+                    <input type="file" accept="image/*" capture="environment"
+                           onchange="addPhotosToPlant('${plant.id}', event)" style="display:none;">
+                </label>
                 <label class="btn-secondary btn-small" style="cursor:pointer;">
-                    ➕ Foto
-                    <input type="file" accept="image/*" multiple capture="environment"
+                    🖼️ +
+                    <input type="file" accept="image/*" multiple
                            onchange="addPhotosToPlant('${plant.id}', event)" style="display:none;">
                 </label>
             </div>

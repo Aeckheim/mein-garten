@@ -1605,6 +1605,14 @@ a {
 }
 
 /* --- Photo Upload Area --- */
+.photo-upload-buttons {
+    display: flex;
+    gap: 12px;
+}
+.photo-upload-buttons .photo-upload-area {
+    flex: 1;
+}
+
 .photo-upload-area {
     border: 2px dashed var(--green-pale);
     border-radius: var(--radius-sm);
