@@ -1685,6 +1685,66 @@ a {
     border-radius: 8px;
 }
 
+/* --- Camera Overlay --- */
+.camera-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.camera-container video {
+    flex: 1;
+    object-fit: cover;
+    width: 100%;
+}
+
+.camera-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.camera-btn {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-shutter {
+    width: 70px;
+    height: 70px;
+    background: white;
+    font-size: 32px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.camera-cancel, .camera-flip {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
 /* --- Journal / Tagebuch --- */
 .journal-form {
     background: var(--green-bg);

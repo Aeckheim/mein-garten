@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260324b">
+    <link rel="stylesheet" href="style.css?v=20260324c">
 </head>
 <body>
     <div class="floating-decorations">
@@ -213,12 +213,18 @@
 
                 <div class="form-group">
                     <label>📸 Fotos</label>
-                    <label class="photo-upload-area">
-                        <span style="font-size: 32px;">📷</span>
-                        <p>Foto aufnehmen oder aus Galerie wählen</p>
-                        <input type="file" accept="image/*" multiple
-                               onchange="handleCreatePhotos(event)" style="display:none;">
-                    </label>
+                    <div class="photo-upload-buttons">
+                        <div class="photo-upload-area" onclick="openCreateCamera()">
+                            <span style="font-size: 32px;">📷</span>
+                            <p>Kamera</p>
+                        </div>
+                        <label class="photo-upload-area">
+                            <span style="font-size: 32px;">🖼️</span>
+                            <p>Galerie</p>
+                            <input type="file" accept="image/*" multiple
+                                   onchange="handleCreatePhotos(event)" style="display:none;">
+                        </label>
+                    </div>
                     <div id="create-photo-preview" class="photo-gallery-preview"></div>
                 </div>
 
@@ -276,10 +282,10 @@
     </div>
 
     <div id="toast-container" class="toast-container"></div>
-    <script src="firebase-config.js?v=20260324b"></script>
-    <script src="plantnet-api.js?v=20260324b"></script>
-    <script src="wikipedia-api.js?v=20260324b"></script>
-    <script src="calendar.js?v=20260324b"></script>
-    <script src="app.js?v=20260324b"></script>
+    <script src="firebase-config.js?v=20260324c"></script>
+    <script src="plantnet-api.js?v=20260324c"></script>
+    <script src="wikipedia-api.js?v=20260324c"></script>
+    <script src="calendar.js?v=20260324c"></script>
+    <script src="app.js?v=20260324c"></script>
 </body>
 </html>

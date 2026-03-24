@@ -260,8 +260,9 @@ function showPlantDetail(plantId) {
         <div class="detail-section">
             <div class="detail-section-header">
                 <h2>📸 Fotos (${photos.length})</h2>
+                <button class="btn-secondary btn-small" onclick="openPlantCamera('${plant.id}')">📷</button>
                 <label class="btn-secondary btn-small" style="cursor:pointer;">
-                    📷 Foto +
+                    🖼️ +
                     <input type="file" accept="image/*" multiple
                            onchange="addPhotosToPlant('${plant.id}', event)" style="display:none;">
                 </label>
@@ -286,8 +287,9 @@ function showPlantDetail(plantId) {
             <div id="journal-form-${plant.id}" class="journal-form" style="display:none;">
                 <textarea id="journal-text-${plant.id}" placeholder="Was hast du gemacht? Was fällt dir auf?" rows="3"></textarea>
                 <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:8px;">
+                    <button class="btn-secondary btn-small" onclick="openJournalCamera('${plant.id}')">📷</button>
                     <label class="btn-secondary btn-small" style="cursor:pointer;">
-                        📷 Foto
+                        🖼️
                         <input type="file" accept="image/*" id="journal-photo-${plant.id}" style="display:none;">
                     </label>
                     <span id="journal-photo-name-${plant.id}" style="font-size:12px; color:var(--text-medium);"></span>
@@ -408,6 +410,136 @@ function openPhotoViewer(plantId, index) {
 }
 
 // ============================================
+// 📷 Kamera-Funktion (getUserMedia)
+// ============================================
+
+function openCamera(callback) {
+    // Overlay erstellen
+    const overlay = document.createElement('div');
+    overlay.className = 'camera-overlay';
+    overlay.innerHTML = `
+        <div class="camera-container">
+            <video autoplay playsinline></video>
+            <div class="camera-controls">
+                <button class="camera-btn camera-cancel" onclick="this.closest('.camera-overlay').remove()">✕</button>
+                <button class="camera-btn camera-shutter" id="camera-shutter">📸</button>
+                <button class="camera-btn camera-flip" id="camera-flip">🔄</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const video = overlay.querySelector('video');
+    let facingMode = 'environment'; // Rückkamera
+    let stream = null;
+
+    async function startStream() {
+        if (stream) stream.getTracks().forEach(t => t.stop());
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode, width: { ideal: 1280 }, height: { ideal: 960 } }
+            });
+            video.srcObject = stream;
+        } catch (err) {
+            console.error('Kamera-Fehler:', err);
+            showToast('❌ Kamera nicht verfügbar. Bitte Berechtigung erteilen.', 'error');
+            overlay.remove();
+        }
+    }
+
+    startStream();
+
+    // Kamera wechseln
+    overlay.querySelector('#camera-flip').addEventListener('click', () => {
+        facingMode = facingMode === 'environment' ? 'user' : 'environment';
+        startStream();
+    });
+
+    // Foto aufnehmen
+    overlay.querySelector('#camera-shutter').addEventListener('click', () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+
+        // Stream stoppen und Overlay schließen
+        if (stream) stream.getTracks().forEach(t => t.stop());
+        overlay.remove();
+
+        callback(dataUrl);
+    });
+
+    // Overlay schließen stoppt auch Stream
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            if (stream) stream.getTracks().forEach(t => t.stop());
+            overlay.remove();
+        }
+    });
+}
+
+// Kamera für "Pflanze erstellen" Dialog
+function openCreateCamera() {
+    openCamera(async (dataUrl) => {
+        if (!window._createPhotos) window._createPhotos = [];
+        const compressed = await compressPhoto(dataURLtoFile(dataUrl, 'camera.jpg'));
+        window._createPhotos.push(compressed);
+        updateCreatePhotoPreview();
+    });
+}
+
+// Kamera für bestehende Pflanze
+function openPlantCamera(plantId) {
+    openCamera(async (dataUrl) => {
+        const plant = plants.find(p => p.id === plantId);
+        if (!plant) return;
+        if (!plant.photos) plant.photos = [];
+
+        const compressed = await compressPhoto(dataURLtoFile(dataUrl, 'camera.jpg'));
+        plant.photos.push({ data: compressed, date: new Date().toISOString() });
+
+        if (!plant.photo_url) plant.photo_url = plant.photos[0].data;
+        await StorageLayer.updatePlant(plantId, { photos: plant.photos, photo_url: plant.photo_url });
+        showPlantDetail(plantId);
+        showToast('📸 Foto aufgenommen!', 'success');
+    });
+}
+
+// Kamera für Tagebuch
+function openJournalCamera(plantId) {
+    openCamera((dataUrl) => {
+        // Foto in ein verstecktes Input-ähnliches Feld speichern
+        window._journalCameraPhoto = dataUrl;
+        const nameSpan = document.getElementById(`journal-photo-name-${plantId}`);
+        if (nameSpan) nameSpan.textContent = '📷 Kamera-Foto';
+    });
+}
+
+// Helper: DataURL → File
+function dataURLtoFile(dataUrl, filename) {
+    const arr = dataUrl.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n);
+    return new File([u8arr], filename, { type: mime });
+}
+
+// Preview für "Pflanze erstellen" aktualisieren
+function updateCreatePhotoPreview() {
+    const preview = document.getElementById('create-photo-preview');
+    if (!preview || !window._createPhotos) return;
+    preview.innerHTML = window._createPhotos.map((src, i) => `
+        <div class="photo-thumb">
+            <img src="${src}" alt="Foto ${i+1}">
+            <button onclick="window._createPhotos.splice(${i},1); updateCreatePhotoPreview();">✕</button>
+        </div>
+    `).join('');
+}
+
+// ============================================
 // 📝 Tagebuch-Funktionen
 // ============================================
 
@@ -425,7 +557,10 @@ async function saveJournalEntry(plantId) {
 
     const photoInput = document.getElementById(`journal-photo-${plantId}`);
     let photo = null;
-    if (photoInput?.files[0]) {
+    if (window._journalCameraPhoto) {
+        photo = await compressPhoto(dataURLtoFile(window._journalCameraPhoto, 'camera.jpg'));
+        window._journalCameraPhoto = null;
+    } else if (photoInput?.files[0]) {
         photo = await compressPhoto(photoInput.files[0]);
     }
 
