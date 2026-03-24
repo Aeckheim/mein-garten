@@ -213,20 +213,12 @@
 
                 <div class="form-group">
                     <label>📸 Fotos</label>
-                    <div class="photo-upload-buttons">
-                        <label class="photo-upload-area">
-                            <span style="font-size: 32px;">📷</span>
-                            <p>Kamera</p>
-                            <input type="file" accept="image/*" capture="environment"
-                                   onchange="handleCreatePhotos(event)" style="display:none;">
-                        </label>
-                        <label class="photo-upload-area">
-                            <span style="font-size: 32px;">🖼️</span>
-                            <p>Galerie (mehrere)</p>
-                            <input type="file" accept="image/*" multiple
-                                   onchange="handleCreatePhotos(event)" style="display:none;">
-                        </label>
-                    </div>
+                    <label class="photo-upload-area">
+                        <span style="font-size: 32px;">📷</span>
+                        <p>Foto aufnehmen oder aus Galerie wählen</p>
+                        <input type="file" accept="image/*" multiple
+                               onchange="handleCreatePhotos(event)" style="display:none;">
+                    </label>
                     <div id="create-photo-preview" class="photo-gallery-preview"></div>
                 </div>
 
