@@ -1614,6 +1614,7 @@ a {
 }
 
 .photo-upload-area {
+    display: block;
     border: 2px dashed var(--green-pale);
     border-radius: var(--radius-sm);
     padding: 20px;

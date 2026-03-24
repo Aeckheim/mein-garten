@@ -214,18 +214,18 @@
                 <div class="form-group">
                     <label>📸 Fotos</label>
                     <div class="photo-upload-buttons">
-                        <div class="photo-upload-area" onclick="document.getElementById('create-photo-camera').click()">
+                        <label class="photo-upload-area" for="create-photo-camera">
                             <span style="font-size: 32px;">📷</span>
                             <p>Kamera</p>
                             <input type="file" id="create-photo-camera" accept="image/*" capture="environment"
                                    onchange="handleCreatePhotos(event)" style="display:none;">
-                        </div>
-                        <div class="photo-upload-area" onclick="document.getElementById('create-photo-gallery').click()">
+                        </label>
+                        <label class="photo-upload-area" for="create-photo-gallery">
                             <span style="font-size: 32px;">🖼️</span>
                             <p>Galerie (mehrere)</p>
                             <input type="file" id="create-photo-gallery" accept="image/*" multiple
                                    onchange="handleCreatePhotos(event)" style="display:none;">
-                        </div>
+                        </label>
                     </div>
                     <div id="create-photo-preview" class="photo-gallery-preview"></div>
                 </div>
