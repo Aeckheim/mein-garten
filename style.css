@@ -1715,6 +1715,37 @@ a {
     margin-bottom: 6px;
 }
 
+.journal-actions {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.journal-move-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--green-pale);
+    background: var(--white);
+    color: var(--green-main);
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.journal-entry:hover .journal-move-btn {
+    opacity: 1;
+}
+
+.journal-move-btn:hover {
+    background: var(--green-bg);
+    border-color: var(--green-mid);
+}
+
 .journal-date {
     font-size: 12px;
     font-weight: 700;

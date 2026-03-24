@@ -295,16 +295,22 @@ function showPlantDetail(plantId) {
                 </div>
             </div>
             <div class="journal-entries">
-                ${journal.length > 0 ? journal.slice().reverse().map((entry, i) => `
+                ${journal.length > 0 ? journal.slice().reverse().map((entry, i) => {
+                    const realIdx = journal.length - 1 - i;
+                    return `
                     <div class="journal-entry">
                         <div class="journal-entry-header">
                             <span class="journal-date">📅 ${new Date(entry.date).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                            <button class="gallery-remove" onclick="deleteJournalEntry('${plant.id}', ${journal.length - 1 - i})">✕</button>
+                            <div class="journal-actions">
+                                ${realIdx < journal.length - 1 ? `<button class="journal-move-btn" onclick="moveJournalEntry('${plant.id}', ${realIdx}, 1); event.stopPropagation();" title="Nach oben">▲</button>` : ''}
+                                ${realIdx > 0 ? `<button class="journal-move-btn" onclick="moveJournalEntry('${plant.id}', ${realIdx}, -1); event.stopPropagation();" title="Nach unten">▼</button>` : ''}
+                                <button class="gallery-remove" onclick="deleteJournalEntry('${plant.id}', ${realIdx})">✕</button>
+                            </div>
                         </div>
                         <p class="journal-text">${entry.text}</p>
                         ${entry.photo ? `<img class="journal-photo" src="${entry.photo}" alt="Foto">` : ''}
-                    </div>
-                `).join('') : '<p style="color:var(--text-medium); font-style:italic;">Noch keine Einträge. Dokumentiere deinen Garten!</p>'}
+                    </div>`;
+                }).join('') : '<p style="color:var(--text-medium); font-style:italic;">Noch keine Einträge. Dokumentiere deinen Garten!</p>'}
             </div>
         </div>
 
@@ -442,6 +448,22 @@ async function deleteJournalEntry(plantId, index) {
     if (!plant?.journal) return;
 
     plant.journal.splice(index, 1);
+    await StorageLayer.updatePlant(plantId, { journal: plant.journal });
+    showPlantDetail(plantId);
+}
+
+async function moveJournalEntry(plantId, index, direction) {
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant?.journal) return;
+
+    const newIndex = index + direction;
+    if (newIndex < 0 || newIndex >= plant.journal.length) return;
+
+    // Swap
+    const temp = plant.journal[index];
+    plant.journal[index] = plant.journal[newIndex];
+    plant.journal[newIndex] = temp;
+
     await StorageLayer.updatePlant(plantId, { journal: plant.journal });
     showPlantDetail(plantId);
 }
