@@ -290,10 +290,14 @@ function showPlantDetail(plantId) {
             </div>
             <div id="journal-form-${plant.id}" class="journal-form" style="display:none;">
                 <textarea id="journal-text-${plant.id}" placeholder="Was hast du gemacht? Was fällt dir auf?" rows="3"></textarea>
-                <div style="display:flex; gap:8px; align-items:center; margin-top:8px;">
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:8px;">
                     <label class="btn-secondary btn-small" style="cursor:pointer;">
-                        📷 Foto
-                        <input type="file" accept="image/*" id="journal-photo-${plant.id}" style="display:none;">
+                        📷
+                        <input type="file" accept="image/*" capture="environment" id="journal-photo-cam-${plant.id}" style="display:none;">
+                    </label>
+                    <label class="btn-secondary btn-small" style="cursor:pointer;">
+                        🖼️
+                        <input type="file" accept="image/*" id="journal-photo-gal-${plant.id}" style="display:none;">
                     </label>
                     <span id="journal-photo-name-${plant.id}" style="font-size:12px; color:var(--text-medium);"></span>
                     <button class="btn-primary btn-small" onclick="saveJournalEntry('${plant.id}')" style="margin-left:auto;">💾 Speichern</button>
@@ -349,14 +353,18 @@ function showPlantDetail(plantId) {
         </div>
     `;
 
-    // Journal-Foto Listener
-    const journalPhotoInput = document.getElementById(`journal-photo-${plant.id}`);
-    if (journalPhotoInput) {
-        journalPhotoInput.addEventListener('change', (e) => {
-            const name = e.target.files[0]?.name || '';
-            document.getElementById(`journal-photo-name-${plant.id}`).textContent = name;
-        });
-    }
+    // Journal-Foto Listener (Kamera + Galerie)
+    const journalCam = document.getElementById(`journal-photo-cam-${plant.id}`);
+    const journalGal = document.getElementById(`journal-photo-gal-${plant.id}`);
+    const journalNameSpan = document.getElementById(`journal-photo-name-${plant.id}`);
+    const onJournalPhoto = (e) => {
+        const name = e.target.files[0]?.name || '';
+        journalNameSpan.textContent = name;
+        // Store reference to which input has the file
+        journalNameSpan.dataset.source = e.target.id;
+    };
+    if (journalCam) journalCam.addEventListener('change', onJournalPhoto);
+    if (journalGal) journalGal.addEventListener('change', onJournalPhoto);
 
     navigate('detail');
 }
@@ -428,10 +436,13 @@ async function saveJournalEntry(plantId) {
     const text = document.getElementById(`journal-text-${plantId}`).value.trim();
     if (!text) { showToast('❌ Bitte schreib etwas!', 'error'); return; }
 
-    const photoInput = document.getElementById(`journal-photo-${plantId}`);
+    // Check both camera and gallery inputs
+    const camInput = document.getElementById(`journal-photo-cam-${plantId}`);
+    const galInput = document.getElementById(`journal-photo-gal-${plantId}`);
+    const photoFile = camInput?.files[0] || galInput?.files[0];
     let photo = null;
-    if (photoInput?.files[0]) {
-        photo = await compressPhoto(photoInput.files[0]);
+    if (photoFile) {
+        photo = await compressPhoto(photoFile);
     }
 
     if (!plant.journal) plant.journal = [];
