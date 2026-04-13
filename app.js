@@ -200,9 +200,12 @@ function getNextTask(plant) {
 // 🔍 Pflanzen-Detail
 // ============================================
 
-function showPlantDetail(plantId) {
+async function showPlantDetail(plantId) {
     const plant = plants.find(p => p.id === plantId);
     if (!plant) return;
+
+    // Wissen laden falls noch nicht geschehen
+    if (wissenEntries.length === 0) await loadWissen();
 
     currentPlantId = plantId;
     const currentMonthKey = getCurrentMonthKey();
@@ -334,6 +337,15 @@ function showPlantDetail(plantId) {
                     `;
                 }).join('')}
             </div>
+        </div>
+
+        <!-- Verknüpftes Wissen -->
+        <div class="detail-section" id="linked-wissen-section-${plant.id}">
+            <div class="detail-section-header">
+                <h2>📖 Verknüpftes Wissen</h2>
+                <button class="btn-secondary btn-small" onclick="openAddWissenToPlant('${plant.id}')">➕ Wissen verknüpfen</button>
+            </div>
+            ${renderLinkedWissen(plant)}
         </div>
 
         <!-- Anstehende Aufgaben -->
@@ -1343,9 +1355,22 @@ function showToast(message, type = 'success') {
 // ============================================
 
 let wissenEntries = [];
+let wissenCategories = [];
+let _activeWissenCategory = null; // null = alle
 
 async function loadWissen() {
     wissenEntries = await StorageLayer.getWissen();
+    wissenCategories = StorageLayer.getWissenCategories();
+    // IDs nachrüsten falls noch keine vorhanden
+    let needsSave = false;
+    wissenEntries.forEach((e, i) => {
+        if (!e.id) {
+            e.id = 'wissen_' + (Date.now() + i);
+            needsSave = true;
+        }
+        if (!e.linkedPlants) e.linkedPlants = [];
+    });
+    if (needsSave) await saveWissenToStorage();
 }
 
 async function saveWissenToStorage() {
@@ -1360,59 +1385,122 @@ async function renderWissen() {
     const empty = document.getElementById('wissen-empty');
     const countEl = document.getElementById('wissen-count');
 
-    if (wissenEntries.length === 0) {
+    // Kategorie-Tabs rendern
+    renderCategoryTabs();
+
+    // Gefilterte Einträge
+    const filtered = _activeWissenCategory
+        ? wissenEntries.filter(e => e.category === _activeWissenCategory)
+        : wissenEntries;
+
+    if (filtered.length === 0) {
         container.innerHTML = '';
         empty.style.display = 'block';
-        countEl.textContent = '';
+        countEl.textContent = wissenEntries.length > 0 ? `${wissenEntries.length} Einträge` : '';
         return;
     }
 
     empty.style.display = 'none';
-    countEl.textContent = `${wissenEntries.length} Einträge`;
-    renderWissenEntries(wissenEntries);
+    countEl.textContent = `${filtered.length}${_activeWissenCategory ? '/' + wissenEntries.length : ''} Einträge`;
+    renderWissenEntries(filtered);
+}
+
+function renderCategoryTabs() {
+    const tabs = document.getElementById('wissen-category-tabs');
+    if (!tabs) return;
+    if (wissenCategories.length === 0) { tabs.innerHTML = ''; return; }
+
+    tabs.innerHTML = [
+        `<button class="wissen-cat-tab ${!_activeWissenCategory ? 'active' : ''}" onclick="setWissenCategory(null)">📚 Alle</button>`,
+        ...wissenCategories.map(cat =>
+            `<button class="wissen-cat-tab ${_activeWissenCategory === cat.id ? 'active' : ''}" onclick="setWissenCategory('${cat.id}')">
+                ${cat.emoji || '🏷️'} ${cat.name}
+            </button>`
+        )
+    ].join('');
+}
+
+function setWissenCategory(id) {
+    _activeWissenCategory = id;
+    renderWissen();
 }
 
 function renderWissenEntries(entries) {
     const container = document.getElementById('wissen-entries');
-    container.innerHTML = entries.map((entry, i) => `
-        <div class="tips-category" id="wissen-entry-${i}">
-            <div class="tips-category-header" onclick="toggleWissenEntry(${i})">
-                <span class="tips-category-title">❓ ${entry.question}</span>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 11px; color: var(--text-medium);">${entry.date || ''}</span>
+    container.innerHTML = entries.map((entry) => {
+        const linkedNames = (entry.linkedPlants || [])
+            .map(pid => plants.find(p => p.id === pid)?.name)
+            .filter(Boolean);
+        const sourceIcon = entry.source === 'youtube' ? '📹' : '❓';
+        const cat = wissenCategories.find(c => c.id === entry.category);
+        const catBadge = cat
+            ? `<span style="font-size:11px; background:var(--green-pale); color:var(--green-dark); padding:2px 8px; border-radius:12px;">${cat.emoji || '🏷️'} ${cat.name}</span>`
+            : '';
+        const linkedBadge = linkedNames.length > 0
+            ? `<span style="font-size:11px; background:var(--green-pale); color:var(--green-dark); padding:2px 8px; border-radius:12px; cursor:pointer;" onclick="openLinkWissenDialog('${entry.id}'); event.stopPropagation();">🔗 ${linkedNames.join(', ')}</span>`
+            : '';
+        return `
+        <div class="tips-category" id="wissen-entry-${entry.id}">
+            <div class="tips-category-header" onclick="toggleWissenEntryById('${entry.id}')">
+                <span class="tips-category-title">${sourceIcon} ${entry.question}</span>
+                <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:flex-end;">
+                    ${catBadge}
+                    ${linkedBadge}
+                    <span style="font-size:11px; color:var(--text-medium);">${entry.date || ''}</span>
                     <span class="tips-category-arrow">▼</span>
                 </div>
             </div>
             <div class="tips-category-body">
+                ${entry.videoId ? `<div style="margin-bottom:10px;"><a href="https://www.youtube.com/watch?v=${entry.videoId}" target="_blank" style="color:var(--green-dark); font-size:13px;">▶ Video ansehen</a></div>` : ''}
                 <div class="tips-article">
-                    <div class="tips-article-content" style="white-space: pre-wrap;">${entry.answer}</div>
+                    <div class="tips-article-content" style="white-space:pre-wrap;">${entry.answer}</div>
                 </div>
-                <button class="btn-danger btn-small" onclick="deleteWissenEntry(${i}); event.stopPropagation();" style="margin-top: 8px;">🗑️ Löschen</button>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; align-items:center;">
+                    <select onchange="setWissenCategory_entry('${entry.id}', this.value)" onclick="event.stopPropagation()"
+                            style="padding:6px 10px; border:2px solid var(--green-pale); border-radius:var(--radius-sm); font-family:Nunito; font-size:13px;">
+                        <option value="">🏷️ Thema zuordnen...</option>
+                        ${wissenCategories.map(c => `<option value="${c.id}" ${entry.category === c.id ? 'selected' : ''}>${c.emoji || '🏷️'} ${c.name}</option>`).join('')}
+                    </select>
+                    <button class="btn-secondary btn-small" onclick="openLinkWissenDialog('${entry.id}'); event.stopPropagation();">🔗 Pflanze</button>
+                    <button class="btn-danger btn-small" onclick="deleteWissenEntryById('${entry.id}'); event.stopPropagation();">🗑️</button>
+                </div>
             </div>
-        </div>
-    `).join('');
+        </div>`;
+    }).join('');
 }
 
-function toggleWissenEntry(idx) {
-    const el = document.getElementById(`wissen-entry-${idx}`);
+function toggleWissenEntryById(id) {
+    const el = document.getElementById(`wissen-entry-${id}`);
     if (el) el.classList.toggle('open');
 }
 
-async function deleteWissenEntry(idx) {
+async function deleteWissenEntryById(id) {
     if (!confirm('Eintrag löschen?')) return;
-    wissenEntries.splice(idx, 1);
+    wissenEntries = wissenEntries.filter(e => e.id !== id);
     await saveWissenToStorage();
     await renderWissen();
     showToast('🗑️ Eintrag gelöscht.', 'success');
 }
 
+async function setWissenCategory_entry(wissenId, categoryId) {
+    const entry = wissenEntries.find(e => e.id === wissenId);
+    if (!entry) return;
+    entry.category = categoryId || null;
+    await saveWissenToStorage();
+    renderCategoryTabs();
+    showToast('🏷️ Thema gesetzt', 'success');
+}
+
 async function filterWissen(query) {
     await loadWissen();
     const q = query.toLowerCase();
-    const filtered = wissenEntries.filter(e =>
+    let filtered = wissenEntries.filter(e =>
         e.question.toLowerCase().includes(q) ||
         e.answer.toLowerCase().includes(q)
     );
+    if (_activeWissenCategory) {
+        filtered = filtered.filter(e => e.category === _activeWissenCategory);
+    }
     renderWissenEntries(filtered);
 }
 
@@ -1453,10 +1541,12 @@ async function saveWissenFromPaste() {
 
     await loadWissen();
     wissenEntries.unshift({
+        id: 'wissen_' + Date.now(),
         question,
         answer,
         date: new Date().toLocaleDateString('de-DE'),
-        source: 'claude.ai'
+        source: 'claude.ai',
+        linkedPlants: []
     });
     await saveWissenToStorage();
 
@@ -1520,10 +1610,12 @@ async function saveWissenEntry() {
 
     await loadWissen();
     wissenEntries.unshift({
+        id: 'wissen_' + Date.now(),
         question: window._pendingWissenQuestion,
         answer: window._pendingWissenAnswer,
         date: new Date().toLocaleDateString('de-DE'),
-        source: 'claude-api'
+        source: 'claude-api',
+        linkedPlants: []
     });
     await saveWissenToStorage();
 
@@ -1532,4 +1624,611 @@ async function saveWissenEntry() {
     document.getElementById('wissen-question').value = '';
     renderWissen();
     showToast('📖 Wissen gespeichert!', 'success');
+}
+
+// ============================================
+// 🏷️ Wissen-Kategorien
+// ============================================
+
+const CATEGORY_EMOJIS = ['🌱','💧','☀️','🪲','✂️','🌿','🍅','🌸','🍎','🌍','📅','💡','⚠️','🔬','🌾'];
+
+function openManageCategories() {
+    renderCategoryManageList();
+    openModal('modal-manage-categories');
+}
+
+function renderCategoryManageList() {
+    const list = document.getElementById('category-list');
+    if (!wissenCategories.length) {
+        list.innerHTML = '<p style="color:var(--text-medium); font-size:14px; text-align:center; padding:12px;">Noch keine Themen. Erstelle dein erstes!</p>';
+        return;
+    }
+    list.innerHTML = wissenCategories.map((cat, i) => {
+        const count = wissenEntries.filter(e => e.category === cat.id).length;
+        return `
+        <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--green-bg); border-radius:var(--radius-sm);">
+            <span style="font-size:22px; cursor:pointer;" onclick="cycleCategoryEmoji('${cat.id}')" title="Emoji ändern">${cat.emoji || '🏷️'}</span>
+            <span style="flex:1; font-weight:600;">${cat.name}</span>
+            <span style="font-size:12px; color:var(--text-medium);">${count} Einträge</span>
+            <button class="btn-danger btn-small" onclick="deleteCategory('${cat.id}')">🗑️</button>
+        </div>`;
+    }).join('');
+}
+
+async function addWissenCategory() {
+    const input = document.getElementById('new-category-name');
+    const name = input.value.trim();
+    if (!name) return;
+    const emoji = CATEGORY_EMOJIS[wissenCategories.length % CATEGORY_EMOJIS.length];
+    wissenCategories.push({ id: 'cat_' + Date.now(), name, emoji });
+    await StorageLayer.saveWissenCategories(wissenCategories);
+    input.value = '';
+    renderCategoryManageList();
+    renderCategoryTabs();
+    showToast('🏷️ Thema erstellt!', 'success');
+}
+
+async function deleteCategory(catId) {
+    if (!confirm('Thema löschen? Einträge bleiben erhalten, verlieren aber ihre Zuordnung.')) return;
+    wissenCategories = wissenCategories.filter(c => c.id !== catId);
+    wissenEntries.forEach(e => { if (e.category === catId) e.category = null; });
+    await StorageLayer.saveWissenCategories(wissenCategories);
+    await saveWissenToStorage();
+    renderCategoryManageList();
+    renderCategoryTabs();
+    if (_activeWissenCategory === catId) {
+        _activeWissenCategory = null;
+        await renderWissen();
+    }
+    showToast('🗑️ Thema gelöscht', 'success');
+}
+
+async function cycleCategoryEmoji(catId) {
+    const cat = wissenCategories.find(c => c.id === catId);
+    if (!cat) return;
+    const idx = CATEGORY_EMOJIS.indexOf(cat.emoji);
+    cat.emoji = CATEGORY_EMOJIS[(idx + 1) % CATEGORY_EMOJIS.length];
+    await StorageLayer.saveWissenCategories(wissenCategories);
+    renderCategoryManageList();
+    renderCategoryTabs();
+}
+
+// ============================================
+// 📹 YouTube Video → Wissen
+// ============================================
+
+function extractYouTubeId(url) {
+    const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+        /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/
+    ];
+    for (const pattern of patterns) {
+        const match = url.match(pattern);
+        if (match) return match[1];
+    }
+    return null;
+}
+
+async function previewVideoWissen() {
+    const url = document.getElementById('video-url-input').value.trim();
+    if (!url) { showToast('❌ Bitte YouTube-URL eingeben', 'error'); return; }
+
+    const videoId = extractYouTubeId(url);
+    if (!videoId) { showToast('❌ Keine gültige YouTube-URL', 'error'); return; }
+
+    try {
+        const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`);
+        if (!res.ok) throw new Error('Video nicht gefunden');
+        const data = await res.json();
+
+        window._pendingVideoId = videoId;
+        window._pendingVideoTitle = data.title;
+        window._pendingVideoAuthor = data.author_name;
+
+        document.getElementById('video-thumb').src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+        document.getElementById('video-title-display').textContent = data.title;
+        document.getElementById('video-channel').textContent = data.author_name;
+        document.getElementById('video-preview-box').style.display = 'block';
+        document.getElementById('video-extract-result').style.display = 'none';
+        document.getElementById('video-manual-paste').style.display = 'none';
+
+        const claudeKey = localStorage.getItem('claude_api_key');
+        document.getElementById('video-extract-btn').textContent = claudeKey ? '🤖 Wissen extrahieren' : '🤖 Wissen extrahieren (API-Key nötig)';
+        document.getElementById('video-extract-btn').disabled = !claudeKey;
+    } catch (err) {
+        showToast('❌ Video konnte nicht geladen werden', 'error');
+    }
+}
+
+function closeVideoPreview() {
+    document.getElementById('video-preview-box').style.display = 'none';
+    document.getElementById('video-url-input').value = '';
+    window._pendingVideoId = null;
+    window._pendingVideoTitle = null;
+}
+
+function openVideoManualPaste() {
+    document.getElementById('video-manual-paste').style.display = 'block';
+    document.getElementById('video-manual-content').focus();
+}
+
+async function saveVideoManualWissen() {
+    const content = document.getElementById('video-manual-content').value.trim();
+    if (!content) { showToast('❌ Bitte Infos eintragen', 'error'); return; }
+
+    await loadWissen();
+    wissenEntries.unshift({
+        id: 'wissen_' + Date.now(),
+        question: window._pendingVideoTitle || 'YouTube Video',
+        answer: content,
+        date: new Date().toLocaleDateString('de-DE'),
+        source: 'youtube',
+        videoId: window._pendingVideoId,
+        linkedPlants: []
+    });
+    await saveWissenToStorage();
+
+    closeVideoPreview();
+    document.getElementById('video-manual-content').value = '';
+    await renderWissen();
+    showToast('📖 Video-Wissen gespeichert!', 'success');
+}
+
+async function extractVideoWissen() {
+    const apiKey = localStorage.getItem('claude_api_key');
+
+    const extractResult = document.getElementById('video-extract-result');
+    const extractLoading = document.getElementById('video-extract-loading');
+    const extractContent = document.getElementById('video-extract-content');
+
+    extractResult.style.display = 'block';
+    extractLoading.style.display = 'block';
+    extractContent.style.display = 'none';
+
+    const videoUrl = document.getElementById('video-url-input').value.trim();
+    const title = window._pendingVideoTitle;
+    const author = window._pendingVideoAuthor;
+
+    // 1. Versuch: lokaler serve.py-Server (transkribiert das Video vollständig)
+    const localServerUrl = 'http://localhost:8181/transcribe';
+    let usedTranscript = false;
+
+    try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 5000); // 5s Verbindungstest
+        const testResp = await fetch(localServerUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: videoUrl, claude_key: apiKey || '' }),
+            signal: controller.signal
+        });
+        clearTimeout(timeout);
+
+        if (testResp.ok) {
+            const data = await testResp.json();
+            extractLoading.style.display = 'none';
+            if (data.summary) {
+                window._pendingVideoExtract = data.summary;
+                document.getElementById('video-extract-text').textContent = data.summary;
+                extractContent.style.display = 'block';
+                usedTranscript = true;
+                return;
+            } else if (data.error) {
+                throw new Error(data.error);
+            }
+        }
+    } catch (localErr) {
+        if (localErr.name !== 'AbortError') {
+            // Server läuft, aber Fehler (z.B. kein Transkript)
+            const errMsg = localErr.message || '';
+            if (errMsg && !errMsg.includes('fetch') && !errMsg.includes('Failed') && !errMsg.includes('NetworkError')) {
+                extractLoading.style.display = 'none';
+                extractResult.style.display = 'none';
+                showToast('❌ ' + errMsg, 'error');
+                return;
+            }
+        }
+        console.log('[video] Lokaler Server nicht erreichbar, nutze Titel-Analyse');
+    }
+
+    // 2. Fallback: Analyse nur nach Titel (benötigt Claude API-Key)
+    if (!apiKey) {
+        extractLoading.style.display = 'none';
+        extractResult.style.display = 'none';
+        showToast('❌ Kein Claude API-Key + Server nicht lokal. Bitte starte start-garten.bat oder trage einen API-Key ein.', 'error');
+        return;
+    }
+
+    try {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': apiKey,
+                'anthropic-version': '2023-06-01',
+                'anthropic-dangerous-direct-browser-access': 'true'
+            },
+            body: JSON.stringify({
+                model: 'claude-sonnet-4-20250514',
+                max_tokens: 1500,
+                messages: [{
+                    role: 'user',
+                    content: `Du bist ein erfahrener Bio-Gärtner. Basierend auf dem Videotitel und Kanal, fasse das wahrscheinliche Gartenwissen zusammen.
+
+Video: "${title}"
+Kanal: "${author}"
+
+🌱 **Hauptthema:**
+💡 **Wichtigste Tipps:** (Bullet-Liste)
+📅 **Zeitplan:** (falls erkennbar)
+🔗 **Passende Pflanzen:**
+
+(Hinweis: Basiert nur auf dem Titel – für vollständige Transkription starte start-garten.bat lokal)`
+                }]
+            })
+        });
+
+        const data = await response.json();
+        extractLoading.style.display = 'none';
+
+        if (data.content?.[0]?.text) {
+            window._pendingVideoExtract = data.content[0].text;
+            document.getElementById('video-extract-text').textContent = data.content[0].text;
+            extractContent.style.display = 'block';
+        } else {
+            throw new Error(data.error?.message || 'Unbekannter Fehler');
+        }
+    } catch (err) {
+        extractLoading.style.display = 'none';
+        extractResult.style.display = 'none';
+        showToast('❌ Fehler: ' + err.message, 'error');
+    }
+}
+
+async function saveExtractedVideoWissen() {
+    if (!window._pendingVideoExtract) return;
+
+    await loadWissen();
+    wissenEntries.unshift({
+        id: 'wissen_' + Date.now(),
+        question: window._pendingVideoTitle || 'YouTube Video',
+        answer: window._pendingVideoExtract,
+        date: new Date().toLocaleDateString('de-DE'),
+        source: 'youtube',
+        videoId: window._pendingVideoId,
+        linkedPlants: []
+    });
+    await saveWissenToStorage();
+
+    closeVideoPreview();
+    window._pendingVideoExtract = null;
+    await renderWissen();
+    showToast('📖 Video-Wissen gespeichert!', 'success');
+}
+
+// ============================================
+// 🔗 Wissen ↔ Pflanzen verknüpfen
+// ============================================
+
+let _linkingWissenId = null;
+
+function openLinkWissenDialog(wissenId) {
+    _linkingWissenId = wissenId;
+    filterLinkPlants('');
+    document.getElementById('link-plant-search').value = '';
+    openModal('modal-link-wissen');
+}
+
+function filterLinkPlants(query) {
+    const entry = wissenEntries.find(e => e.id === _linkingWissenId);
+    const linked = entry?.linkedPlants || [];
+    const q = query.toLowerCase();
+    const filtered = plants.filter(p => !query || p.name.toLowerCase().includes(q));
+
+    const list = document.getElementById('link-plant-list');
+    if (filtered.length === 0) {
+        list.innerHTML = '<p style="color:var(--text-medium); font-size:14px; text-align:center; padding:16px;">Keine Pflanzen gefunden</p>';
+        return;
+    }
+
+    list.innerHTML = filtered.map(p => {
+        const isLinked = linked.includes(p.id);
+        return `<div style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:${isLinked ? 'var(--green-bg)' : 'var(--white)'}; border:2px solid ${isLinked ? 'var(--green-mid)' : 'var(--green-pale)'}; border-radius:var(--radius-sm); cursor:pointer;" onclick="toggleWissenPlantLink('${p.id}')">
+            <span style="font-weight:600;">${p.emoji || '🌿'} ${p.name}</span>
+            <span style="font-size:18px;">${isLinked ? '✅' : '⭕'}</span>
+        </div>`;
+    }).join('');
+}
+
+async function toggleWissenPlantLink(plantId) {
+    const entry = wissenEntries.find(e => e.id === _linkingWissenId);
+    if (!entry) return;
+
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant) return;
+
+    if (!entry.linkedPlants) entry.linkedPlants = [];
+    if (!plant.linkedWissen) plant.linkedWissen = [];
+
+    const isLinked = entry.linkedPlants.includes(plantId);
+
+    if (isLinked) {
+        entry.linkedPlants = entry.linkedPlants.filter(id => id !== plantId);
+        plant.linkedWissen = (plant.linkedWissen || []).filter(id => id !== _linkingWissenId);
+    } else {
+        entry.linkedPlants.push(plantId);
+        if (!plant.linkedWissen.includes(_linkingWissenId)) {
+            plant.linkedWissen.push(_linkingWissenId);
+        }
+    }
+
+    await saveWissenToStorage();
+    await StorageLayer.updatePlant(plantId, { linkedWissen: plant.linkedWissen });
+
+    filterLinkPlants(document.getElementById('link-plant-search').value);
+    showToast(isLinked ? '🔗 Verknüpfung entfernt' : '🔗 Verknüpft!', 'success');
+}
+
+// Von Pflanzenseite: Wissen hinzufügen
+let _linkingPlantId = null;
+
+async function openAddWissenToPlant(plantId) {
+    _linkingPlantId = plantId;
+    await loadWissen();
+    document.getElementById('add-wissen-search').value = '';
+    filterAddWissen('');
+    openModal('modal-add-wissen-to-plant');
+}
+
+function filterAddWissen(query) {
+    const plant = plants.find(p => p.id === _linkingPlantId);
+    const linked = plant?.linkedWissen || [];
+    const q = query.toLowerCase();
+    const filtered = wissenEntries.filter(e => !query || e.question.toLowerCase().includes(q) || e.answer.toLowerCase().includes(q));
+
+    const list = document.getElementById('add-wissen-list');
+    if (filtered.length === 0) {
+        list.innerHTML = '<p style="color:var(--text-medium); font-size:14px; text-align:center; padding:16px;">Keine Einträge gefunden</p>';
+        return;
+    }
+
+    list.innerHTML = filtered.map(entry => {
+        const isLinked = linked.includes(entry.id);
+        const preview = entry.answer.substring(0, 80) + (entry.answer.length > 80 ? '...' : '');
+        return `<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:12px 14px; background:${isLinked ? 'var(--green-bg)' : 'var(--white)'}; border:2px solid ${isLinked ? 'var(--green-mid)' : 'var(--green-pale)'}; border-radius:var(--radius-sm); cursor:pointer;" onclick="togglePlantWissenLink('${entry.id}')">
+            <div style="flex:1; min-width:0;">
+                <p style="font-weight:700; margin-bottom:2px; font-size:14px;">${entry.source === 'youtube' ? '📹' : '📖'} ${entry.question}</p>
+                <p style="font-size:12px; color:var(--text-medium); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${preview}</p>
+            </div>
+            <span style="font-size:18px; flex-shrink:0;">${isLinked ? '✅' : '⭕'}</span>
+        </div>`;
+    }).join('');
+}
+
+async function togglePlantWissenLink(wissenId) {
+    const plant = plants.find(p => p.id === _linkingPlantId);
+    const entry = wissenEntries.find(e => e.id === wissenId);
+    if (!plant || !entry) return;
+
+    if (!plant.linkedWissen) plant.linkedWissen = [];
+    if (!entry.linkedPlants) entry.linkedPlants = [];
+
+    const isLinked = plant.linkedWissen.includes(wissenId);
+
+    if (isLinked) {
+        plant.linkedWissen = plant.linkedWissen.filter(id => id !== wissenId);
+        entry.linkedPlants = entry.linkedPlants.filter(id => id !== _linkingPlantId);
+    } else {
+        plant.linkedWissen.push(wissenId);
+        if (!entry.linkedPlants.includes(_linkingPlantId)) {
+            entry.linkedPlants.push(_linkingPlantId);
+        }
+    }
+
+    await StorageLayer.updatePlant(_linkingPlantId, { linkedWissen: plant.linkedWissen });
+    await saveWissenToStorage();
+
+    filterAddWissen(document.getElementById('add-wissen-search').value);
+    // Linked-Wissen-Section im Detail neu rendern
+    const section = document.getElementById(`linked-wissen-section-${_linkingPlantId}`);
+    if (section) {
+        const inner = section.querySelector('.linked-wissen-list');
+        if (inner) inner.outerHTML = renderLinkedWissen(plant);
+    }
+    showToast(isLinked ? '🔗 Verknüpfung entfernt' : '🔗 Wissen verknüpft!', 'success');
+}
+
+function renderLinkedWissen(plant) {
+    const linked = (plant.linkedWissen || [])
+        .map(id => wissenEntries.find(e => e.id === id))
+        .filter(Boolean);
+
+    if (linked.length === 0) {
+        return '<div class="linked-wissen-list"><p style="color:var(--text-medium); font-style:italic; font-size:14px;">Noch kein Wissen verknüpft. Füge relevante Enzyklopädie-Einträge hinzu!</p></div>';
+    }
+
+    return `<div class="linked-wissen-list">${linked.map(entry => `
+        <div class="tips-category" style="margin-bottom:8px;">
+            <div class="tips-category-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="tips-category-title">${entry.source === 'youtube' ? '📹' : '📖'} ${entry.question}</span>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:11px; color:var(--text-medium);">${entry.date || ''}</span>
+                    <span class="tips-category-arrow">▼</span>
+                </div>
+            </div>
+            <div class="tips-category-body">
+                ${entry.videoId ? `<div style="margin-bottom:10px;"><a href="https://www.youtube.com/watch?v=${entry.videoId}" target="_blank" style="color:var(--green-dark); font-size:13px;">▶ Video ansehen</a></div>` : ''}
+                <div class="tips-article-content" style="white-space:pre-wrap; font-size:14px; line-height:1.7;">${entry.answer}</div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                    <button class="btn-secondary btn-small" onclick="openCarePlanIntegrate('${plant.id}', '${entry.id}'); event.stopPropagation();">📋 In Pflegeplan einarbeiten</button>
+                </div>
+            </div>
+        </div>
+    `).join('')}</div>`;
+}
+
+// ============================================
+// 📋 Wissen in Pflegeplan einarbeiten
+// ============================================
+
+let _integratePlantId = null;
+let _integrateWissenId = null;
+let _carePlanSuggestions = [];
+
+async function openCarePlanIntegrate(plantId, wissenId) {
+    _integratePlantId = plantId;
+    _integrateWissenId = wissenId;
+    const entry = wissenEntries.find(e => e.id === wissenId);
+    if (!entry) return;
+
+    const apiKey = localStorage.getItem('claude_api_key');
+    const loading = document.getElementById('care-integrate-loading');
+    const content = document.getElementById('care-integrate-content');
+    const manual = document.getElementById('care-integrate-manual');
+
+    loading.style.display = apiKey ? 'block' : 'none';
+    content.style.display = 'none';
+    manual.style.display = apiKey ? 'none' : 'block';
+
+    openModal('modal-care-plan-integrate');
+
+    if (!apiKey) {
+        // Manueller Modus
+        document.getElementById('care-integrate-wissen-preview').textContent = entry.answer;
+        renderManualCarePlanForm(plantId);
+        return;
+    }
+
+    // Claude API: Pflegeplan-Vorschläge
+    const plant = plants.find(p => p.id === plantId);
+    try {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': apiKey,
+                'anthropic-version': '2023-06-01',
+                'anthropic-dangerous-direct-browser-access': 'true'
+            },
+            body: JSON.stringify({
+                model: 'claude-sonnet-4-20250514',
+                max_tokens: 1200,
+                messages: [{
+                    role: 'user',
+                    content: `Du bist ein Garten-Assistent. Ich habe folgendes Gartenwissen:
+
+---
+${entry.answer}
+---
+
+Pflanze: ${plant?.name || 'unbekannt'}
+
+Erstelle daraus konkrete Aufgaben für den Jahres-Pflegeplan dieser Pflanze. Antworte NUR mit einem JSON-Array, kein anderer Text:
+
+[
+  { "monat": "jan", "aufgabe": "Aufgabe für Januar" },
+  { "monat": "mar", "aufgabe": "..." }
+]
+
+Monate: jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, dez
+Nur Monate einschließen, die wirklich relevant sind. Max. 8 Einträge.`
+                }]
+            })
+        });
+
+        const data = await response.json();
+        loading.style.display = 'none';
+
+        if (data.content?.[0]?.text) {
+            try {
+                const jsonMatch = data.content[0].text.match(/\[[\s\S]*\]/);
+                _carePlanSuggestions = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
+            } catch {
+                _carePlanSuggestions = [];
+            }
+
+            if (_carePlanSuggestions.length === 0) {
+                showToast('❌ Keine Vorschläge gefunden', 'error');
+                closeModal('modal-care-plan-integrate');
+                return;
+            }
+
+            const suggestionsEl = document.getElementById('care-integrate-suggestions');
+            suggestionsEl.innerHTML = _carePlanSuggestions.map((s, i) => `
+                <label style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--green-bg); border-radius:var(--radius-sm); cursor:pointer;">
+                    <input type="checkbox" id="suggest-${i}" checked style="width:18px; height:18px;">
+                    <div>
+                        <span style="font-weight:700; font-size:13px;">${MONTH_NAMES[MONTH_KEYS.indexOf(s.monat)] || s.monat}</span>
+                        <span style="font-size:14px; margin-left:6px;">${s.aufgabe}</span>
+                    </div>
+                </label>
+            `).join('');
+            content.style.display = 'block';
+        } else {
+            throw new Error(data.error?.message || 'Fehler');
+        }
+    } catch (err) {
+        loading.style.display = 'none';
+        closeModal('modal-care-plan-integrate');
+        showToast('❌ Fehler: ' + err.message, 'error');
+    }
+}
+
+async function applyCarePlanSuggestions() {
+    const plant = plants.find(p => p.id === _integratePlantId);
+    if (!plant) return;
+
+    if (!plant.care_plan) plant.care_plan = generateEmptyCarePlan();
+
+    _carePlanSuggestions.forEach((s, i) => {
+        const checkbox = document.getElementById(`suggest-${i}`);
+        if (checkbox?.checked && s.monat && MONTH_KEYS.includes(s.monat)) {
+            if (!plant.care_plan[s.monat]) plant.care_plan[s.monat] = [];
+            if (!plant.care_plan[s.monat].includes(s.aufgabe)) {
+                plant.care_plan[s.monat].push(s.aufgabe);
+            }
+        }
+    });
+
+    await StorageLayer.updatePlant(_integratePlantId, { care_plan: plant.care_plan });
+    closeModal('modal-care-plan-integrate');
+    showPlantDetail(_integratePlantId);
+    showToast('📋 Pflegeplan aktualisiert!', 'success');
+}
+
+function renderManualCarePlanForm(plantId) {
+    const container = document.getElementById('care-integrate-manual-months');
+    container.innerHTML = MONTH_KEYS.map((key, idx) => `
+        <div style="display:flex; align-items:center; gap:8px;">
+            <label style="width:90px; font-size:13px; font-weight:700; flex-shrink:0;">${MONTH_EMOJIS[idx]} ${MONTH_NAMES[idx]}</label>
+            <input type="text" id="manual-month-${key}" placeholder="Aufgabe für ${MONTH_NAMES[idx]} (leer = überspringen)"
+                   style="flex:1; padding:8px 12px; border:2px solid var(--green-pale); border-radius:var(--radius-sm); font-family:Nunito; font-size:13px;">
+        </div>
+    `).join('');
+}
+
+async function applyManualCarePlan() {
+    const plant = plants.find(p => p.id === _integratePlantId);
+    if (!plant) return;
+
+    if (!plant.care_plan) plant.care_plan = generateEmptyCarePlan();
+    let added = 0;
+
+    MONTH_KEYS.forEach(key => {
+        const val = document.getElementById(`manual-month-${key}`)?.value.trim();
+        if (val) {
+            if (!plant.care_plan[key]) plant.care_plan[key] = [];
+            if (!plant.care_plan[key].includes(val)) {
+                plant.care_plan[key].push(val);
+                added++;
+            }
+        }
+    });
+
+    if (added === 0) { showToast('❌ Keine Aufgaben eingegeben', 'error'); return; }
+
+    await StorageLayer.updatePlant(_integratePlantId, { care_plan: plant.care_plan });
+    closeModal('modal-care-plan-integrate');
+    showPlantDetail(_integratePlantId);
+    showToast(`📋 ${added} Aufgaben zum Pflegeplan hinzugefügt!`, 'success');
 }

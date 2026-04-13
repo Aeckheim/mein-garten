@@ -214,6 +214,7 @@ const StorageLayer = {
         if (!this._data.plants) this._data.plants = [];
         if (!this._data.general_tasks) this._data.general_tasks = [];
         if (!this._data.wissen) this._data.wissen = [];
+        if (!this._data.wissen_categories) this._data.wissen_categories = [];
 
         // Automatisch neu laden wenn Tab/App wieder aktiv wird
         document.addEventListener('visibilitychange', async () => {
@@ -329,6 +330,16 @@ const StorageLayer = {
 
     async deleteWissen(index) {
         this._data.wissen.splice(index, 1);
+        await this._save();
+    },
+
+    // --- Wissen Kategorien ---
+    getWissenCategories() {
+        return this._data.wissen_categories || [];
+    },
+
+    async saveWissenCategories(cats) {
+        this._data.wissen_categories = cats;
         await this._save();
     }
 };

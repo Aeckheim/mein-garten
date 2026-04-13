@@ -1050,6 +1050,36 @@ a {
     gap: 12px;
 }
 
+/* --- Wissen Kategorie-Tabs --- */
+.wissen-cat-tab {
+    padding: 6px 14px;
+    border: 2px solid var(--green-pale);
+    border-radius: 20px;
+    background: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--text-dark);
+}
+.wissen-cat-tab:hover {
+    background: var(--green-bg);
+    border-color: var(--green-mid);
+}
+.wissen-cat-tab.active {
+    background: var(--green-mid);
+    border-color: var(--green-mid);
+    color: white;
+}
+
+/* --- Linked Wissen in Plant Detail --- */
+.linked-wissen-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 /* --- Modals --- */
 .modal {
     display: none;
