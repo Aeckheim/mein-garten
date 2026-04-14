@@ -91,7 +91,10 @@
         }
       ],
       "added_date": "2026-03-24T20:54:44.186Z",
-      "id": "plant_1774385684199"
+      "id": "plant_1774385684199",
+      "linkedWissen": [
+        "wissen_1776115272517"
+      ]
     },
     {
       "name": "Tomate",
@@ -166,7 +169,10 @@
       "category": "gemuese",
       "custom_tasks": [],
       "added_date": "2026-03-14T08:50:31.960Z",
-      "id": "plant_1773478231962"
+      "id": "plant_1773478231962",
+      "linkedWissen": [
+        "wissen_1776115272517"
+      ]
     },
     {
       "name": "Brombeeren",
@@ -427,7 +433,10 @@
       "date": "13.04.2026",
       "source": "youtube",
       "videoId": "0B7G1pok1uE",
-      "linkedPlants": []
+      "linkedPlants": [
+        "plant_1774385684199",
+        "plant_1773478231962"
+      ]
     },
     {
       "id": "wissen_1776108594218",
