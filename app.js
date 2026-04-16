@@ -758,7 +758,10 @@ async function analyzePlant() {
     }
 }
 
+let _savingPlant = false;
 async function savePlant() {
+    if (_savingPlant) return;
+    _savingPlant = true;
     const name = document.getElementById('plant-name').value.trim();
     const species = document.getElementById('plant-species').value.trim();
     const location = document.getElementById('plant-location').value.trim();
@@ -799,6 +802,7 @@ async function savePlant() {
     };
 
     await StorageLayer.savePlant(plant);
+    _savingPlant = false;
 
     closeModal('modal-add-plant');
     renderPlantsGrid();
@@ -1035,7 +1039,10 @@ async function compressPhoto(file) {
     });
 }
 
+let _savingNewPlant = false;
 async function saveNewPlant() {
+    if (_savingNewPlant) return;
+    _savingNewPlant = true;
     const name = document.getElementById('create-name').value.trim();
     if (!name) { showToast('❌ Bitte gib einen Namen ein!', 'error'); return; }
 
@@ -1061,6 +1068,7 @@ async function saveNewPlant() {
     };
 
     await StorageLayer.savePlant(plant);
+    _savingNewPlant = false;
 
     closeModal('modal-manual-add');
     renderPlantsGrid();
