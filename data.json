@@ -527,5 +527,11 @@
       "linkedPlants": []
     }
   ],
-  "wissen_categories": []
+  "wissen_categories": [
+    {
+      "id": "cat_1776356514265",
+      "name": "Obst",
+      "emoji": "🌱"
+    }
+  ]
 }
