@@ -798,8 +798,7 @@ async function savePlant() {
         added_date: new Date().toISOString()
     };
 
-    const saved = await StorageLayer.savePlant(plant);
-    plants.unshift(saved);
+    await StorageLayer.savePlant(plant);
 
     closeModal('modal-add-plant');
     renderPlantsGrid();
@@ -1061,8 +1060,7 @@ async function saveNewPlant() {
         added_date: new Date().toISOString()
     };
 
-    const saved = await StorageLayer.savePlant(plant);
-    plants.unshift(saved);
+    await StorageLayer.savePlant(plant);
 
     closeModal('modal-manual-add');
     renderPlantsGrid();
