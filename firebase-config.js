@@ -66,7 +66,8 @@ const GitHubStorage = {
             const data = {
                 plants: this._mergeById(local.plants || [], remote.plants || []),
                 general_tasks: this._mergeById(local.general_tasks || [], remote.general_tasks || []),
-                wissen: this._mergeById(local.wissen || [], remote.wissen || [])
+                wissen: this._mergeById(local.wissen || [], remote.wissen || []),
+                wissen_categories: remote.wissen_categories || local.wissen_categories || []
             };
 
             this.cache = data;
