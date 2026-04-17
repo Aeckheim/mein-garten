@@ -548,6 +548,108 @@
       "custom_tasks": [],
       "added_date": "2026-03-13T21:37:21.032Z",
       "id": "plant_1773437841055"
+    },
+    {
+      "name": "Goldruten",
+      "species": "= Goldruten",
+      "location": "Überall",
+      "status": "gesund",
+      "emoji": "🌱",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Solidago_gigantea01.jpg/330px-Solidago_gigantea01.jpg",
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": [
+          "Standort vorbereiten"
+        ],
+        "apr": [
+          "Boden lockern, Kompost einarbeiten"
+        ],
+        "mai": [
+          "Auspflanzen, mulchen"
+        ],
+        "jun": [
+          "Regelmäßig gießen"
+        ],
+        "jul": [
+          "Pflegen und beobachten"
+        ],
+        "aug": [
+          "Pflegen"
+        ],
+        "sep": [
+          "Herbstvorbereitung"
+        ],
+        "okt": [
+          "Winterschutz prüfen"
+        ],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": null,
+      "bio_tips": {
+        "mischkultur": "Nutze Mischkultur: Tomaten + Basilikum, Möhren + Zwiebeln, Bohnen + Bohnenkraut",
+        "duengung": "Brennnesseljauche (1:10 verdünnt) alle 2 Wochen als natürlicher Dünger",
+        "schaedlinge": "Nützlinge fördern: Marienkäfer gegen Blattläuse, Schlupfwespen gegen Raupen",
+        "mulch": "Mulchen mit Grasschnitt oder Stroh hält Feuchtigkeit und unterdrückt Beikraut"
+      },
+      "wiki_description": "Die Goldruten (Solidago), auch Goldrauten genannt, sind eine Pflanzengattung innerhalb der Familie der Korbblütler (Asteraceae). Die etwa 100 Arten sind hauptsächlich in Nordamerika verbreitet. Die einzige in Mitteleuropa heimische Art ist die Gewöhnliche Goldrute.",
+      "category": "sonstige",
+      "custom_tasks": [],
+      "added_date": "2026-03-13T21:36:25.581Z",
+      "id": "plant_1773437785581"
+    },
+    {
+      "name": "Rosen",
+      "species": "= Rosen",
+      "location": "",
+      "status": "gesund",
+      "emoji": "🌱",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Hundsrose.jpg/330px-Hundsrose.jpg",
+      "photos": [],
+      "care_plan": {
+        "jan": [],
+        "feb": [],
+        "mar": [
+          "Standort vorbereiten"
+        ],
+        "apr": [
+          "Boden lockern, Kompost einarbeiten"
+        ],
+        "mai": [
+          "Auspflanzen, mulchen"
+        ],
+        "jun": [
+          "Regelmäßig gießen"
+        ],
+        "jul": [
+          "Pflegen und beobachten"
+        ],
+        "aug": [
+          "Pflegen"
+        ],
+        "sep": [
+          "Herbstvorbereitung"
+        ],
+        "okt": [
+          "Winterschutz prüfen"
+        ],
+        "nov": [],
+        "dez": []
+      },
+      "quick_info": null,
+      "bio_tips": {
+        "mischkultur": "Nutze Mischkultur: Tomaten + Basilikum, Möhren + Zwiebeln, Bohnen + Bohnenkraut",
+        "duengung": "Brennnesseljauche (1:10 verdünnt) alle 2 Wochen als natürlicher Dünger",
+        "schaedlinge": "Nützlinge fördern: Marienkäfer gegen Blattläuse, Schlupfwespen gegen Raupen",
+        "mulch": "Mulchen mit Grasschnitt oder Stroh hält Feuchtigkeit und unterdrückt Beikraut"
+      },
+      "wiki_description": "Rosen (Rosa) sind die namensgebenden Pflanzen der taxonomischen Gattung und Familie der Rosengewächse (Rosaceae). Die Gattung umfasst je nach Auffassung des Autors 100 bis 250 Arten auf der Nordhalbkugel, weltweite Gesamtzahlen sind derzeit noch schwierig zu benennen.",
+      "category": "sonstige",
+      "custom_tasks": [],
+      "journal": [],
+      "added_date": "2026-04-16T16:45:53.247Z",
+      "id": "plant_1776357953247"
     }
   ],
   "general_tasks": [],
@@ -656,6 +758,11 @@
       "id": "cat_1776356514265",
       "name": "Obst",
       "emoji": "🌱"
+    },
+    {
+      "id": "cat_1776408528462",
+      "name": "Boden",
+      "emoji": "💧"
     }
   ]
 }
